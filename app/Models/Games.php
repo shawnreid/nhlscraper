@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Games extends Model
 {
@@ -19,4 +19,14 @@ class Games extends Model
         'status'
     ];
     public $timestamps = false;
+
+    public function home(): HasOne
+    {
+        return $this->hasOne(Teams::class, 'home_id');
+    }
+
+    public function away(): HasOne
+    {
+        return $this->hasOne(Teams::class, 'away_id');
+    }
 }

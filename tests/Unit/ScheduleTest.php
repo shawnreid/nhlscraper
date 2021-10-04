@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Games;
+use App\Models\Teams;
 use App\Models\Years;
 use App\Services\Schedule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,5 +22,6 @@ class ScheduleTest extends TestCase
         $schedule->fetch(Years::search(2019));
 
         $this->assertEquals(Games::count(), 1334);
+        $this->assertEquals(Teams::count(), 39);
     }
 }

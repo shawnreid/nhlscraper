@@ -1,4 +1,4 @@
-### `Installation / Quick Start`
+### Installation / Quick Start
 
 1) copy .env.example to .env
 2) [Install Laravel Sail](https://laravel.com/docs/8.x/sail).
@@ -7,7 +7,7 @@
 5) `sail artisan horizon`
 
 
-### `Commands`
+### Commands
 
 Fetch games for specified year or all years:<br />
 `sail artisan fetch:schedule {year?}`
@@ -15,6 +15,6 @@ Fetch games for specified year or all years:<br />
 Fetch specific data for a game:<br />
 `sail artisan fetch:game {gameid}`
 
-### `Testing`
+### Testing
 
 `sail artisan test`
