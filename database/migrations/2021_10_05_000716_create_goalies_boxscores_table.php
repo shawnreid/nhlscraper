@@ -10,19 +10,26 @@ class CreateGoaliesBoxscoresTable extends Migration
     {
         Schema::create('goalies_boxscores', function (Blueprint $table) {
             $table->id();
-            $table->integer('game_id');
-            $table->time('toi');
-            $table->smallInteger('goals');
-            $table->smallInteger('assists');
-            $table->smallInteger('pim');
-            $table->smallInteger('shots');
-            $table->smallInteger('saves');
-            $table->smallInteger('pp_saves');
-            $table->smallInteger('sh_saves');
-            $table->smallInteger('ev_saves');
-            $table->smallInteger('pp_shots');
-            $table->smallInteger('sh_shots');
-            $table->smallInteger('ev_shots');
+            $table->unsignedBigInteger('schedule_id')->nullable();
+            $table->foreign('schedule_id')->references('id')->on('schedule');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->time('toi')->default(0);
+            $table->smallInteger('goals')->default(0);
+            $table->smallInteger('assists')->default(0);
+            $table->smallInteger('pim')->default(0);
+            $table->smallInteger('saves')->default(0);
+            $table->smallInteger('pp_saves')->default(0);
+            $table->smallInteger('sh_saves')->default(0);
+            $table->smallInteger('ev_saves')->default(0);
+            $table->smallInteger('shots')->default(0);
+            $table->smallInteger('pp_shots')->default(0);
+            $table->smallInteger('sh_shots')->default(0);
+            $table->smallInteger('ev_shots')->default(0);
+            $table->decimal('svp', 6, 2)->default(0);
+            $table->decimal('pp_svp', 6, 2)->default(0);
+            $table->decimal('sh_svp', 6, 2)->default(0);
+            $table->decimal('ev_svp', 6, 2)->default(0);
         });
     }
 

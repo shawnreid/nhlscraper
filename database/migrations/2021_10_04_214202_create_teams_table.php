@@ -9,7 +9,7 @@ class CreateTeamsTable extends Migration
     public function up(): void
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->bigInteger('id')->unique();
+            $table->unsignedBigInteger('id')->unique();
             $table->string('name');
         });
     }

@@ -20,6 +20,13 @@ class Schedule extends Model
     ];
     public $timestamps = false;
 
+    public static function search(int $id): ?self
+    {
+        return self::query()
+            ->where('id', $id)
+            ->first();
+    }
+
     public function home(): HasOne
     {
         return $this->hasOne(Teams::class, 'id', 'home_id');

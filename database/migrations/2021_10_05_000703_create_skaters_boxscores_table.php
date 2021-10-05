@@ -10,28 +10,32 @@ class CreateSkatersBoxscoresTable extends Migration
     {
         Schema::create('skaters_boxscores', function (Blueprint $table) {
             $table->id();
-            $table->integer('game_id');
-            $table->time('toi');
-            $table->smallInteger('goals');
-            $table->smallInteger('assists');
-            $table->smallInteger('shots');
-            $table->smallInteger('hits');
-            $table->smallInteger('pp_goals');
-            $table->smallInteger('pp_assists');
-            $table->smallInteger('pp_points');
-            $table->smallInteger('pim');
-            $table->smallInteger('fo_wins');
-            $table->smallInteger('fo_taken');
-            $table->smallInteger('takeaways');
-            $table->smallInteger('giveaways');
-            $table->smallInteger('sh_goals');
-            $table->smallInteger('sh_assists');
-            $table->smallInteger('sh_points');
-            $table->smallInteger('blocked_shots');
-            $table->smallInteger('plus_minus');
-            $table->time('ev_toi');
-            $table->time('pp_toi');
-            $table->time('pk_toi');
+            $table->unsignedBigInteger('schedule_id')->nullable();
+            $table->foreign('schedule_id')->references('id')->on('schedule');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->smallInteger('goals')->default(0);
+            $table->smallInteger('assists')->default(0);
+            $table->smallInteger('points')->default(0);
+            $table->smallInteger('shots')->default(0);
+            $table->smallInteger('hits')->default(0);
+            $table->smallInteger('pp_goals')->default(0);
+            $table->smallInteger('pp_assists')->default(0);
+            $table->smallInteger('pp_points')->default(0);
+            $table->smallInteger('pim')->default(0);
+            $table->smallInteger('fo_wins')->default(0);
+            $table->smallInteger('fo_taken')->default(0);
+            $table->smallInteger('takeaways')->default(0);
+            $table->smallInteger('giveaways')->default(0);
+            $table->smallInteger('sh_goals')->default(0);
+            $table->smallInteger('sh_assists')->default(0);
+            $table->smallInteger('sh_points')->default(0);
+            $table->smallInteger('blocked_shots')->default(0);
+            $table->smallInteger('plus_minus')->default(0);
+            $table->time('toi')->default(0);
+            $table->time('ev_toi')->default(0);
+            $table->time('pp_toi')->default(0);
+            $table->time('sh_toi')->default(0);
         });
     }
 

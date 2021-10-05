@@ -5,15 +5,16 @@
 3) `sail composer install`
 4) `sail artisan migrate:fresh --seed`
 5) `sail artisan horizon`
-
+6) `sail artisan fetch:schedule`
+7) `sail artisan fetch:games`
 
 ### Commands
 
-Fetch games for specified year or all years:<br />
+Fetch games for specified year or all years and save to database:<br />
 `sail artisan fetch:schedule {year?}`
 
-Fetch specific data for a game:<br />
-`sail artisan fetch:game {gameid}`
+Fetch specific data for a game and save to database.<br />
+`sail artisan fetch:games {gameid?}`
 
 ### Testing
 

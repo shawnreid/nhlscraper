@@ -15,7 +15,7 @@ class ScheduleService
             Str::replace(
                 '{season}', 
                 (string) $year->year_id, 
-                \config('scraper.endpoints.games')
+                \config('scraper.endpoints.schedule')
             )
         )->json();
 
@@ -27,15 +27,13 @@ class ScheduleService
                     $home = $game['teams']['home'];
                     $away = $game['teams']['away'];
                     $games[] = [
-                        'id'            => (int)    $game['gamePk'],
-                        'year_id'       => (int)    $year->year_id,
-                        'date'          => (string) $date['date'],
-                        'game_type_id'  => (int)    $gameType,
-                        'home_id'       => (int)    $home['team']['id'],
-                        'away_id'       => (int)    $away['team']['id'],
-                        'home_score'    => (int)    $home['score'],
-                        'away_score'    => (int)    $away['score'],
-                        'status'        => (int)    $game['status']['codedGameState']
+                        'id'            => $game['gamePk'],
+                        'year_id'       => $year->year_id,
+                        'date'          => $date['date'],
+                        'game_type_id'  => $gameType,
+                        'home_id'       => $home['team']['id'],
+                        'away_id'       => $away['team']['id'],
+                        'status'        => $game['status']['codedGameState']
                     ];
                 }
             }

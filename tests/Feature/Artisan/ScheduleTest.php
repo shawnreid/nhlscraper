@@ -22,7 +22,7 @@ class ScheduleTest extends TestCase
     {
         Queue::fake();
         $this->artisan('fetch:schedule 2019')
-             ->expectsOutput('Schedule for 2019 queued for synchronization. This may take several minutes.')
+             ->expectsOutput('Schedule for 2019 queued for synchronization. This may take several minutes..')
              ->assertExitCode(0);
         Queue::assertPushed(FetchScheduleJob::class);
     }
@@ -31,7 +31,7 @@ class ScheduleTest extends TestCase
     {
         Queue::fake();
         $this->artisan('fetch:schedule')
-             ->expectsOutput('Schedule for all years queued for synchronization. This may take several minutes.')
+             ->expectsOutput('Schedule for all years queued for synchronization. This may take several minutes..')
              ->assertExitCode(0);
         Queue::assertPushed(FetchScheduleJob::class);
     }
