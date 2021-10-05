@@ -6,7 +6,7 @@ use App\Jobs\FetchScheduleJob;
 use App\Models\Years;
 use Illuminate\Console\Command;
 
-class FetchSchedule extends Command
+class FetchScheduleCommand extends Command
 {
     protected $signature = 'fetch:schedule {year?}';
     protected $description = 'Fetch schedule for given year or all years.';
