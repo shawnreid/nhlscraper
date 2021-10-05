@@ -26,6 +26,7 @@ class BoxScoreService
                 };
             }
         }
+        
         GoalieBoxScores::where('schedule_id', $scheduleId)->delete();
         GoalieBoxScores::insert($this->goalies);
 

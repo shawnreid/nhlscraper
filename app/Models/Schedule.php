@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Schedule extends Model
 {
+    use HasFactory;
+    
     protected $table = 'schedule';
     protected $fillable = [
         'id',
@@ -19,6 +22,7 @@ class Schedule extends Model
         'status'
     ];
     public $timestamps = false;
+    public $incrementing = false;
 
     public static function search(int $id): ?self
     {

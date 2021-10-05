@@ -17,10 +17,10 @@ abstract class TestCase extends BaseTestCase
         $this->seed(DatabaseSeeder::class);
     }
 
-    public function fakeJson(): PromiseInterface
+    public function fakeJson($target): PromiseInterface
     {
         return Http::response(
-            \file_get_contents(\storage_path().'/fakers/schedule.json')
+            \file_get_contents(\storage_path()."/fakers/{$target}.json")
         );
     }
 }

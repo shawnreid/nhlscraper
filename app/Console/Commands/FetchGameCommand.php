@@ -32,7 +32,7 @@ class FetchGameCommand extends Command
             FetchGameJob::dispatch($schedule);
         });
 
-        $this->info($this->message('all years'));
+        $this->info($this->message('all games'));
 
         return 0;
     }
@@ -53,6 +53,6 @@ class FetchGameCommand extends Command
 
     protected function message(string $text): string
     {
-        return "Successfully fetched boxscores for {$text}.";
+        return "Successfully fetched game data for {$text}.";
     }
 }

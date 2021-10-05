@@ -20,5 +20,5 @@ Fetch specific data for a game and save to database.<br />
 
 `sail artisan test`
 
-### Static Analysis
-`./vendor/bin/phpstan analyse app`: passing level 8
+### Static Analysis (PHPStan Level 8)
+`./vendor/bin/phpstan analyse app`
