@@ -13,7 +13,11 @@ class Schedule
     public function fetch(Years $year): void
     {
         $data = Http::get(
-            Str::replace('{season}', $year->year_id, \config('scraper.endpoints.games'))
+            Str::replace(
+                '{season}', 
+                (string) $year->year_id, 
+                \config('scraper.endpoints.games')
+            )
         )->json();
 
         $teams = $games = [];
@@ -22,7 +26,7 @@ class Schedule
                 $home = $game['teams']['home'];
                 $away = $game['teams']['away'];
                 $games[] = [
-                    'game_id'       => (int)    $game['gamePk'],
+                    'id'            => (int)    $game['gamePk'],
                     'year_id'       => (int)    $year->year_id,
                     'date'          => (string) $date['date'],
                     'game_type_id'  => (int)    substr($game['gamePk'], 5, 1),
@@ -43,7 +47,7 @@ class Schedule
         Games::insert($games);
     }
 
-    protected function formatTeam($team): array
+    protected function formatTeam(array $team): array
     {
         return [
             'id'    => $team['id'],

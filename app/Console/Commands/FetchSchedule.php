@@ -10,7 +10,7 @@ class FetchSchedule extends Command
 {
     protected $signature = 'fetch:schedule {year?}';
     protected $description = 'Fetch schedule for given year or all years.';
-    protected $year;
+    protected int $year;
 
     public function __construct()
     {
@@ -19,16 +19,18 @@ class FetchSchedule extends Command
 
     public function handle(): int
     {
-        $this->year = $this->argument('year');
+        $this->year = (int) $this->argument('year');
         return match ($this->year) {
-            null    => $this->all(),
+            0       => $this->all(),
             default => $this->year()
         };
     }
 
     protected function all(): int
     {
-        Years::all()->each(fn($year) => FetchScheduleJob::dispatch($year));
+        Years::all()->each(function(Years $year): void {
+            FetchScheduleJob::dispatch($year);
+        });
         $this->info($this->message('all years'));
         return 0;
     }
@@ -43,11 +45,11 @@ class FetchSchedule extends Command
         } 
 
         FetchScheduleJob::dispatch($year);
-        $this->info($this->message($this->year));
+        $this->info($this->message((string) $this->year));
         return 0;
     }
 
-    protected function message($text): string
+    protected function message(string $text): string
     {
         return "Schedule for {$text} queued for synchronization. This may take several minutes.";
     }

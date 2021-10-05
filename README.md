@@ -18,3 +18,6 @@ Fetch specific data for a game:<br />
 ### Testing
 
 `sail artisan test`
+
+### Static Analysis
+`./vendor/bin/phpstan analyse app`: passing level 8

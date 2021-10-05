@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Years;
 use App\Services\Schedule;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,9 +14,9 @@ class FetchScheduleJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(public $year) { }
+    public function __construct(private Years $year) { }
 
-    public function handle(Schedule $schedule)
+    public function handle(Schedule $schedule): void
     {
         $schedule->fetch($this->year);
     }

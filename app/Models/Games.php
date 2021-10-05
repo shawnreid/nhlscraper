@@ -9,7 +9,7 @@ class Games extends Model
 {
     protected $table = 'games';
     protected $fillable = [
-        'game_id',
+        'id',
         'date',
         'game_type_id',
         'home_id',

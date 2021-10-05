@@ -9,7 +9,7 @@ class Years extends Model
     protected $table = 'years';
     public $timestamps = false;
 
-    public static function search($year): self|null
+    public static function search(int $year): self|null
     {
         return self::query()
             ->where('year', $year)

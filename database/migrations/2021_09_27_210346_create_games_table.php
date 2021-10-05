@@ -6,15 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateGamesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->integer('game_id')->unique();
+            $table->integer('id')->unique();
             $table->integer('year_id');
             $table->date('date');
             $table->tinyInteger('game_type_id');
@@ -26,12 +21,7 @@ class CreateGamesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('games');
     }
