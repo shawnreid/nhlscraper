@@ -31,6 +31,7 @@ class FetchScheduleCommand extends Command
         Years::all()->each(function(Years $year): void {
             FetchScheduleJob::dispatch($year);
         });
+        
         $this->info($this->message('all years'));
         return 0;
     }
