@@ -14,9 +14,8 @@ class BoxScoreService
 
     public function fetch(int $scheduleId, array $data): void
     {
-        $this->goalies = [];
-        $this->skaters = [];
         $this->scheduleId = $scheduleId;
+        $this->skaters = $this->goalies = [];
         foreach ($data['teams'] as $team) {
             $this->teamId = $team['team']['id'];
             foreach ($team['players'] as $player) {
@@ -39,22 +38,22 @@ class BoxScoreService
         $this->goalies[] = [
             'schedule_id' => $this->scheduleId,
             'team_id'     => $this->teamId,
-            'toi'         => $stats['timeOnIce'] ?? 0,
-            'goals'       => $stats['goals'] ?? 0,
-            'assists'     => $stats['assists'] ?? 0,
-            'pim'         => $stats['pim'] ?? 0,
-            'saves'       => $stats['saves'] ?? 0,
-            'pp_saves'    => $stats['powerPlaySaves'] ?? 0,
-            'sh_saves'    => $stats['shortHandedSaves'] ?? 0,
-            'ev_saves'    => $stats['evenSaves'] ?? 0,
-            'shots'       => $stats['shots'] ?? 0,
-            'pp_shots'    => $stats['powerPlayShotsAgainst'] ?? 0,
-            'sh_shots'    => $stats['shortHandedShotsAgainst'] ?? 0,
-            'ev_shots'    => $stats['evenShotsAgainst'] ?? 0,
-            'svp'         => round($stats['savePercentage'] ?? 0, 2),
-            'pp_svp'      => $stats['powerPlaySavePercentage'] ?? 0,
-            'sh_svp'      => $stats['shortHandedSavePercentage'] ?? 0,
-            'ev_svp'      => $stats['evenStrengthSavePercentage'] ?? 0,
+            'toi'         => _s($stats['timeOnIce'], 0),
+            'goals'       => _s($stats['goals'], 0),
+            'assists'     => _s($stats['assists'], 0),
+            'pim'         => _s($stats['pim'], 0),
+            'saves'       => _s($stats['saves'], 0),
+            'pp_saves'    => _s($stats['powerPlaySaves'], 0),
+            'sh_saves'    => _s($stats['shortHandedSaves'], 0),
+            'ev_saves'    => _s($stats['evenSaves'], 0),
+            'shots'       => _s($stats['shots'], 0),
+            'pp_shots'    => _s($stats['powerPlayShotsAgainst'], 0),
+            'sh_shots'    => _s($stats['shortHandedShotsAgainst'], 0),
+            'ev_shots'    => _s($stats['evenShotsAgainst'], 0),
+            'svp'         => round(_s($stats['savePercentage'], 0), 2),
+            'pp_svp'      => _s($stats['powerPlaySavePercentage'], 0),
+            'sh_svp'      => _s($stats['shortHandedSavePercentage'], 0),
+            'ev_svp'      => _s($stats['evenStrengthSavePercentage'], 0),
         ];
     }
 
@@ -64,28 +63,28 @@ class BoxScoreService
             $this->skaters[] = [
                 'schedule_id'   => $this->scheduleId,
                 'team_id'       => $this->teamId,
-                'goals'         => $stats['goals'] ?? 0,
-                'assists'       => $stats['assists'] ?? 0,
-                'points'        => ($stats['goals'] ?? 0) + ($stats['assists'] ?? 0),
-                'shots'         => $stats['shots'] ?? 0,
-                'hits'          => $stats['hits'] ?? 0,
-                'pp_goals'      => $stats['powerPlayGoals'] ?? 0,
-                'pp_assists'    => $stats['powerPlayAssists'] ?? 0,
-                'pp_points'     => ($stats['powerPlayGoals'] ?? 0) + ($stats['powerPlayAssists'] ?? 0),
-                'pim'           => $stats['penaltyMinutes'] ?? 0,
-                'fo_wins'       => $stats['faceOffWins'] ?? 0,
-                'fo_taken'      => $stats['faceoffTaken'] ?? 0,
-                'takeaways'     => $stats['takeaways'] ?? 0,
-                'giveaways'     => $stats['giveaways'] ?? 0,
-                'sh_goals'      => $stats['shortHandedGoals'] ?? 0,
-                'sh_assists'    => $stats['shortHandedAssists'] ?? 0,
-                'sh_points'     => ($stats['shortHandedGoals'] ?? 0) + ($stats['shortHandedAssists'] ?? 0),
-                'blocked_shots' => $stats['blocked'] ?? 0,
-                'plus_minus'    => $stats['plusMinus'] ?? 0,
-                'toi'           => $stats['timeOnIce'] ?? 0,
-                'ev_toi'        => $stats['evenTimeOnIce'] ?? 0,
-                'pp_toi'        => $stats['powerPlayTimeOnIce'] ?? 0,
-                'sh_toi'        => $stats['shortHandedTimeOnIce'] ?? 0,
+                'goals'         => _s($stats['goals']),
+                'assists'       => _s($stats['assists']),
+                'points'        => _s($stats['goals']) + _s($stats['assists']),
+                'shots'         => _s($stats['shots']),
+                'hits'          => _s($stats['hits']),
+                'pp_goals'      => _s($stats['powerPlayGoals']),
+                'pp_assists'    => _s($stats['powerPlayAssists']),
+                'pp_points'     => _s($stats['powerPlayGoals']) + _s($stats['powerPlayAssists']),
+                'pim'           => _s($stats['penaltyMinutes'], 0),
+                'fo_wins'       => _s($stats['faceOffWins'], 0),
+                'fo_taken'      => _s($stats['faceoffTaken'], 0),
+                'takeaways'     => _s($stats['takeaways'], 0),
+                'giveaways'     => _s($stats['giveaways'], 0),
+                'sh_goals'      => _s($stats['shortHandedGoals'], 0),
+                'sh_assists'    => _s($stats['shortHandedAssists'], 0),
+                'sh_points'     => _s($stats['shortHandedGoals']) + _s($stats['shortHandedAssists']),
+                'blocked_shots' => _s($stats['blocked'], 0),
+                'plus_minus'    => _s($stats['plusMinus'], 0),
+                'toi'           => _s($stats['timeOnIce'], 0),
+                'ev_toi'        => _s($stats['evenTimeOnIce'], 0),
+                'pp_toi'        => _s($stats['powerPlayTimeOnIce'], 0),
+                'sh_toi'        => _s($stats['shortHandedTimeOnIce'], 0),
             ];
         }
     }

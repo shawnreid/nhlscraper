@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Models\GoalieBoxScores;
 use App\Models\Schedule;
 use App\Models\SkaterBoxScores;
+use App\Models\Timelines;
 use App\Services\Game\BoxScoreService;
 use App\Services\Game\TimelineService;
 use App\Services\GameService;
@@ -29,5 +30,6 @@ class GameTest extends TestCase
 
         $this->assertEquals(SkaterBoxScores::count(), 36);
         $this->assertEquals(GoalieBoxScores::count(), 2);
+        $this->assertEquals(Timelines::all(), 382);
     }
 }

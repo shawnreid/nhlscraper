@@ -9,7 +9,7 @@ class CreatePlayersTable extends Migration
     public function up(): void
     {
         Schema::create('players', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->unsignedBigInteger('id')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->smallInteger('primary_number');

@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+workspace.code-workspace
+p.sh
+pu.sh
+supervisord.log
+supervisord.pid

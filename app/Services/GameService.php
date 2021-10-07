@@ -26,6 +26,6 @@ class GameService
         )->json();
 
         $this->boxscore->fetch($schedule->id, $data['liveData']['boxscore']);
-        //$this->timeline->fetch($schedule->id, $data['liveData']['plays']['allPlays']);
+        $this->timeline->fetch($schedule->id, $data['liveData']['plays']['allPlays']);
     }
 }
