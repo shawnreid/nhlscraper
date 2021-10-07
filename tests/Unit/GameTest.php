@@ -30,6 +30,6 @@ class GameTest extends TestCase
 
         $this->assertEquals(SkaterBoxScores::count(), 36);
         $this->assertEquals(GoalieBoxScores::count(), 2);
-        $this->assertEquals(Timelines::all(), 382);
+        $this->assertEquals(Timelines::count(), 382);
     }
 }
