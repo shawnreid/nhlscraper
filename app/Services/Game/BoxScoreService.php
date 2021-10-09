@@ -9,12 +9,12 @@ class BoxScoreService
 {
     protected array $goalies;
     protected array $skaters;
-    protected int $scheduleId;
+    protected int $gameId;
     protected int $teamId;
 
-    public function fetch(int $scheduleId, array $data): void
+    public function save(int $gameId, array $data): array
     {
-        $this->scheduleId = $scheduleId;
+        $this->scheduleId = $gameId;
         $this->skaters = $this->goalies = [];
         foreach ($data['teams'] as $team) {
             $this->teamId = $team['team']['id'];
@@ -26,17 +26,22 @@ class BoxScoreService
             }
         }
         
-        GoalieBoxScores::where('schedule_id', $scheduleId)->delete();
+        GoalieBoxScores::where('game_id', $gameId)->delete();
         GoalieBoxScores::insert($this->goalies);
 
-        SkaterBoxScores::where('schedule_id', $scheduleId)->delete();
+        SkaterBoxScores::where('game_id', $gameId)->delete();
         SkaterBoxScores::insert($this->skaters);
+
+        return [
+            'skaters' => $this->skaters,
+            'goalies' => $this->goalies,
+        ];
     }
 
     protected function goalie(array $stats): void
     {
         $this->goalies[] = [
-            'schedule_id' => $this->scheduleId,
+            'game_id' => $this->scheduleId,
             'team_id'     => $this->teamId,
             'toi'         => _s($stats['timeOnIce'], 0),
             'goals'       => _s($stats['goals'], 0),
@@ -61,7 +66,7 @@ class BoxScoreService
     {
         if (count($stats)) {
             $this->skaters[] = [
-                'schedule_id'   => $this->scheduleId,
+                'game_id'   => $this->scheduleId,
                 'team_id'       => $this->teamId,
                 'goals'         => _s($stats['goals']),
                 'assists'       => _s($stats['assists']),

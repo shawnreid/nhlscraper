@@ -6,12 +6,12 @@ use App\Models\Game\Timelines;
 
 class TimelineService
 {
-    public function fetch(int $scheduleId, array $data): void
+    public function save(int $gameId, array $data): void
     {
         $results = collect();
         foreach ($data as $d) {
             $results[] = [
-                'schedule_id'   => $scheduleId,
+                'game_id'   => $gameId,
                 'event'         => _s($d['result']['event']),
                 'code'          => _s($d['result']['eventCode']),
                 'desc_full'     => _s($d['result']['description']),
@@ -31,7 +31,7 @@ class TimelineService
             ];
         }
         
-        Timelines::where('schedule_id', $scheduleId)->delete();
+        Timelines::where('game_id', $gameId)->delete();
         $results->chunk(100)->each(function($data): void {
             Timelines::insert($data->toArray());
         });

@@ -8,7 +8,7 @@ class Timelines extends Model
 {
     protected $table = 'game_timelines';
     protected $fillable = [
-        'schedule_id',   
+        'game_id',   
         'event',         
         'code',          
         'desc_full',     

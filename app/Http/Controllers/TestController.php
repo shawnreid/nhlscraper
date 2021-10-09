@@ -9,6 +9,7 @@ class TestController extends Controller
 {
     public function index(GameService $game): void
     {
+        #dd(phpinfo());
         $schedule = Schedule::search(2019020001);
         $game->fetch($schedule);
     }
