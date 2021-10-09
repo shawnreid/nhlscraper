@@ -2,8 +2,8 @@
 
 namespace App\Services\Game;
 
-use App\Models\GoalieBoxScores;
-use App\Models\SkaterBoxScores;
+use App\Models\Game\GoalieBoxScores;
+use App\Models\Game\SkaterBoxScores;
 
 class BoxScoreService
 {

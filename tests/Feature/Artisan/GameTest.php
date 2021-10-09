@@ -15,7 +15,7 @@ class GameTest extends TestCase
     public function test_console_fetch_schedule_invalid_game()
     {
         $this->artisan('fetch:games 2')
-             ->expectsOutput('Invalid Game ID. Correct format: 2019020001.')
+             ->expectsOutput('Invalid Game ID or schedule not yet synced.')
              ->assertExitCode(1);
     }
 
@@ -24,7 +24,7 @@ class GameTest extends TestCase
         Queue::fake();
         Schedule::factory()->create();
         $this->artisan('fetch:games 2019020001')
-             ->expectsOutput('Successfully fetched game data for 2019020001.')
+             ->expectsOutput('Invalid Game ID or schedule not yet synced.')
              ->assertExitCode(0);
         Queue::assertPushed(FetchGameJob::class);
     }

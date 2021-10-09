@@ -10,7 +10,8 @@ class CreateScheduleTable extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique();
-            $table->integer('year_id');
+            $table->unsignedBigInteger('year_id')->nullable();
+            $table->foreign('year_id')->references('id')->on('years');
             $table->date('date');
             $table->tinyInteger('game_type_id');
             $table->integer('home_id');

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Game;
 
 use Illuminate\Database\Eloquent\Model;
 
 class GoalieBoxScores extends Model
 {
-    protected $table = 'goalies_boxscores';
+    protected $table = 'game_goalie_boxscores';
     public $timestamps = false;
 }

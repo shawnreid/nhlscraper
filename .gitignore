@@ -18,3 +18,5 @@ p.sh
 pu.sh
 supervisord.log
 supervisord.pid
+v.sh
+docker_destroy.sh

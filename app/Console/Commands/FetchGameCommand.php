@@ -42,7 +42,7 @@ class FetchGameCommand extends Command
         $schedule = Schedule::search($this->gameid);
 
         if (!$schedule) {
-            $this->error('Invalid Game ID. Correct format: 2019020001.');
+            $this->error('Invalid Game ID or schedule not yet synced.');
             return 1;
         } 
 

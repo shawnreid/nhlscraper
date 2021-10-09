@@ -2,7 +2,8 @@
 
 namespace App\Services\Game;
 
-use App\Models\Timelines;
+use App\Models\Game\Timelines;
+
 class TimelineService
 {
     public function fetch(int $scheduleId, array $data): void

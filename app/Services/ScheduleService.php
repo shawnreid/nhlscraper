@@ -14,11 +14,11 @@ class ScheduleService
         $data = Http::get(
             Str::replace(
                 '{season}', 
-                (string) $year->year_id, 
+                (string) $year->id, 
                 \config('scraper.endpoints.schedule')
             )
         )->json();
-
+            
         $games = [];
         foreach ($data['dates'] as $date) {
             foreach ($date['games'] as $game) {
@@ -28,7 +28,7 @@ class ScheduleService
                     $away = $game['teams']['away'];
                     $games[] = [
                         'id'            => $game['gamePk'],
-                        'year_id'       => $year->year_id,
+                        'year_id'       => $year->id,
                         'date'          => $date['date'],
                         'game_type_id'  => $gameType,
                         'home_id'       => $home['team']['id'],

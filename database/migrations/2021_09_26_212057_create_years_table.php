@@ -9,9 +9,8 @@ class CreateYearsTable extends Migration
     public function up(): void
     {
         Schema::create('years', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->unique();
             $table->integer('year');
-            $table->integer('year_id');
         });
     }
 

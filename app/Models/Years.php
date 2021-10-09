@@ -13,7 +13,7 @@ class Years extends Model
     {
         return self::query()
             ->where('year', $year)
-            ->orWhere('year_id', $year)
+            ->orWhere('id', $year)
             ->first();
     }
 }

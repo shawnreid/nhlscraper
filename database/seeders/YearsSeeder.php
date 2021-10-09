@@ -12,8 +12,8 @@ class YearsSeeder extends Seeder
         $year  = 1917;
         while ($year !== (now()->year + 1)) {
             DB::table('years')->insert([
-                'year'    => $year,
-                'year_id' => $year.($year+1)
+                'id'   => $year.($year+1),
+                'year' => $year
             ]);
             $year++;
         }
