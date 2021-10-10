@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Models\Game;
+namespace App\Models\Games;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TeamStats extends Model
 {
-    protected $table = 'game_team_stats';
+    protected $table = 'games_team_stats';
     public $fillable = [
         'goals',
         'assists',

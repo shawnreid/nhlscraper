@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game\Games;
+use App\Models\Games\Games;
 use App\Services\GameService;
 
 class TestController extends Controller

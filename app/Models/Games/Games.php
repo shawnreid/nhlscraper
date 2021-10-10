@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models\Game;
+namespace App\Models\Games;
 
+use App\Models\Teams;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -33,11 +34,11 @@ class Games extends Model
 
     public function home(): HasOne
     {
-        return $this->hasOne(\App\Models\Teams::class, 'id', 'home_id');
+        return $this->hasOne(Teams::class, 'id', 'home_id');
     }
 
     public function away(): HasOne
     {
-        return $this->hasOne(\App\Models\Teams::class, 'id', 'away_id');
+        return $this->hasOne(Teams::class, 'id', 'away_id');
     }
 }

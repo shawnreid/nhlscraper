@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Game\Games;
+use App\Models\Games\Games;
 use App\Models\Years;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;

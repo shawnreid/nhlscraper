@@ -11,14 +11,14 @@ class ScheduleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_fetch_games_invalid_year()
+    public function test_console_fetch_games_invalid_year(): void
     {
         $this->artisan('fetch:schedule 2')
              ->expectsOutput('Invalid year. Correct format: 2019 or 20192020.')
              ->assertExitCode(1);
     }
 
-    public function test_console_fetch_games_valid_year()
+    public function test_console_fetch_games_valid_year(): void
     {
         Queue::fake();
         $this->artisan('fetch:schedule 2019')
@@ -27,7 +27,7 @@ class ScheduleTest extends TestCase
         Queue::assertPushed(FetchScheduleJob::class);
     }
 
-    public function test_console_fetch_games_all_years()
+    public function test_console_fetch_games_all_years(): void
     {
         Queue::fake();
         $this->artisan('fetch:schedule')

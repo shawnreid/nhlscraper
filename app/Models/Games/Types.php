@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Game;
+namespace App\Models\Games;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Types extends Model
 {
-    protected $table = 'game_types';
+    protected $table = 'games_types';
     public $timestamps = false;
 }

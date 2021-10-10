@@ -2,8 +2,8 @@
 
 namespace App\Services\Game;
 
-use App\Models\Game\SkaterBoxScores;
-use App\Models\Game\TeamStats;
+use App\Models\Games\SkaterBoxScores;
+use App\Models\Games\TeamStats;
 use Illuminate\Support\Facades\DB;
 
 class TeamStatsService

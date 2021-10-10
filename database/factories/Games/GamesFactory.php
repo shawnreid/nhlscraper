@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Factories\Game;
+namespace Database\Factories\Games;
 
-use App\Models\Game\Games;
+use App\Models\Games\Games;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GamesFactory extends Factory
 {
     protected $model = Games::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'id'           => '2019020001',

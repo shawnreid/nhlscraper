@@ -2,7 +2,7 @@
 
 namespace App\Services\Game;
 
-use App\Models\Game\Timelines;
+use App\Models\Games\Timelines;
 
 class TimelineService
 {

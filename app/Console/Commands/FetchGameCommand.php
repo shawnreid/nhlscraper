@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\FetchGameJob;
-use App\Models\Game\Games;
+use App\Models\Games\Games;
 use Illuminate\Console\Command;
 
 class FetchGameCommand extends Command
@@ -39,7 +39,7 @@ class FetchGameCommand extends Command
 
     protected function game(): int
     {
-        $games = games::search($this->gameid);
+        $games = Games::search($this->gameid);
 
         if (!$games) {
             $this->error('Invalid Game ID or games not yet synced.');

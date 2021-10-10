@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Game;
+namespace App\Models\Games;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Timelines extends Model
 {
-    protected $table = 'game_timelines';
+    protected $table = 'games_timelines';
     protected $fillable = [
         'game_id',   
         'event',         

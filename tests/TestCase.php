@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Models\Years;
 use Database\Seeders\DatabaseSeeder;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -17,10 +18,18 @@ abstract class TestCase extends BaseTestCase
         $this->seed(DatabaseSeeder::class);
     }
 
-    public function fakeJson($target): PromiseInterface
+    public function fakeJson(string $target): PromiseInterface
     {
         return Http::response(
-            \file_get_contents(\storage_path()."/fakers/{$target}.json")
+            (string) \file_get_contents(\storage_path()."/fakers/{$target}.json")
         );
+    }
+
+    public function testYear(): Years
+    {
+        return new Years([
+            'id'   => 20192020,
+            'year' => 2019
+        ]);
     }
 }

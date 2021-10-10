@@ -4,16 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGameTeamStatsTable extends Migration
+class CreateGamesSkaterBoxscoresTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
-        Schema::create('game_team_stats', function (Blueprint $table) {
+        Schema::create('games_skater_boxscores', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id')->nullable();
             $table->foreign('game_id')->references('id')->on('games');
@@ -36,11 +31,16 @@ class CreateGameTeamStatsTable extends Migration
             $table->smallInteger('sh_assists')->default(0);
             $table->smallInteger('sh_points')->default(0);
             $table->smallInteger('blocked_shots')->default(0);
+            $table->smallInteger('plus_minus')->default(0);
+            $table->time('toi')->default(0);
+            $table->time('ev_toi')->default(0);
+            $table->time('pp_toi')->default(0);
+            $table->time('sh_toi')->default(0);
         });
     }
 
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('games_skater_boxscores');
     }
 }

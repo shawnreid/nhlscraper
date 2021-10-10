@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Game\Games;
+use App\Models\Games\Games;
 use App\Services\GameService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

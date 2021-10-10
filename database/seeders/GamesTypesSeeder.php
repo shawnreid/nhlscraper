@@ -5,11 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class GameTypesSeeder extends Seeder
+class GamesTypesSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('game_types')->insert([
+        DB::table('games_types')->insert([
             [
                 'id'   => 1,
                 'name' => 'Pre Season'

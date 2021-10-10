@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Models\Game\Games;
-use App\Models\Game\GoalieBoxScores;
-use App\Models\Game\SkaterBoxScores;
-use App\Models\Game\Timelines;
+use App\Models\Games\Games;
+use App\Models\Games\GoalieBoxScores;
+use App\Models\Games\SkaterBoxScores;
+use App\Models\Games\Timelines;
 use App\Services\Game\BoxScoreService;
 use App\Services\Game\TeamStatsService;
 use App\Services\Game\TimelineService;
@@ -18,7 +18,7 @@ class GameTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_fetch_game_data_from_nhl_api()
+    public function test_can_fetch_game_data_from_nhl_api(): void
     {
         Http::fake(['*' => $this->fakeJson('game')]);
         $games = Games::factory()->create();
