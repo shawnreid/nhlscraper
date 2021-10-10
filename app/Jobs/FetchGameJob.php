@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Games\Games;
-use App\Services\GameService;
+use App\Services\Game\GameService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

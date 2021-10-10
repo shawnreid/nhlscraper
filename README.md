@@ -10,8 +10,8 @@
 
 ### Commands
 
-Fetch games for specified year or all years and save to database:<br />
-`sail artisan fetch:games {year?}`
+Fetch games for specified season or all seasons and save to database:<br />
+`sail artisan fetch:schedule {season?}`
 
 Fetch specific data for a game and save to database.<br />
 `sail artisan fetch:games {gameid?}`

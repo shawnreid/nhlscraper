@@ -10,8 +10,8 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique();
-            $table->unsignedBigInteger('year_id')->nullable();
-            $table->foreign('year_id')->references('id')->on('years');
+            $table->unsignedBigInteger('season_id')->nullable();
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->date('date');
             $table->tinyInteger('game_type_id');
             $table->integer('home_id');

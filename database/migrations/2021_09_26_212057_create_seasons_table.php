@@ -4,18 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYearsTable extends Migration
+class CreateSeasonsTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('years', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique();
-            $table->integer('year');
+            $table->integer('season');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('years');
+        Schema::dropIfExists('seasons');
     }
 }

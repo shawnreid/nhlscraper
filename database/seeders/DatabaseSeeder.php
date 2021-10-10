@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            YearsSeeder::class,
+            SeasonsSeeder::class,
             TeamsSeeder::class,
             Games\TypesSeeder::class,
             Players\PositionsSeeder::class,

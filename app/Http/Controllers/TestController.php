@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Games\Games;
-use App\Services\GameService;
+use App\Services\Game\GameService;
 
 class TestController extends Controller
 {

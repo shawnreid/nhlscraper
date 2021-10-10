@@ -9,7 +9,7 @@ use App\Models\Games\Timelines;
 use App\Services\Game\BoxScoreService;
 use App\Services\Game\TeamStatsService;
 use App\Services\Game\TimelineService;
-use App\Services\GameService;
+use App\Services\Game\GameService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;

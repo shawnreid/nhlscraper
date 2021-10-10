@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Models\Games\Games;
-use App\Models\Years;
-use App\Services\ScheduleService;
+use App\Models\Seasons;
+use App\Services\Game\ScheduleService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
@@ -17,7 +17,7 @@ class ScheduleTest extends TestCase
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 
-        (new ScheduleService)->fetch($this->getYear());
+        (new ScheduleService)->fetch($this->getseason());
 
         $this->assertEquals(Games::count(), 1213);
     }

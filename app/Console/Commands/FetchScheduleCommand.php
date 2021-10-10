@@ -3,14 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Jobs\FetchScheduleJob;
-use App\Models\Years;
+use App\Models\Seasons;
 use Illuminate\Console\Command;
 
 class FetchScheduleCommand extends Command
 {
-    protected $signature = 'fetch:schedule {year?}';
-    protected $description = 'Fetch schedule for given year or all years.';
-    protected int $year;
+    protected $signature = 'fetch:schedule {season?}';
+    protected $description = 'Fetch schedule for given season or all seasons.';
+    protected int $season;
 
     public function __construct()
     {
@@ -19,34 +19,34 @@ class FetchScheduleCommand extends Command
 
     public function handle(): int
     {
-        $this->year = (int) $this->argument('year');
-        return match ($this->year) {
+        $this->season = (int) $this->argument('season');
+        return match ($this->season) {
             0       => $this->all(),
-            default => $this->year()
+            default => $this->season()
         };
     }
 
     protected function all(): int
     {
-        Years::all()->each(function(Years $year): void {
-            FetchScheduleJob::dispatch($year);
+        Seasons::all()->each(function(Seasons $season): void {
+            FetchScheduleJob::dispatch($season);
         });
 
-        $this->info($this->message('all years'));
+        $this->info($this->message('all seasons'));
         return 0;
     }
 
-    protected function year(): int
+    protected function season(): int
     {
-        $year = Years::search($this->year);
+        $season = Seasons::search($this->season);
 
-        if (!$year) {
-            $this->error('Invalid year. Correct format: 2019 or 20192020.');
+        if (!$season) {
+            $this->error('Invalid season. Correct format: 2019 or 20192020.');
             return 1;
         } 
 
-        FetchScheduleJob::dispatch($year);
-        $this->info($this->message((string) $this->year));
+        FetchScheduleJob::dispatch($season);
+        $this->info($this->message((string) $this->season));
         return 0;
     }
 

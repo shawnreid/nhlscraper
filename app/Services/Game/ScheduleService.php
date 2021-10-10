@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Game;
 
 use App\Models\Games\Games;
-use App\Models\Years;
+use App\Models\Seasons;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class ScheduleService
 {
-    public function fetch(Years $year): void
+    public function fetch(Seasons $season): void
     {
         $data = Http::get(
             Str::replace(
                 '{season}', 
-                (string) $year->id, 
+                (string) $season->id, 
                 \config('scraper.endpoints.schedule')
             )
         )->json();
@@ -28,7 +28,7 @@ class ScheduleService
                     $away = $game['teams']['away'];
                     $games[] = [
                         'id'            => $game['gamePk'],
-                        'year_id'       => $year->id,
+                        'season_id'       => $season->id,
                         'date'          => $date['date'],
                         'game_type_id'  => $gameType,
                         'home_id'       => $home['team']['id'],

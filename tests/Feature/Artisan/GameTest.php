@@ -32,7 +32,7 @@ class GameTest extends TestCase
         Queue::assertPushed(FetchGameJob::class);
     }
 
-    public function test_console_fetch_games_for_all_years(): void
+    public function test_console_fetch_games_for_all_seasons(): void
     {
         Queue::fake();
         Games::factory()->create();

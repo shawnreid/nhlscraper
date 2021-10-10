@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use App\Models\Years;
+use App\Models\Seasons;
 use Database\Seeders\DatabaseSeeder;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -25,11 +25,11 @@ abstract class TestCase extends BaseTestCase
         );
     }
 
-    public function getYear(): Years
+    public function getseason(): Seasons
     {
-        return new Years([
+        return new Seasons([
             'id'   => 20192020,
-            'year' => 2019
+            'season' => 2019
         ]);
     }
 }
