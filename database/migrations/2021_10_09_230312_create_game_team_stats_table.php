@@ -16,7 +16,7 @@ class CreateGameTeamStatsTable extends Migration
         Schema::create('game_team_stats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id')->nullable();
-            $table->foreign('game_id')->references('id')->on('schedule');
+            $table->foreign('game_id')->references('id')->on('games');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->smallInteger('goals')->default(0);

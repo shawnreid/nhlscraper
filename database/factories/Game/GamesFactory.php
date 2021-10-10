@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Game;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ScheduleFactory extends Factory
+class GamesFactory extends Factory
 {
-    protected $model = Schedule::class;
+    protected $model = Games::class;
 
     public function definition()
     {

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use App\Models\Years;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
@@ -39,6 +39,6 @@ class ScheduleService
             }
         }
 
-        Schedule::upsert($games, 'id');
+        Games::upsert($games, 'id');
     }
 }

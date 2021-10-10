@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use App\Services\GameService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -14,10 +14,10 @@ class FetchGameJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(private Schedule $schedule) { }
+    public function __construct(private Games $games) { }
 
     public function handle(GameService $game): void
     {
-        $game->fetch($this->schedule);
+        $game->fetch($this->games);
     }
 }

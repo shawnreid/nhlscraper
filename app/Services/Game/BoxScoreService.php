@@ -14,7 +14,7 @@ class BoxScoreService
 
     public function save(int $gameId, array $data): array
     {
-        $this->scheduleId = $gameId;
+        $this->gameId = $gameId;
         $this->skaters = $this->goalies = [];
         foreach ($data['teams'] as $team) {
             $this->teamId = $team['team']['id'];
@@ -41,7 +41,7 @@ class BoxScoreService
     protected function goalie(array $stats): void
     {
         $this->goalies[] = [
-            'game_id' => $this->scheduleId,
+            'game_id' => $this->gameId,
             'team_id'     => $this->teamId,
             'toi'         => _s($stats['timeOnIce'], 0),
             'goals'       => _s($stats['goals'], 0),
@@ -66,7 +66,7 @@ class BoxScoreService
     {
         if (count($stats)) {
             $this->skaters[] = [
-                'game_id'   => $this->scheduleId,
+                'game_id'   => $this->gameId,
                 'team_id'       => $this->teamId,
                 'goals'         => _s($stats['goals']),
                 'assists'       => _s($stats['assists']),

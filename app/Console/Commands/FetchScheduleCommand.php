@@ -52,6 +52,6 @@ class FetchScheduleCommand extends Command
 
     protected function message(string $text): string
     {
-        return "Schedule for {$text} queued for synchronization. This may take several minutes..";
+        return "Games for {$text} queued for synchronization. This may take several minutes..";
     }
 }

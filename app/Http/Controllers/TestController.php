@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use App\Services\GameService;
 
 class TestController extends Controller
@@ -10,7 +10,7 @@ class TestController extends Controller
     public function index(GameService $game): void
     {
         #dd(phpinfo());
-        $schedule = Schedule::search(2019020001);
-        $game->fetch($schedule);
+        #$games = Games::search(2019020001);
+        #$game->fetch($games);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use App\Models\Years;
 use App\Services\ScheduleService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,13 +13,13 @@ class ScheduleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_fetch_schedule_from_nhl_api()
+    public function test_can_fetch_games_from_nhl_api()
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 
         $schedule = new ScheduleService;
         $schedule->fetch(Years::search(2019));
 
-        $this->assertEquals(Schedule::count(), 1213);
+        $this->assertEquals(Games::count(), 1213);
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Game;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Schedule extends Model
+class Games extends Model
 {
     use HasFactory;
     
-    protected $table = 'schedule';
+    protected $table = 'games';
     protected $fillable = [
         'id',
         'date',
@@ -33,11 +33,11 @@ class Schedule extends Model
 
     public function home(): HasOne
     {
-        return $this->hasOne(Teams::class, 'id', 'home_id');
+        return $this->hasOne(\App\Models\Teams::class, 'id', 'home_id');
     }
 
     public function away(): HasOne
     {
-        return $this->hasOne(Teams::class, 'id', 'away_id');
+        return $this->hasOne(\App\Models\Teams::class, 'id', 'away_id');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use App\Services\Game\BoxScoreService;
 use App\Services\Game\TimelineService;
 use App\Services\Game\TeamStatsService;
@@ -17,18 +17,18 @@ class GameService
         protected TimelineService $timeline
     ) { }
 
-    public function fetch(Schedule $schedule): void
+    public function fetch(Games $games): void
     {
         $data = Http::get(
             Str::replace(
                 '{gameid}', 
-                (string) $schedule->id, 
+                (string) $games->id, 
                 \config('scraper.endpoints.game')
             )
         )->json();
-
-        $this->timeline->save($schedule->id, $data['liveData']['plays']['allPlays']);
-        $this->boxscore->save($schedule->id, $data['liveData']['boxscore']);
-        $this->team->save($schedule->id);
+            
+        $this->timeline->save($games->id, $data['liveData']['plays']['allPlays']);
+        $this->boxscore->save($games->id, $data['liveData']['boxscore']);
+        $this->team->save($games->id);
     }
 }

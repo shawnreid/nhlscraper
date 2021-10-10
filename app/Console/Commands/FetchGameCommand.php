@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\FetchGameJob;
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use Illuminate\Console\Command;
 
 class FetchGameCommand extends Command
@@ -28,8 +28,8 @@ class FetchGameCommand extends Command
 
     protected function all(): int
     {
-        Schedule::all()->each(function(Schedule $schedule): void {
-            FetchGameJob::dispatch($schedule);
+        Games::all()->each(function(Games $games): void {
+            FetchGameJob::dispatch($games);
         });
 
         $this->info($this->message('all games'));
@@ -39,14 +39,14 @@ class FetchGameCommand extends Command
 
     protected function game(): int
     {
-        $schedule = Schedule::search($this->gameid);
+        $games = games::search($this->gameid);
 
-        if (!$schedule) {
-            $this->error('Invalid Game ID or schedule not yet synced.');
+        if (!$games) {
+            $this->error('Invalid Game ID or games not yet synced.');
             return 1;
         } 
 
-        FetchGameJob::dispatch($schedule);
+        FetchGameJob::dispatch($games);
         $this->info($this->message((string) $this->gameid));
         return 0;
     }

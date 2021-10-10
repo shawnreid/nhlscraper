@@ -3,7 +3,7 @@
 namespace Tests\Feature\Artisan;
 
 use App\Jobs\FetchGameJob;
-use App\Models\Schedule;
+use App\Models\Game\Games;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
@@ -12,27 +12,30 @@ class GameTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_fetch_schedule_invalid_game()
+    public function test_console_fetch_games_invalid_game()
     {
         $this->artisan('fetch:games 2')
-             ->expectsOutput('Invalid Game ID or schedule not yet synced.')
+             ->expectsOutput('Invalid Game ID or games not yet synced.')
              ->assertExitCode(1);
     }
 
-    public function test_console_fetch_schedule_valid_game()
+    public function test_console_fetch_games_valid_game()
     {
         Queue::fake();
-        Schedule::factory()->create();
-        $this->artisan('fetch:games 2019020001')
-             ->expectsOutput('Invalid Game ID or schedule not yet synced.')
+        Games::factory()->create();
+
+        $gameId = 2019020001;
+        $this->artisan("fetch:games {$gameId}")
+             ->expectsOutput("Successfully fetched game data for {$gameId}.")
              ->assertExitCode(0);
+             
         Queue::assertPushed(FetchGameJob::class);
     }
 
     public function test_console_fetch_games_for_all_years()
     {
         Queue::fake();
-        Schedule::factory()->create();
+        Games::factory()->create();
         $this->artisan('fetch:games')
              ->expectsOutput('Successfully fetched game data for all games.')
              ->assertExitCode(0);
