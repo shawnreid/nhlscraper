@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Players;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -9,7 +9,7 @@ class PositionsSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('positions')->insert([
+        DB::table('players_positions')->insert([
             [
                 'abbreviation' => 'C',
                 'name'         => 'Center'

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Players;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Positions extends Model
 {
-    protected $table = 'positions';
+    protected $table = 'players_positions';
     public $timestamps = false;
 }

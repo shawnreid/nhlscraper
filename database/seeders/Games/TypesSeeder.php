@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Games;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class GamesTypesSeeder extends Seeder
+class TypesSeeder extends Seeder
 {
     public function run()
     {
