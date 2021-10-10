@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Years extends Model
 {
     protected $table = 'years';
+    protected $fillable = ['id', 'year'];
     public $timestamps = false;
 
     public static function search(int $year): ?self
