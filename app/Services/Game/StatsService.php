@@ -2,10 +2,10 @@
 
 namespace App\Services\Game;
 
-use App\Models\Games\GoalieBoxScores;
-use App\Models\Games\SkaterBoxScores;
+use App\Models\Games\GoalieStats;
+use App\Models\Games\SkaterStats;
 
-class BoxScoreService
+class StatsService
 {
     protected array $goalies;
     protected array $skaters;
@@ -26,11 +26,11 @@ class BoxScoreService
             }
         }
         
-        GoalieBoxScores::where('game_id', $gameId)->delete();
-        GoalieBoxScores::insert($this->goalies);
+        GoalieStats::where('game_id', $gameId)->delete();
+        GoalieStats::insert($this->goalies);
 
-        SkaterBoxScores::where('game_id', $gameId)->delete();
-        SkaterBoxScores::insert($this->skaters);
+        SkaterStats::where('game_id', $gameId)->delete();
+        SkaterStats::insert($this->skaters);
 
         return [
             'skaters' => $this->skaters,

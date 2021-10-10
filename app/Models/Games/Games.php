@@ -2,7 +2,7 @@
 
 namespace App\Models\Games;
 
-use App\Models\Teams;
+use App\Models\Teams\Teams;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;

@@ -10,19 +10,26 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->unique();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->smallInteger('primary_number');
-            $table->date('date_of_birth');
-            $table->string('birth_city');
-            $table->string('birth_state_province');
-            $table->string('birth_country');
-            $table->string('nationality');
-            $table->string('height');
-            $table->smallInteger('weight');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->smallInteger('primary_number')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('birth_city')->nullable();
+            $table->string('birth_state_province')->nullable();
+            $table->string('birth_country')->nullable();
+            $table->string('nationality')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('weight')->nullable();
+            $table->string('shoots_catches', 1)->nullable();
+            $table->string('primary_position', 2)->nullable();
+            $table->tinyInteger('alternate_captain')->default(0);
+            $table->tinyInteger('captain')->default(0);
+            $table->tinyInteger('rookie')->default(0);
+            $table->tinyInteger('roster_status')->default(0);
             $table->tinyInteger('active');
-            $table->string('shoots_catches', 1);
-            $table->string('primary_position', 2);
         });
     }
 

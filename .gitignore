@@ -20,3 +20,4 @@ supervisord.log
 supervisord.pid
 v.sh
 docker_destroy.sh
+TODO.txt

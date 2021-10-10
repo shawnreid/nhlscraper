@@ -10,7 +10,12 @@ class TestController extends Controller
     public function index(GameService $game): void
     {
         #dd(phpinfo());
-        #$games = Games::search(2019020001);
-        #$game->fetch($games);
+        $x = 2019020001;
+        $end = $x + 50;
+        while ($x <= $end) {
+            $games = Games::search($x);
+            $game->fetch($games);
+            $x++;
+        }
     }
 }

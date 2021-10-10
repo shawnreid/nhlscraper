@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGamesGoalieBoxscoresTable extends Migration
+class CreateGamesGoalieStatsTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('games_goalie_boxscores', function (Blueprint $table) {
+        Schema::create('games_goalie_stats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id')->nullable();
             $table->foreign('game_id')->references('id')->on('games');
@@ -35,6 +35,6 @@ class CreateGamesGoalieBoxscoresTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('games_goalie_boxscores');
+        Schema::dropIfExists('games_goalie_stats');
     }
 }

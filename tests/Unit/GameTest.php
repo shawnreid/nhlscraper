@@ -3,13 +3,15 @@
 namespace Tests\Unit;
 
 use App\Models\Games\Games;
-use App\Models\Games\GoalieBoxScores;
-use App\Models\Games\SkaterBoxScores;
+use App\Models\Games\GoalieStats;
+use App\Models\Games\SkaterStats;
 use App\Models\Games\Timelines;
-use App\Services\Game\BoxScoreService;
+use App\Models\Players\Players;
+use App\Services\Game\StatsService;
 use App\Services\Game\TeamStatsService;
 use App\Services\Game\TimelineService;
 use App\Services\Game\GameService;
+use App\Services\Players\PlayersService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
@@ -24,14 +26,16 @@ class GameTest extends TestCase
         $games = Games::factory()->create();
 
         $game = new GameService(
+            new TimelineService,
+            new StatsService,
             new TeamStatsService,
-            new BoxScoreService,
-            new TimelineService
+            new PlayersService
         );
         $game->fetch($games);
 
-        $this->assertEquals(SkaterBoxScores::count(), 36);
-        $this->assertEquals(GoalieBoxScores::count(), 2);
+        $this->assertEquals(SkaterStats::count(), 36);
+        $this->assertEquals(GoalieStats::count(), 2);
         $this->assertEquals(Timelines::count(), 382);
+        $this->assertEquals(Players::count(), 43);
     }
 }

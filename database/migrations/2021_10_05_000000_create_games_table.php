@@ -14,8 +14,10 @@ class CreateGamesTable extends Migration
             $table->foreign('season_id')->references('id')->on('seasons');
             $table->date('date');
             $table->tinyInteger('game_type_id');
-            $table->integer('home_id');
-            $table->integer('away_id');
+            $table->unsignedBigInteger('home_id')->nullable();
+            $table->foreign('home_id')->references('id')->on('teams');
+            $table->unsignedBigInteger('away_id')->nullable();
+            $table->foreign('away_id')->references('id')->on('teams');
             $table->integer('status');
         });
     }

@@ -3,19 +3,21 @@
 namespace App\Services\Game;
 
 use App\Models\Games\Games;
-use App\Services\Game\BoxScoreService;
+use App\Services\Game\StatsService;
 use App\Services\Game\TimelineService;
 use App\Services\Game\TeamStatsService;
+use App\Services\Players\PlayersService;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class GameService
 {
     public function __construct(
+        protected TimelineService $timelines,
+        protected StatsService $stats,
         protected TeamStatsService $teamStats,
-        protected BoxScoreService $boxScores,
-        protected TimelineService $timeLines
-    ) { }
+        protected PlayersService $players
+        ) { }
 
     public function fetch(Games $game): void
     {
@@ -26,9 +28,10 @@ class GameService
                 \config('scraper.endpoints.game')
             )
         )->json();
-            
-        $this->timeLines->save($game->id, $data['liveData']['plays']['allPlays']);
-        $this->boxScores->save($game->id, $data['liveData']['boxscore']);
+        
+        $this->timelines->save($game->id, $data['liveData']['plays']['allPlays']);
         $this->teamStats->save($game->id);
+        $this->stats->save($game->id, $data['liveData']['boxscore']);
+        $this->players->save($data['gameData']['players']);
     }
 }

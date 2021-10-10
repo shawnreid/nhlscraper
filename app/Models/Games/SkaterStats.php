@@ -4,8 +4,8 @@ namespace App\Models\Games;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GoalieBoxScores extends Model
+class SkaterStats extends Model
 {
-    protected $table = 'games_goalie_boxscores';
+    protected $table = 'games_skater_stats';
     public $timestamps = false;
 }
