@@ -25,7 +25,7 @@ abstract class TestCase extends BaseTestCase
         );
     }
 
-    public function testYear(): Years
+    public function getYear(): Years
     {
         return new Years([
             'id'   => 20192020,

@@ -17,7 +17,7 @@ class ScheduleTest extends TestCase
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 
-        (new ScheduleService)->fetch($this->testYear());
+        (new ScheduleService)->fetch($this->getYear());
 
         $this->assertEquals(Games::count(), 1213);
     }
