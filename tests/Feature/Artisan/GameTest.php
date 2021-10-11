@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Artisan;
 
-use App\Jobs\FetchGameJob;
+use App\Jobs\GameJob;
 use App\Models\Games\Games;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
@@ -29,7 +29,7 @@ class GameTest extends TestCase
              ->expectsOutput("Successfully fetched game data for {$gameId}.")
              ->assertExitCode(0);
              
-        Queue::assertPushed(FetchGameJob::class);
+        Queue::assertPushed(GameJob::class);
     }
 
     public function test_console_fetch_games_for_all_seasons(): void
@@ -39,6 +39,6 @@ class GameTest extends TestCase
         $this->artisan('fetch:games')
              ->expectsOutput('Successfully fetched game data for all games.')
              ->assertExitCode(0);
-        Queue::assertPushed(FetchGameJob::class);
+        Queue::assertPushed(GameJob::class);
     }
 }

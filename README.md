@@ -5,16 +5,19 @@
 3) `sail composer install`
 4) `sail artisan migrate:fresh --seed`
 5) `sail artisan horizon`
-6) `sail artisan fetch:games`
+6) `sail artisan fetch:schedule`
 7) `sail artisan fetch:games`
 
 ### Commands
 
-Fetch games for specified season or all seasons and save to database:<br />
+Fetch games for specified season or all seasons and save to database.<br />
 `sail artisan fetch:schedule {season?}`
 
 Fetch specific data for a game and save to database.<br />
 `sail artisan fetch:games {gameid?}`
+
+Aggregate game stats and save by season or alltime for skaters, goalies, or teams<br />
+`sail artisan fetch:stats {season|alltime} {skaters|goalies|teams}`
 
 ### Testing
 

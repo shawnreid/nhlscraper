@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\FetchGameJob;
+use App\Jobs\GameJob;
 use App\Models\Games\Games;
 use App\Models\Games\SkaterStats;
 use App\Models\Seasons\Seasons;

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Artisan;
 
-use App\Jobs\FetchScheduleJob;
+use App\Jobs\ScheduleJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
@@ -24,7 +24,7 @@ class ScheduleTest extends TestCase
         $this->artisan('fetch:schedule 2019')
              ->expectsOutput('Games for 2019 queued for synchronization. This may take several minutes..')
              ->assertExitCode(0);
-        Queue::assertPushed(FetchScheduleJob::class);
+        Queue::assertPushed(ScheduleJob::class);
     }
 
     public function test_console_fetch_games_all_seasons(): void
@@ -33,6 +33,6 @@ class ScheduleTest extends TestCase
         $this->artisan('fetch:schedule')
              ->expectsOutput('Games for all seasons queued for synchronization. This may take several minutes..')
              ->assertExitCode(0);
-        Queue::assertPushed(FetchScheduleJob::class);
+        Queue::assertPushed(ScheduleJob::class);
     }
 }

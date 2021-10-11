@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\FetchScheduleJob;
+use App\Jobs\ScheduleJob;
 use App\Models\Seasons\Seasons;
 use Illuminate\Console\Command;
 
-class FetchScheduleCommand extends Command
+class ScheduleCommand extends Command
 {
     protected $signature = 'fetch:schedule {season?}';
     protected $description = 'Fetch schedule for given season or all seasons.';
@@ -29,7 +29,7 @@ class FetchScheduleCommand extends Command
     protected function all(): int
     {
         Seasons::all()->each(function(Seasons $season): void {
-            FetchScheduleJob::dispatch($season);
+            ScheduleJob::dispatch($season);
         });
 
         $this->info($this->message('all seasons'));
@@ -45,7 +45,7 @@ class FetchScheduleCommand extends Command
             return 1;
         } 
 
-        FetchScheduleJob::dispatch($season);
+        ScheduleJob::dispatch($season);
         $this->info($this->message((string) $this->season));
         return 0;
     }

@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\Services\Game\StatsService;
-use App\Services\Players\PlayersService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,7 +23,7 @@ class StatsTest extends TestCase
 
         $stats = new StatsService;
         foreach ($data as $toi => $expected) {
-            $this->assertEquals($stats->toiToSeconds($toi), $expected);
+            $this->assertEquals($stats->toiToSeconds((string) $toi), $expected);
         }
     }
 }

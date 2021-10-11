@@ -115,11 +115,11 @@ class StatsService
         }
     }
 
-    public function toiToSeconds($toi): int
+    public function toiToSeconds(string $toi): int
     {
-        if ($toi) {
-            $time = explode(':', $toi);
-            return ($time[0] * 60) + $time[1];
+        $time = explode(':', $toi);
+        if (isset($time[0], $time[1])) {
+            return ((int) $time[0] * 60) + (int) $time[1];
         } 
         return 0;
     }

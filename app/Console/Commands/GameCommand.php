@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\FetchGameJob;
+use App\Jobs\GameJob;
 use App\Models\Games\Games;
 use Illuminate\Console\Command;
 
-class FetchGameCommand extends Command
+class GameCommand extends Command
 {
     protected $signature = 'fetch:games {gameid?}';
     protected $description = 'Fetch data for given game or all games.';
@@ -29,7 +29,7 @@ class FetchGameCommand extends Command
     protected function all(): int
     {
         Games::all()->each(function(Games $games): void {
-            FetchGameJob::dispatch($games);
+            GameJob::dispatch($games);
         });
 
         $this->info($this->message('all games'));
@@ -46,7 +46,7 @@ class FetchGameCommand extends Command
             return 1;
         } 
 
-        FetchGameJob::dispatch($games);
+        GameJob::dispatch($games);
         $this->info($this->message((string) $this->gameid));
         return 0;
     }
