@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Games;
+namespace App\Models\Alltime;
 
 use Illuminate\Database\Eloquent\Model;
 
 class TeamStats extends Model
 {
-    protected $table = 'games_team_stats';
+    protected $table = 'alltime_team_stats';
     public $timestamps = false;
 }

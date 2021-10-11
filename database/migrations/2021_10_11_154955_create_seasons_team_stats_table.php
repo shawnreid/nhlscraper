@@ -12,8 +12,10 @@ class CreateSeasonsTeamStatsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')->references('id')->on('seasons');
+            $table->tinyInteger('game_type_id');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
+            $table->smallInteger('games_played')->default(0);
             $table->smallInteger('goals')->default(0);
             $table->smallInteger('assists')->default(0);
             $table->smallInteger('points')->default(0);
