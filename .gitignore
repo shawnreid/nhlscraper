@@ -21,3 +21,4 @@ supervisord.pid
 v.sh
 docker_destroy.sh
 TODO.txt
+database/datasets/data.sql

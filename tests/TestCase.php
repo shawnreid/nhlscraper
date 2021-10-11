@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use App\Models\Seasons;
+use App\Models\Seasons\Seasons;
 use Database\Seeders\DatabaseSeeder;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;

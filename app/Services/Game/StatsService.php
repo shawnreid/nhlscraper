@@ -45,7 +45,7 @@ class StatsService
             'season_id'    => $this->game->season_id,
             'team_id'      => $this->teamId,
             'player_id'    => $this->playerId,
-            'toi'          => _s($stats['timeOnIce'], 0),
+            'toi'          => $this->toiToSeconds(_s($stats['timeOnIce'], 0)),
             'goals'        => _s($stats['goals'], 0),
             'assists'      => _s($stats['assists'], 0),
             'pim'          => _s($stats['pim'], 0),
@@ -91,29 +91,36 @@ class StatsService
                 'sh_points'     => _s($stats['shortHandedGoals'], 0) + _s($stats['shortHandedAssists'], 0),
                 'blocked_shots' => _s($stats['blocked'], 0),
                 'plus_minus'    => _s($stats['plusMinus'], 0),
-                'toi'           => _s($stats['timeOnIce'], 0),
-                'ev_toi'        => _s($stats['evenTimeOnIce'], 0),
-                'pp_toi'        => _s($stats['powerPlayTimeOnIce'], 0),
-                'sh_toi'        => _s($stats['shortHandedTimeOnIce'], 0),
+                'toi'           => $this->toiToSeconds(_s($stats['timeOnIce'], 0)),
+                'ev_toi'        => $this->toiToSeconds(_s($stats['evenTimeOnIce'], 0)),
+                'pp_toi'        => $this->toiToSeconds(_s($stats['powerPlayTimeOnIce'], 0)),
+                'sh_toi'        => $this->toiToSeconds(_s($stats['shortHandedTimeOnIce'], 0)),
             ];
         } else {
             $this->statsNotFound();
         }
     }
 
-    /*
-        Found a few instances of gamelogs being incorrect for player stats. 
-        As a workaround if stats is empty then fetch from this endpoint.
-    */
     protected function statsNotFound(): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/people/{$this->playerId}/stats?stats=gameLog&season={$this->game->season_id}")->json();
         
-        foreach ($data['stats'][0]['splits'] as $game) {
-            if ($game['game']['gamePk'] === $this->game->id) {
-                $this->skater($game['stat']);
-                break;
+        if (isset($data['stats'][0]['splits'])) {
+            foreach ($data['stats'][0]['splits'] as $game) {
+                if ($game['game']['gamePk'] === $this->game->id) {
+                    $this->skater($game['stat']);
+                    break;
+                }
             }
         }
+    }
+
+    public function toiToSeconds($toi): int
+    {
+        if ($toi) {
+            $time = explode(':', $toi);
+            return ($time[0] * 60) + $time[1];
+        } 
+        return 0;
     }
 }

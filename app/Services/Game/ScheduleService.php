@@ -3,7 +3,7 @@
 namespace App\Services\Game;
 
 use App\Models\Games\Games;
-use App\Models\Seasons;
+use App\Models\Seasons\Seasons;
 use Illuminate\Support\Facades\Http;
 
 class ScheduleService

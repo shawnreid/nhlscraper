@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\FetchScheduleJob;
-use App\Models\Seasons;
+use App\Models\Seasons\Seasons;
 use Illuminate\Console\Command;
 
 class FetchScheduleCommand extends Command

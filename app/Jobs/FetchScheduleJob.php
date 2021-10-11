@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Seasons;
+use App\Models\Seasons\Seasons;
 use App\Services\Game\ScheduleService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

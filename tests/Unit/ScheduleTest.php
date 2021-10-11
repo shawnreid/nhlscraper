@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Games\Games;
-use App\Models\Seasons;
+use App\Models\Seasons\Seasons;
 use App\Services\Game\ScheduleService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
