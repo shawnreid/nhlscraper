@@ -6,17 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateGamesTeamStatsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('games_team_stats', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('season_id')->nullable();
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->unsignedBigInteger('game_id')->nullable();
             $table->foreign('game_id')->references('id')->on('games');
+            $table->tinyInteger('game_type_id');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->smallInteger('goals')->default(0);
@@ -39,7 +37,7 @@ class CreateGamesTeamStatsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('games_team_stats');
     }

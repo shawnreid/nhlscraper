@@ -10,11 +10,16 @@ class CreateGamesGoalieStatsTable extends Migration
     {
         Schema::create('games_goalie_stats', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('season_id')->nullable();
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->unsignedBigInteger('game_id')->nullable();
             $table->foreign('game_id')->references('id')->on('games');
+            $table->tinyInteger('game_type_id');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
-            $table->time('toi')->default(0);
+            $table->unsignedBigInteger('player_id')->nullable();
+            $table->foreign('player_id')->references('id')->on('players');
+            $table->string('toi')->default(0);
             $table->smallInteger('goals')->default(0);
             $table->smallInteger('assists')->default(0);
             $table->smallInteger('pim')->default(0);

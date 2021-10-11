@@ -2,16 +2,19 @@
 
 namespace App\Services\Game;
 
+use App\Models\Games\Games;
 use App\Models\Games\Timelines;
 
 class TimelineService
 {
-    public function save(int $gameId, array $data): void
+    public function save(Games $game, array $data): void
     {
         $results = collect();
         foreach ($data as $d) {
             $results[] = [
-                'game_id'   => $gameId,
+                'season_id'     => $game->season_id,
+                'game_id'       => $game->id,
+                'game_type_id'  => $game->game_type_id,
                 'event'         => _s($d['result']['event']),
                 'code'          => _s($d['result']['eventCode']),
                 'desc_full'     => _s($d['result']['description']),
@@ -31,7 +34,7 @@ class TimelineService
             ];
         }
         
-        Timelines::where('game_id', $gameId)->delete();
+        Timelines::where('game_id', $game->id)->delete();
         $results->chunk(100)->each(function($data): void {
             Timelines::insert($data->toArray());
         });

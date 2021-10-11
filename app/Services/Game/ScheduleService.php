@@ -28,7 +28,7 @@ class ScheduleService
                     $away = $game['teams']['away'];
                     $games[] = [
                         'id'            => $game['gamePk'],
-                        'season_id'       => $season->id,
+                        'season_id'     => $season->id,
                         'date'          => $date['date'],
                         'game_type_id'  => $gameType,
                         'home_id'       => $home['team']['id'],

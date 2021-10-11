@@ -9,7 +9,7 @@ class CreatePlayersPositionsTable extends Migration
     public function up(): void
     {
         Schema::create('players_positions', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->unique();
             $table->string('abbreviation', 2);
             $table->string('name', 16);
         });

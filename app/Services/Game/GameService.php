@@ -29,9 +29,9 @@ class GameService
             )
         )->json();
         
-        $this->timelines->save($game->id, $data['liveData']['plays']['allPlays']);
-        $this->teamStats->save($game->id);
-        $this->stats->save($game->id, $data['liveData']['boxscore']);
         $this->players->save($data['gameData']['players']);
+        $this->timelines->save($game, $data['liveData']['plays']['allPlays']);
+        $this->teamStats->save($game);
+        $this->stats->save($game, $data['liveData']['boxscore']);
     }
 }
