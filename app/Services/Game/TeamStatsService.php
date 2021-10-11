@@ -20,7 +20,7 @@ class TeamStatsService
                     'team_id',
                     ...collect((new TeamStats)->getFillable())->map(function($s) {
                         return DB::raw("SUM({$s}) as {$s}");
-                    })
+                    }),
                 )->groupBy(['season_id', 'game_id', 'game_type_id', 'team_id'])
                 ->get()->toArray()
         );

@@ -4,20 +4,13 @@ namespace App\Services\Game;
 
 use App\Models\Games\Games;
 use App\Models\Seasons;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class ScheduleService
 {
     public function fetch(Seasons $season): void
     {
-        $data = Http::get(
-            Str::replace(
-                '{season}', 
-                (string) $season->id, 
-                \config('scraper.endpoints.schedule')
-            )
-        )->json();
+        $data = Http::get("https://statsapi.web.nhl.com/api/v1/schedule?season={$season->id}")->json();
             
         $games = [];
         foreach ($data['dates'] as $date) {

@@ -7,7 +7,6 @@ use App\Services\Game\StatsService;
 use App\Services\Game\TimelineService;
 use App\Services\Game\TeamStatsService;
 use App\Services\Players\PlayersService;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class GameService
@@ -21,13 +20,7 @@ class GameService
 
     public function fetch(Games $game): void
     {
-        $data = Http::get(
-            Str::replace(
-                '{gameid}', 
-                (string) $game->id, 
-                \config('scraper.endpoints.game')
-            )
-        )->json();
+        $data = Http::get("https://statsapi.web.nhl.com/api/v1/game/{$game->id}/feed/live?site=en_nhl")->json();
         
         $this->players->save($data['gameData']['players']);
         $this->timelines->save($game, $data['liveData']['plays']['allPlays']);

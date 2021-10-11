@@ -5,6 +5,7 @@ namespace App\Services\Game;
 use App\Models\Games\Games;
 use App\Models\Games\GoalieStats;
 use App\Models\Games\SkaterStats;
+use Illuminate\Support\Facades\Http;
 
 class StatsService
 {
@@ -14,7 +15,7 @@ class StatsService
     protected int $playerId;
     protected int $teamId;
 
-    public function save(Games $game, array $data): array
+    public function save(Games $game, array $data): void
     {
         $this->game = $game;
         $this->skaters = $this->goalies = [];
@@ -34,11 +35,6 @@ class StatsService
 
         SkaterStats::where('game_id', $game->id)->delete();
         SkaterStats::insert($this->skaters);
-
-        return [
-            'skaters' => $this->skaters,
-            'goalies' => $this->goalies,
-        ];
     }
 
     protected function goalie(array $stats): void
@@ -100,6 +96,24 @@ class StatsService
                 'pp_toi'        => _s($stats['powerPlayTimeOnIce'], 0),
                 'sh_toi'        => _s($stats['shortHandedTimeOnIce'], 0),
             ];
+        } else {
+            $this->statsNotFound();
+        }
+    }
+
+    /*
+        Found a few instances of gamelogs being incorrect for player stats. 
+        As a workaround if stats is empty then fetch from this endpoint.
+    */
+    protected function statsNotFound(): void
+    {
+        $data = Http::get("https://statsapi.web.nhl.com/api/v1/people/{$this->playerId}/stats?stats=gameLog&season={$this->game->season_id}")->json();
+        
+        foreach ($data['stats'][0]['splits'] as $game) {
+            if ($game['game']['gamePk'] === $this->game->id) {
+                $this->skater($game['stat']);
+                break;
+            }
         }
     }
 }

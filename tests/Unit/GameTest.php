@@ -38,4 +38,5 @@ class GameTest extends TestCase
         $this->assertEquals(Timelines::count(), 382);
         $this->assertEquals(Players::count(), 43);
     }
+
 }

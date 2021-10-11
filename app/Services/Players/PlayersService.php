@@ -37,7 +37,7 @@ class PlayersService
         }
     }
 
-    protected function inches(string $height): int
+    public function inches(string $height): int
     {
         $height = (string) preg_replace('/[^0-9]/', '', $height);
         $feet   = (int)    substr($height, 0, 1);
