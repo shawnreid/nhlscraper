@@ -12,8 +12,16 @@ class StatsService
     protected Games $game;
     protected array $goalies;
     protected array $skaters;
-    protected int $playerId;
-    protected int $teamId;
+    protected int   $playerId;
+    protected int   $teamId;
+
+    /**
+     * Save stats
+     *
+     * @param Games $game
+     * @param array $data
+     * @return void
+    */
 
     public function save(Games $game, array $data): void
     {
@@ -29,7 +37,7 @@ class StatsService
                 };
             }
         }
-        
+
         GoalieStats::where('game_id', $game->id)->delete();
         GoalieStats::insert($this->goalies);
 
@@ -37,7 +45,14 @@ class StatsService
         SkaterStats::insert($this->skaters);
     }
 
-    protected function goalie(array $stats): void
+    /**
+     * Build goalie stats array
+     *
+     * @param array $stats
+     * @return void
+    */
+
+    private function goalie(array $stats): void
     {
         $this->goalies[] = [
             'game_id'      => $this->game->id,
@@ -64,7 +79,14 @@ class StatsService
         ];
     }
 
-    protected function skater(array $stats): void
+    /**
+     * Build skater stats array
+     *
+     * @param array $stats
+     * @return void
+    */
+
+    private function skater(array $stats): void
     {
         if (count($stats)) {
             $this->skaters[] = [
@@ -101,10 +123,16 @@ class StatsService
         }
     }
 
-    protected function statsNotFound(): void
+    /**
+     * If no stats check this endpoint
+     *
+     * @return void
+    */
+
+    private function statsNotFound(): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/people/{$this->playerId}/stats?stats=gameLog&season={$this->game->season_id}")->json();
-        
+
         if (isset($data['stats'][0]['splits'])) {
             foreach ($data['stats'][0]['splits'] as $game) {
                 if ($game['game']['gamePk'] === $this->game->id) {
@@ -115,12 +143,19 @@ class StatsService
         }
     }
 
+    /**
+     * Convert time on ice to seconds
+     *
+     * @param string $toi
+     * @return int
+    */
+
     public function toiToSeconds(string $toi): int
     {
         $time = explode(':', $toi);
         if (isset($time[0], $time[1])) {
             return ((int) $time[0] * 60) + (int) $time[1];
-        } 
+        }
         return 0;
     }
 }

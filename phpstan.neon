@@ -11,6 +11,4 @@ parameters:
 
 
     checkMissingIterableValueType: false
-
-    ignoreErrors:
-        - '#Cannot call method expectsOutput\(\) on Illuminate\\Testing\\PendingCommand\|int.#'
+    checkGenericClassInNonGenericObjectType: false

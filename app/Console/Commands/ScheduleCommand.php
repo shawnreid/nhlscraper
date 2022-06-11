@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class ScheduleCommand extends Command
 {
-    protected $signature = 'fetch:schedule {season?}';
+    protected $signature   = 'fetch:schedule {season?}';
     protected $description = 'Fetch schedule for given season or all seasons.';
     protected int $season;
 
@@ -16,6 +16,12 @@ class ScheduleCommand extends Command
     {
         parent::__construct();
     }
+
+    /**
+     * Command handler
+     *
+     * @return int
+    */
 
     public function handle(): int
     {
@@ -25,6 +31,12 @@ class ScheduleCommand extends Command
             default => $this->season()
         };
     }
+
+    /**
+     * Fetch schedules for all seasons
+     *
+     * @return int
+    */
 
     protected function all(): int
     {
@@ -36,6 +48,12 @@ class ScheduleCommand extends Command
         return 0;
     }
 
+    /**
+     * Fetch schedules for specific season
+     *
+     * @return int
+    */
+
     protected function season(): int
     {
         $season = Seasons::search($this->season);
@@ -43,12 +61,18 @@ class ScheduleCommand extends Command
         if (!$season) {
             $this->error('Invalid season. Correct format: 2019 or 20192020.');
             return 1;
-        } 
+        }
 
         ScheduleJob::dispatch($season);
         $this->info($this->message((string) $this->season));
         return 0;
     }
+
+    /**
+     * Console message
+     *
+     * @return string
+    */
 
     protected function message(string $text): string
     {

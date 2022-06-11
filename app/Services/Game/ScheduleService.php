@@ -8,10 +8,18 @@ use Illuminate\Support\Facades\Http;
 
 class ScheduleService
 {
+
+    /**
+     * Fetch schedule data
+     *
+     * @param Seasons $season
+     * @return void
+    */
+
     public function fetch(Seasons $season): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/schedule?season={$season->id}")->json();
-            
+
         $games = [];
         foreach ($data['dates'] as $date) {
             foreach ($date['games'] as $game) {

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TeamStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'goals',
         'assists',
         'points',
@@ -27,6 +27,12 @@ class TeamStatsService
         'sh_points',
         'blocked_shots',
     ];
+
+    /**
+     * Save team season stats
+     *
+     * @return void
+    */
 
     public function save(): void
     {

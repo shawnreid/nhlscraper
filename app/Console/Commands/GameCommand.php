@@ -8,14 +8,20 @@ use Illuminate\Console\Command;
 
 class GameCommand extends Command
 {
-    protected $signature = 'fetch:games {gameid?}';
+    protected $signature   = 'fetch:games {gameid?}';
     protected $description = 'Fetch data for given game or all games.';
-    protected mixed $gameid;
+    private int $gameid;
 
     public function __construct()
     {
         parent::__construct();
     }
+
+    /**
+     * Command handler
+     *
+     * @return int
+    */
 
     public function handle(): int
     {
@@ -26,7 +32,13 @@ class GameCommand extends Command
         };
     }
 
-    protected function all(): int
+    /**
+     * Fetch all games
+     *
+     * @return int
+    */
+
+    private function all(): int
     {
         Games::all()->each(function(Games $games): void {
             GameJob::dispatch($games);
@@ -37,21 +49,33 @@ class GameCommand extends Command
         return 0;
     }
 
-    protected function game(): int
+    /**
+     * Fetch specific game
+     *
+     * @return int
+    */
+
+    private function game(): int
     {
         $games = Games::search($this->gameid);
 
         if (!$games) {
             $this->error('Invalid Game ID or games not yet synced.');
             return 1;
-        } 
+        }
 
         GameJob::dispatch($games);
         $this->info($this->message((string) $this->gameid));
         return 0;
     }
 
-    protected function message(string $text): string
+    /**
+     * Console message
+     *
+     * @return string
+    */
+
+    private function message(string $text): string
     {
         return "Successfully fetched game data for {$text}.";
     }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class SkaterStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'goals',
         'assists',
         'points',
@@ -33,6 +33,12 @@ class SkaterStatsService
         'sh_toi',
     ];
 
+    /**
+     * Save all time skater stats
+     *
+     * @return void
+    */
+
     public function save(): void
     {
         $stats = GameSkaterStats::select([
@@ -46,8 +52,8 @@ class SkaterStatsService
           ->get();
 
         AlltimeSkaterStats::truncate();
-        $stats->chunk(100)->each(function($data): void {
-            AlltimeSkaterStats::insert($data->toArray());
-        });
+        $stats->chunk(100)->each(fn($data) =>
+            AlltimeSkaterStats::insert($data->toArray())
+        );
     }
 }

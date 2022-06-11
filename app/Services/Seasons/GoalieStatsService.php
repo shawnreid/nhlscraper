@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class GoalieStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'toi',
         'goals',
         'assists',
@@ -22,6 +22,12 @@ class GoalieStatsService
         'sh_shots',
         'ev_shots'
     ];
+
+    /**
+     * Save goalie season stats
+     *
+     * @return void
+    */
 
     public function save(): void
     {

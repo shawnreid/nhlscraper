@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class SkaterStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'goals',
         'assists',
         'points',
@@ -32,6 +32,12 @@ class SkaterStatsService
         'pp_toi',
         'sh_toi',
     ];
+
+    /**
+     * Save skater season stats
+     *
+     * @return void
+    */
 
     public function save(): void
     {

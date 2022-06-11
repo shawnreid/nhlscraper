@@ -4,9 +4,10 @@ namespace App\Services\Game;
 
 use App\Models\Games\Games;
 use App\Models\Games\TeamStats;
+
 class TeamStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'goals'         => 0,
         'assists'       => 0,
         'points'        => 0,
@@ -26,8 +27,18 @@ class TeamStatsService
         'blocked_shots' => 0
     ];
 
-    public function save(Games $game, array $data, array $res = []): void
+    /**
+     * Save team stats
+     *
+     * @param Games $game
+     * @param array $data
+     * @return void
+    */
+
+    public function save(Games $game, array $data): void
     {
+        $res = [];
+
         foreach ($data['teams'] as $team) {
             $res[$team['team']['id']] = $this->columns;
             $r = &$res[$team['team']['id']];
@@ -36,7 +47,7 @@ class TeamStatsService
             $r['game_id']      = $game->id;
             $r['game_type_id'] = $game->game_type_id;
             $r['team_id']      = $team['team']['id'];
-            
+
             foreach ($team['players'] as $player) {
                 if (isset($player['stats']['skaterStats'])) {
                     $stats = $player['stats']['skaterStats'];

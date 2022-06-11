@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TeamStatsService
 {
-    protected array $columns = [
+    private array $columns = [
         'goals',
         'assists',
         'points',
@@ -28,6 +28,12 @@ class TeamStatsService
         'blocked_shots',
     ];
 
+    /**
+     * Save all time team stats
+     *
+     * @return void
+    */
+
     public function save(): void
     {
         $stats = GameTeamStats::select([
@@ -41,8 +47,8 @@ class TeamStatsService
           ->get();
 
         AlltimeTeamStats::truncate();
-        $stats->chunk(100)->each(function($data): void {
-            AlltimeTeamStats::insert($data->toArray());
-        });
+        $stats->chunk(100)->each(fn($data) =>
+            AlltimeTeamStats::insert($data->toArray())
+        );
     }
 }

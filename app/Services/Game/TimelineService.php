@@ -7,9 +7,18 @@ use App\Models\Games\Timelines;
 
 class TimelineService
 {
+
+    /**
+     * Save timeline data
+     *
+     * @param Games $game
+     * @param array $data
+     * @return void
+    */
+
     public function save(Games $game, array $data): void
     {
-        $results = collect();
+        $results = collect([]);
         foreach ($data as $d) {
             $results[] = [
                 'season_id'     => $game->season_id,
@@ -33,7 +42,7 @@ class TimelineService
                 'team_id'       => _s($d['team']['id']),
             ];
         }
-        
+
         Timelines::where('game_id', $game->id)->delete();
         $results->chunk(100)->each(function($data): void {
             Timelines::insert($data->toArray());

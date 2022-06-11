@@ -9,13 +9,19 @@ use App\Jobs\Alltime\TeamStatsJob;
 
 class AlltimeStatsCommand extends Command
 {
-    protected $signature = 'fetch:alltime {target}';
+    protected $signature   = 'fetch:alltime {target}';
     protected $description = 'Fetch stats grouped by alltime for target';
 
     public function __construct()
     {
         parent::__construct();
     }
+
+    /**
+     * Command handler
+     *
+     * @return int
+    */
 
     public function handle(): int
     {
@@ -27,25 +33,49 @@ class AlltimeStatsCommand extends Command
         };
     }
 
-    protected function skaters(): int
+    /**
+     * Fetch skater all-time stats
+     *
+     * @return int
+    */
+
+    private function skaters(): int
     {
         SkaterStatsJob::dispatch();
         return 0;
     }
 
-    protected function goalies(): int
+    /**
+     * Fetch goalie all-time stats
+     *
+     * @return int
+    */
+
+    private function goalies(): int
     {
         GoalieStatsJob::dispatch();
         return 0;
     }
 
-    protected function teams(): int
+    /**
+     * Fetch team all-time stats
+     *
+     * @return int
+    */
+
+    private function teams(): int
     {
         TeamStatsJob::dispatch();
         return 0;
     }
 
-    protected function err(): int
+    /**
+     * Return error
+     *
+     * @return int
+    */
+
+    private function err(): int
     {
         $this->error('Invalid target. Usage: artisan fetch:stats {seasons|alltime} {season?}');
         return 1;

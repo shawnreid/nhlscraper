@@ -24,7 +24,7 @@ class PlayersTest extends TestCase
 
         foreach ($data as $height => $expected) {
             $this->assertEquals(
-                $players->inches($height),
+                $players->heightToInches($height),
                 $expected
             );
         }

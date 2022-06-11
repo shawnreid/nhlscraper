@@ -24,8 +24,7 @@ class CreatePlayersTable extends Migration
             $table->integer('height')->nullable();
             $table->integer('weight')->nullable();
             $table->string('shoots_catches', 1)->nullable();
-            $table->unsignedBigInteger('position_id')->nullable();
-            $table->foreign('position_id')->references('id')->on('players_positions');
+            $table->string('position', 2)->nullable();
             $table->tinyInteger('alternate_captain')->default(0);
             $table->tinyInteger('captain')->default(0);
             $table->tinyInteger('rookie')->default(0);

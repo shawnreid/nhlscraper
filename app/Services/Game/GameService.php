@@ -12,11 +12,18 @@ use Illuminate\Support\Facades\Http;
 class GameService
 {
     public function __construct(
-        protected TimelineService $timelines,
-        protected StatsService $stats,
-        protected TeamStatsService $teamStats,
-        protected PlayersService $players
-        ) { }
+        private TimelineService $timelines,
+        private StatsService $stats,
+        private TeamStatsService $teamStats,
+        private PlayersService $players
+    ) { }
+
+    /**
+     * Fetch game date
+     *
+     * @param Games $game
+     * @return void
+    */
 
     public function fetch(Games $game): void
     {
