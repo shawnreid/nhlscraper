@@ -1,3 +1,19 @@
+# Introduction
+This is a personal tool I created to scrape various API data from https://nhl.com. This tool is currently able to scrape Game Schedules, Player Information, Game Information (Play By Play, Team Stats, Skater / Goalie Stats). Season / All-Time stats are summarized based off game information scraped.
+
+The data from the API is not 100% perfect as there is sometimes inconsistencies with older game data but is fairly accurate in recent seasons.
+
+# Endpoints
+1) https://statsapi.web.nhl.com/api/v1/schedule?season={seasonId}
+    - Game Schedules
+2) https://statsapi.web.nhl.com/api/v1/game/{gameId}/feed/live?site=en_nhl
+   - Play information
+   - Play By Play
+   - Team Stats
+   - Skater / Goalie Stats
+3) https://statsapi.web.nhl.com/api/v1/people/{playerId}/stats?stats=gameLog&season={seasonId}
+    - Backup endpoint used if missing game data from live feed.
+
 # Installation / Quick Start
 
 1) copy .env.example to .env
@@ -8,6 +24,8 @@
 6) `sail artisan migrate:fresh --seed`
 7) `sail artisan horizon`
 8) `sail artisan fetch:schedule`
+
+After fetching schedule you are free to pick and choose which seasons you wish to import. There is a variety of different ways listed below.
 
 <br />
 
@@ -20,8 +38,6 @@ Fetch schedule for all seasons:<br />
 
 Fetch schedule for specified season:<br />
 `sail artisan fetch:schedule {season}`
-
-<br />
 
 ### Game Data
 
@@ -43,8 +59,6 @@ Fetch a range of games:<br />
 Overwrite game data:<br />
 `sail artisan fetch:games 2020020001 --overwrite`
 
-<br />
-
 ### Calculation Commands
 These commands use calculate season/alltime stats from fetched game data.<br />
 
@@ -53,6 +67,11 @@ Calculate all-time stats skater/goalie/team:<br />
 
 Calculate season stats skater/goalie/team:<br />
 `sail artisan fetch:season {skaters|goalies|teams}`
+
+<br />
+
+# Queue / Workers
+All fetching / calculation tasks from NHL API are defered to a queue (games, schedule, calculate). It is recommended you view `config/horizon.php` and change worker queue to whatever you are comfortable with using prior to using script. Defaults are set quite high for testing purposes. Majority of the heavy lifting is done through the `games` queue.
 
 <br />
 
@@ -75,7 +94,7 @@ Game IDs are a unique identifier assigned to each game. They are 10 characters i
 
 <br />
 
-### TODOS
-- user agent spoofing
-- proxy/tor
-- add additional tests
+### Road Map
+- User-Agent spoofing
+- Proxy / TOR connection
+- Additional test coverage
