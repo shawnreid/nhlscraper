@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGamesTimelinesTable extends Migration
+class CreateGamePlayByPlayTable extends Migration
 {
 
     public function up(): void
     {
-        Schema::create('games_timelines', function (Blueprint $table) {
+        Schema::create('game_play_by_play', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')->references('id')->on('seasons');
@@ -38,6 +38,6 @@ class CreateGamesTimelinesTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('games_timelines');
+        Schema::dropIfExists('game_play_by_play');
     }
 }

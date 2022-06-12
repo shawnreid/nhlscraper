@@ -32,7 +32,7 @@ class AlltimeStatsCommand extends Command
             'skaters' => $this->skaters(),
             'goalies' => $this->goalies(),
             'teams'   => $this->teams(),
-            default   => $this->err()
+            default   => $this->errorMessage()
         };
 
         $this->info($this->message($target));
@@ -82,7 +82,7 @@ class AlltimeStatsCommand extends Command
      * @return int
     */
 
-    private function err(): int
+    private function errorMessage(): int
     {
         $this->error('Invalid target. Usage: artisan fetch:alltime');
         return 1;
@@ -94,9 +94,9 @@ class AlltimeStatsCommand extends Command
      * @return string
     */
 
-    private function message(string $text): string
+    private function message(mixed $text): string
     {
-        $count = Queue::size('calculate');
+        $count = number_format(Queue::size('calculate'));
         return "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

@@ -16,11 +16,15 @@ class ScheduleJob implements ShouldQueue
 
     public function __construct(
         private Seasons $season,
-        public $queue = 'schedule'
     ) { }
 
     public function handle(ScheduleService $schedule): void
     {
         $schedule->fetch($this->season);
+    }
+
+    public function onQueue(): string
+    {
+        return 'schedule';
     }
 }

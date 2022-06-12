@@ -27,5 +27,8 @@ class GameService
         (new PlayByPlayService)->save($game, $data['liveData']['plays']['allPlays']);
         (new TeamStatsService)->save($game, $data['liveData']['boxscore']);
         (new StatsService)->save($game, $data['liveData']['boxscore']);
+
+        $game->imported = 1;
+        $game->save();
     }
 }

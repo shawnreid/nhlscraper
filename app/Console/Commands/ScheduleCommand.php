@@ -41,11 +41,10 @@ class ScheduleCommand extends Command
 
     protected function all(): int
     {
-        Seasons::all()->each(function(Seasons $season): void {
-            ScheduleJob::dispatch($season);
-        });
+        Seasons::importAllSchedules();
 
         $this->info($this->message('all seasons'));
+
         return 0;
     }
 
@@ -57,27 +56,23 @@ class ScheduleCommand extends Command
 
     protected function season(): int
     {
-        $season = Seasons::search($this->season);
+        Seasons::importSchedule($this->season);
 
-        if (!$season) {
-            $this->error('Invalid season. Correct format: 2019 or 20192020.');
-            return 1;
-        }
+        $this->info($this->message($this->season));
 
-        ScheduleJob::dispatch($season);
-        $this->info($this->message((string) $this->season));
         return 0;
     }
 
     /**
      * Console message
      *
+     * @param mixed $text
      * @return string
     */
 
-    protected function message(string $text): string
+    protected function message(mixed $text): string
     {
-        $count = Queue::size('schedule');
+        $count = number_format(Queue::size('schedule'));
         return "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

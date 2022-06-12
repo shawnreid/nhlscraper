@@ -2,6 +2,7 @@
 
 namespace App\Models\Seasons;
 
+use App\Jobs\ScheduleJob;
 use Illuminate\Database\Eloquent\Model;
 
 class Seasons extends Model
@@ -10,11 +11,28 @@ class Seasons extends Model
     protected $fillable = ['id', 'season'];
     public $timestamps = false;
 
-    public static function search(int $season): ?self
+    /**
+     * Import schedule for season
+     *
+     * @param  int  $season
+     * @return void
+    */
+
+    public static function importSchedule(int $season): void
     {
-        return self::query()
-            ->where('season', $season)
-            ->orWhere('id', $season)
-            ->first();
+        ScheduleJob::dispatch(self::findOrFail($season));
+    }
+
+    /**
+     * Import schedule for all seasons
+     *
+     * @return void
+    */
+
+    public static function importAllSchedules(): void
+    {
+        self::all()->each(fn(Seasons $season) =>
+            ScheduleJob::dispatch($season)
+        );
     }
 }

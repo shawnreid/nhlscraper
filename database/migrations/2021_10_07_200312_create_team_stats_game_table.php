@@ -4,16 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlltimeTeamStatsTable extends Migration
+class CreateTeamStatsGameTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('alltime_team_stats', function (Blueprint $table) {
+        Schema::create('team_stats_game', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('season_id')->nullable();
+            $table->foreign('season_id')->references('id')->on('seasons');
+            $table->unsignedBigInteger('game_id')->nullable();
+            $table->foreign('game_id')->references('id')->on('games');
+            $table->tinyInteger('game_type_id');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
-            $table->tinyInteger('game_type_id');
-            $table->integer('games_played')->default(0);
             $table->integer('goals')->default(0);
             $table->integer('assists')->default(0);
             $table->integer('points')->default(0);
@@ -36,6 +39,6 @@ class CreateAlltimeTeamStatsTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('alltime_team_stats');
+        Schema::dropIfExists('team_stats_game');
     }
 }

@@ -180,19 +180,33 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['schedule', 'games', 'calculate'],
+                'queue' => ['games'],
                 'balance' => 'auto',
-                'maxProcesses' => 10,
-                'tries' => 3,
+                'maxProcesses' => 20,
+                'tries' => 1,
+            ],
+            'supervisor-2' => [
+                'connection' => 'redis',
+                'queue' => ['schedule', 'calculate'],
+                'balance' => 'auto',
+                'maxProcesses' => 5,
+                'tries' => 1,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['schedule', 'games', 'calculate'],
+                'queue' => ['games'],
                 'balance' => 'auto',
-                'maxProcesses' => 10,
+                'maxProcesses' => 20,
+                'tries' => 3,
+            ],
+            'supervisor-2' => [
+                'connection' => 'redis',
+                'queue' => ['schedule', 'calculate'],
+                'balance' => 'auto',
+                'maxProcesses' => 5,
                 'tries' => 3,
             ],
         ],

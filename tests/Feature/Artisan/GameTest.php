@@ -12,13 +12,6 @@ class GameTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_fetch_games_invalid_game(): void
-    {
-        $this->artisan('fetch:games 2')
-             ->expectsOutput('Invalid Game ID or games not yet synced.')
-             ->assertExitCode(1);
-    }
-
     public function test_console_fetch_games_valid_game(): void
     {
         Queue::fake();
@@ -26,9 +19,8 @@ class GameTest extends TestCase
 
         $gameId = 2019020001;
         $this->artisan("fetch:games {$gameId}")
-             ->expectsOutput("Successfully fetched game data for {$gameId}.")
              ->assertExitCode(0);
-             
+
         Queue::assertPushed(GameJob::class);
     }
 
@@ -37,7 +29,6 @@ class GameTest extends TestCase
         Queue::fake();
         Games::factory()->create();
         $this->artisan('fetch:games')
-             ->expectsOutput('Successfully fetched game data for all games.')
              ->assertExitCode(0);
         Queue::assertPushed(GameJob::class);
     }

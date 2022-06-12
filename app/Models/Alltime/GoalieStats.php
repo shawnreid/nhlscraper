@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GoalieStats extends Model
 {
-    protected $table = 'alltime_goalie_stats';
+    protected $table = 'goalie_stats_alltime';
     public $timestamps = false;
 }

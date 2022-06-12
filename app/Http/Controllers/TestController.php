@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
 {
-    public function index(GameService $game, ScheduleService $schedule): void
+    public function index(): void
     {
 
     }

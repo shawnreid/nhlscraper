@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('away_id')->nullable();
             $table->foreign('away_id')->references('id')->on('teams');
             $table->integer('status');
+            $table->tinyInteger('imported')->default(0);
         });
     }
 

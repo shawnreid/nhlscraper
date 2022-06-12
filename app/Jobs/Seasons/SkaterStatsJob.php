@@ -13,12 +13,13 @@ class SkaterStatsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(
-        public $queue = 'calculate'
-    ) { }
-
     public function handle(SkaterStatsService $stats): void
     {
         $stats->save();
+    }
+
+    public function onQueue(): string
+    {
+        return 'calculate';
     }
 }

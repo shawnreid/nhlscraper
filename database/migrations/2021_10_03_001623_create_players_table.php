@@ -14,7 +14,7 @@ class CreatePlayersTable extends Migration
             $table->foreign('team_id')->references('id')->on('teams');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->smallInteger('primary_number')->nullable();
+            $table->integer('primary_number')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('birth_city')->nullable();
             $table->string('birth_state_province')->nullable();
@@ -24,7 +24,7 @@ class CreatePlayersTable extends Migration
             $table->integer('height')->nullable();
             $table->integer('weight')->nullable();
             $table->string('shoots_catches', 1)->nullable();
-            $table->string('position', 2)->nullable();
+            $table->string('position', 3)->nullable();
             $table->tinyInteger('alternate_captain')->default(0);
             $table->tinyInteger('captain')->default(0);
             $table->tinyInteger('rookie')->default(0);
