@@ -13,13 +13,13 @@ class TeamStatsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public function __construct()
+    {
+        $this->onQueue('calculate');
+    }
+
     public function handle(TeamStatsService $stats): void
     {
         $stats->save();
-    }
-
-    public function onQueue(): string
-    {
-        return 'calculate';
     }
 }

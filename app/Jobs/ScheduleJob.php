@@ -14,17 +14,13 @@ class ScheduleJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(
-        private Seasons $season,
-    ) { }
+    public function __construct(private Seasons $season)
+    {
+        $this->onQueue('schedule');
+    }
 
     public function handle(ScheduleService $schedule): void
     {
         $schedule->fetch($this->season);
-    }
-
-    public function onQueue(): string
-    {
-        return 'schedule';
     }
 }
