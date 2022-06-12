@@ -9,7 +9,7 @@ use App\Models\Games\Timelines;
 use App\Models\Players\Players;
 use App\Services\Game\StatsService;
 use App\Services\Game\TeamStatsService;
-use App\Services\Game\TimelineService;
+use App\Services\Game\PlayByPlayService;
 use App\Services\Game\GameService;
 use App\Services\Players\PlayersService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,13 +25,7 @@ class GameTest extends TestCase
         Http::fake(['*' => $this->fakeJson('game')]);
         $games = Games::factory()->create();
 
-        $game = new GameService(
-            new TimelineService,
-            new StatsService,
-            new TeamStatsService,
-            new PlayersService
-        );
-        $game->fetch($games);
+        (new GameService)->fetch($games);
 
         $this->assertEquals(SkaterStats::count(), 36);
         $this->assertEquals(GoalieStats::count(), 2);

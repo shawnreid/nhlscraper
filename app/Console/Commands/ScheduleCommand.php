@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Jobs\ScheduleJob;
 use App\Models\Seasons\Seasons;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Queue;
 
 class ScheduleCommand extends Command
 {
@@ -76,6 +77,7 @@ class ScheduleCommand extends Command
 
     protected function message(string $text): string
     {
-        return "Games for {$text} queued for synchronization. This may take several minutes..";
+        $count = Queue::size('schedule');
+        return "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

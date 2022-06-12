@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Jobs\GameJob;
 use App\Models\Games\Games;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Queue;
 
 class GameCommand extends Command
 {
@@ -77,6 +78,7 @@ class GameCommand extends Command
 
     private function message(string $text): string
     {
-        return "Successfully fetched game data for {$text}.";
+        $count = Queue::size('games');
+        return "Game data for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

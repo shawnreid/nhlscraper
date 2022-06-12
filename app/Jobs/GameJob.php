@@ -14,7 +14,10 @@ class GameJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(private Games $games) { }
+    public function __construct(
+        private Games $games,
+        public $queue = 'games'
+    ) { }
 
     public function handle(GameService $game): void
     {

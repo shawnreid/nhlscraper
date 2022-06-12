@@ -14,7 +14,10 @@ class ScheduleJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(private Seasons $season) { }
+    public function __construct(
+        private Seasons $season,
+        public $queue = 'schedule'
+    ) { }
 
     public function handle(ScheduleService $schedule): void
     {

@@ -5,7 +5,7 @@ namespace App\Services\Game;
 use App\Models\Games\Games;
 use App\Models\Games\Timelines;
 
-class TimelineService
+class PlayByPlayService
 {
 
     /**

@@ -6,6 +6,7 @@ use App\Jobs\Seasons\GoalieStatsJob;
 use App\Jobs\Seasons\SkaterStatsJob;
 use App\Jobs\Seasons\TeamStatsJob;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Queue;
 
 class SeasonStatsCommand extends Command
 {
@@ -25,12 +26,18 @@ class SeasonStatsCommand extends Command
 
     public function handle(): int
     {
-        return match($this->argument('target')) {
+        $target = $this->argument('target');
+
+        $status = match($target) {
             'skaters' => $this->skaters(),
             'goalies' => $this->goalies(),
             'teams'   => $this->teams(),
             default   => $this->err()
         };
+
+        $this->info($this->message($target));
+
+        return $status;
     }
 
     /**
@@ -79,5 +86,17 @@ class SeasonStatsCommand extends Command
     {
         $this->error('Invalid target. Usage: artisan fetch:season {season}');
         return 1;
+    }
+
+    /**
+     * Console message
+     *
+     * @return string
+    */
+
+    private function message(string $text): string
+    {
+        $count = Queue::size('calculate');
+        return "Season calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

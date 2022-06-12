@@ -179,15 +179,21 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
+                'connection' => 'redis',
+                'queue' => ['schedule', 'games', 'calculate'],
+                'balance' => 'auto',
                 'maxProcesses' => 10,
-                'balanceMaxShift' => 1,
-                'balanceCooldown' => 3,
+                'tries' => 3,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
+                'connection' => 'redis',
+                'queue' => ['schedule', 'games', 'calculate'],
+                'balance' => 'auto',
                 'maxProcesses' => 10,
+                'tries' => 3,
             ],
         ],
     ],
