@@ -10,7 +10,8 @@
 8) `sail artisan fetch:schedule`
 9) `sail artisan fetch:games`
 
-### Commands
+### Data Fetching Commands
+These commands are used to fetch data from NHL API<br />
 
 Fetch schedule for all seasons:<br />
 `sail artisan fetch:schedule`
@@ -24,13 +25,14 @@ Fetch all games:<br />
 Fetch one game:<br />
 `sail artisan fetch:games {gameid?}`
 
+### Calculation Commands
+These commands use calculate season/alltime stats from fetched game data.<br />
+
 Calculate all-time stats skater/goalie/team:<br />
 `sail artisan fetch:alltime {skaters|goalies|teams}`
-**sail artisan fetch:games must be run first**
 
 Calculate season stats skater/goalie/team:<br />
 `sail artisan fetch:season {skaters|goalies|teams}`
-**sail artisan fetch:games must be run first**
 
 ### Testing
 
@@ -38,3 +40,11 @@ Calculate season stats skater/goalie/team:<br />
 
 ### Static Analysis (PHPStan Level 8)
 `./vendor/bin/phpstan analyse app`
+
+
+### TODOS
+- user agent spoofing
+- proxy/tor
+- add additional tests
+- rename Timeslines to PlayByPlay
+- all time teams doesnt work

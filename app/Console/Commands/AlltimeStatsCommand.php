@@ -77,7 +77,7 @@ class AlltimeStatsCommand extends Command
 
     private function err(): int
     {
-        $this->error('Invalid target. Usage: artisan fetch:stats {seasons|alltime} {season?}');
+        $this->error('Invalid target. Usage: artisan fetch:alltime');
         return 1;
     }
 }
