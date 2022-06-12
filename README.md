@@ -1,18 +1,9 @@
 # Introduction
-This is a personal tool I created to scrape various API data from https://nhl.com. This tool is currently able to scrape Game Schedules, Player Information, Game Information (Play By Play, Team Stats, Skater / Goalie Stats). Season / All-Time stats are summarized based off game information scraped.
+Boilerplate laravel application created to scrape various API data from https://nhl.com. This tool is currently able to scrape Game Schedules, Player Information, Game Information (Play By Play, Team Stats, Skater / Goalie Stats). Season / All-Time stats are summarized based off game information scraped.
 
 The data from the API is not 100% perfect as there is sometimes inconsistencies with older game data but is fairly accurate in recent seasons.
 
-# Endpoints
-1) https://statsapi.web.nhl.com/api/v1/schedule?season={seasonId}
-    - Game Schedules
-2) https://statsapi.web.nhl.com/api/v1/game/{gameId}/feed/live?site=en_nhl
-   - Play information
-   - Play By Play
-   - Team Stats
-   - Skater / Goalie Stats
-3) https://statsapi.web.nhl.com/api/v1/people/{playerId}/stats?stats=gameLog&season={seasonId}
-    - Backup endpoint used if missing game data from live feed.
+<br />
 
 # Installation / Quick Start
 
@@ -67,6 +58,19 @@ Calculate all-time stats skater/goalie/team:<br />
 
 Calculate season stats skater/goalie/team:<br />
 `sail artisan fetch:season {skaters|goalies|teams}`
+
+<br />
+
+# Endpoints
+1) https://statsapi.web.nhl.com/api/v1/schedule?season={seasonId}
+    - Game Schedules
+2) https://statsapi.web.nhl.com/api/v1/game/{gameId}/feed/live?site=en_nhl
+   - Play information
+   - Play By Play
+   - Team Stats
+   - Skater / Goalie Stats
+3) https://statsapi.web.nhl.com/api/v1/people/{playerId}/stats?stats=gameLog&season={seasonId}
+    - Backup endpoint used if missing game data from live feed.
 
 <br />
 
