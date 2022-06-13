@@ -1,7 +1,9 @@
 # Introduction
 Boilerplate laravel application created to scrape various API data from https://nhl.com. This tool is currently able to scrape Game Schedules, Player Information, Game Information (Play By Play, Team Stats, Skater / Goalie Stats). Season / All-Time stats are summarized based off game information scraped.
 
-The data from the API is not 100% perfect as there is sometimes inconsistencies with older game data but is fairly accurate in recent seasons.
+The data from the API is not 100% perfect. There is sometimes inconsistencies with older game data but is fairly accurate in recent seasons.
+
+**Note:** Importing all games at once will take a while it is recommended you review the Data Fetching Commands and Worker Queue section below.
 
 <br />
 
@@ -23,32 +25,29 @@ After fetching schedule you are free to pick and choose which seasons you wish t
 # Data Fetching Commands
 These commands are used to fetch data from NHL API. Before fetching game data the schedule tables must be populated.<br />
 
+### Game Data
+
+Fetch all games:<br />
+`sail artisan fetch:games --overwrite=true|false`
+
+Fetch all games for a season:<br />
+`sail artisan fetch:games 20162017 --overwrite=true|false`
+
+Fetch all games for a range of seasons:<br />
+`sail artisan fetch:games 20162017-20192020 --overwrite=true|false`
+
+Fetch one game:<br />
+`sail artisan fetch:games {gameid} --overwrite=true|false`
+
+Fetch a range of games:<br />
+`sail artisan fetch:games 2020020001-2020020500 --overwrite=true|false`
+
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
 `sail artisan fetch:schedule`
 
 Fetch schedule for specified season:<br />
 `sail artisan fetch:schedule {season}`
-
-### Game Data
-
-Fetch all games:<br />
-`sail artisan fetch:games`
-
-Fetch all games for a season:<br />
-`sail artisan fetch:games 20162017`
-
-Fetch all games for a range of seasons:<br />
-`sail artisan fetch:games 20162017-20192020`
-
-Fetch one game:<br />
-`sail artisan fetch:games {gameid}`
-
-Fetch a range of games:<br />
-`sail artisan fetch:games 2020020001-2020020500`
-
-Overwrite game data:<br />
-`sail artisan fetch:games 2020020001 --overwrite`
 
 ### Calculation Commands
 These commands use calculate season/alltime stats from fetched game data.<br />
@@ -74,7 +73,7 @@ Calculate season stats skater/goalie/team:<br />
 
 <br />
 
-# Queue / Workers
+# Worker Queue
 All fetching / calculation tasks from NHL API are defered to a queue (games, schedule, calculate). It is recommended you view `config/horizon.php` and change worker queue to whatever you are comfortable with using prior to using script. Defaults are set quite high for testing purposes. Majority of the heavy lifting is done through the `games` queue.
 
 <br />
@@ -87,18 +86,16 @@ Game IDs are a unique identifier assigned to each game. They are 10 characters i
 
 <br />
 
-# Testing
+# Testing / Static Analysis
 
 `sail artisan test`
-
-<br />
-
-# Static Analysis (PHPStan Level 8)
 `./vendor/bin/phpstan analyse app`
 
 <br />
 
-### Road Map
+# Road Map
 - User-Agent spoofing
 - Proxy / TOR connection
 - Additional test coverage
+- HTML game logs
+- Advanced stats calculations
