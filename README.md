@@ -76,6 +76,8 @@ Calculate season stats skater/goalie/team:<br />
 # Worker Queue
 All fetching / calculation tasks from NHL API are defered to a queue (games, schedule, calculate). It is recommended you view `config/horizon.php` and change worker queue to whatever you are comfortable with using prior to using script. Defaults are set quite high for testing purposes. Majority of the heavy lifting is done through the `games` queue.
 
+Worker Queue dashboard is available through https://localhost/horizon
+
 <br />
 
 # Game IDs
