@@ -109,3 +109,4 @@ PHP Stan (Level 8)
     - games command
 - HTML game logs
 - Advanced stats calculations
+- Find alternative to Player Info
