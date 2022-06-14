@@ -37,11 +37,11 @@ class TeamStatsService
 
     public function handle(Games $game, array &$data): void
     {
-        $res = [];
+        $results = [];
 
         foreach ($data['liveData']['boxscore']['teams'] as $team) {
-            $res[$team['team']['id']] = $this->columns;
-            $r = &$res[$team['team']['id']];
+            $results[$team['team']['id']] = $this->columns;
+            $r = &$results[$team['team']['id']];
 
             $r['season_id']    = $game->season_id;
             $r['game_id']      = $game->id;
@@ -73,6 +73,6 @@ class TeamStatsService
         }
 
         TeamStats::deleteGame($game->id);
-        TeamStats::insert($res);
+        TeamStats::insert($results);
     }
 }

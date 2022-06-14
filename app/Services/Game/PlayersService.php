@@ -2,6 +2,7 @@
 
 namespace App\Services\Game;
 
+use App\Models\Games\Games;
 use App\Models\Players;
 
 class PlayersService
@@ -14,9 +15,9 @@ class PlayersService
      * @return void
     */
 
-    public function save(array &$data): void
+    public function handle(Games $game, array &$data): void
     {
-        foreach ($data['liveData']['boxscore'] as $player) {
+        foreach ($data['gameData']['players'] as $player) {
             Players::upsert([
                 'id'                   => $player['id'],
                 'team_id'              => _s($player['currentTeam']['id']),

@@ -77,7 +77,7 @@ Calculate season stats skater/goalie/team:<br />
    - Skater / Goalie Stats
 3) https://statsapi.web.nhl.com/api/v1/people/{playerId}/stats?stats=gameLog&season={seasonId}
     - Backup endpoint used if missing game data from live feed.
-4) https://statsapi.web.nhl.com/api/v1/people/8478402?expand=person.stats&stats=yearByYear
+4) https://statsapi.web.nhl.com/api/v1/people/8478402
     - Player Information
 
 <br />
@@ -113,4 +113,3 @@ PHP Stan (Level 8)
 - HTML game logs (?)
 - Advanced stats calculations
 - Find alternative to Player Info
-- game_id scope

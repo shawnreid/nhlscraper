@@ -183,6 +183,7 @@ return [
                 'queue'        => ['games'],
                 'balance'      => 'auto',
                 'maxProcesses' => 40,
+                'memory'       => 64,
                 'tries'        => 3,
             ],
             'supervisor-2' => [
@@ -190,6 +191,7 @@ return [
                 'queue'        => ['schedule', 'calculate'],
                 'balance'      => 'auto',
                 'maxProcesses' => 10,
+                'memory'       => 64,
                 'tries'        => 3,
             ],
         ],
@@ -200,6 +202,7 @@ return [
                 'queue'        => ['games'],
                 'balance'      => 'auto',
                 'maxProcesses' => 40,
+                'memory'       => 64,
                 'tries'        => 3,
             ],
             'supervisor-2' => [
@@ -207,6 +210,7 @@ return [
                 'queue'        => ['schedule', 'calculate'],
                 'balance'      => 'auto',
                 'maxProcesses' => 10,
+                'memory'       => 64,
                 'tries'        => 3,
             ],
         ],

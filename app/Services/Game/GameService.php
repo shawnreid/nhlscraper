@@ -6,6 +6,7 @@ use App\Models\Games\Games;
 use App\Services\Game\PlayerStatsService;
 use App\Services\Game\PlayByPlayService;
 use App\Services\Game\TeamStatsService;
+use App\Services\Game\PlayersService;
 use Illuminate\Support\Facades\Http;
 
 class GameService
@@ -13,7 +14,8 @@ class GameService
     private array $pipes = [
         PlayerStatsService::class,
         TeamStatsService::class,
-        PlayByPlayService::class
+        PlayByPlayService::class,
+        PlayersService::class
     ];
 
     /**
