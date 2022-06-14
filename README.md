@@ -108,8 +108,6 @@ PHP Stan (Level 8)
 <br />
 
 # Road Map
-- Additional test coverage
-    - games command
-- HTML game logs
+- HTML game logs (?)
 - Advanced stats calculations
 - Find alternative to Player Info
