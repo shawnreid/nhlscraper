@@ -86,7 +86,7 @@ class AllTimeStatsCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:alltime {teams} can queue job for teams
+     * Test artisan nhl:alltime can queue job for all categories
      *
      * @return void
     */

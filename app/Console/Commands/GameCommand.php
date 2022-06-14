@@ -29,13 +29,21 @@ class GameCommand extends Command
         $this->overwrite = $this->option('overwrite') ? true : false;
         $length          = strlen(strval($this->option));
 
-        return match(true) {
+        $status = match(true) {
             $length === 10 => $this->game(),
             $length === 21 => $this->games(),
             $length === 8  => $this->season(),
             $length === 17 => $this->seasons(),
-            default        => $this->all()
+            $length === 0  => $this->all(),
+            default        => null
         };
+
+        if (is_null($status)) {
+            $this->error('Invalid game or range. Usage: artisan nhl:games {2020020001|2020020001-2020020020?}');
+            return 1;
+        }
+
+        return $status;
     }
 
     /**
@@ -48,7 +56,7 @@ class GameCommand extends Command
     {
         Games::importGame($this->option, $this->overwrite);
 
-        $this->info($this->message($this->option));
+        $this->info($this->message('game'));
 
         return 0;
     }
@@ -97,7 +105,7 @@ class GameCommand extends Command
 
         Games::importSeasons($option[0], $option[1], $this->overwrite);
 
-        $this->info($this->message('seasons'));
+        $this->info($this->message('season range'));
         return 0;
     }
 

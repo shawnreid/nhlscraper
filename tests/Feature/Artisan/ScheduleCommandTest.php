@@ -18,23 +18,6 @@ class ScheduleCommandTest extends TestCase
     ];
 
     /**
-     * Test artisan nhl:schedule can fetch schedule for all seasons
-     *
-     * @return void
-    */
-
-    public function test_console_nhl_schedule_queues_all_seasons(): void
-    {
-        Queue::fake();
-
-        $this->artisan('nhl:schedule')
-             ->expectsOutputToContain($this->messages['all'])
-             ->assertExitCode(0);
-
-        Queue::assertPushed(ScheduleJob::class);
-    }
-
-    /**
      * Test artisan nhl:schedule {season} can fetch schedule for single season
      *
      * @return void
@@ -53,7 +36,42 @@ class ScheduleCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:schedule {season} can fetch schedule for single season
+     * Test artisan nhl:schedule {season-season} can fetch schedule for range of seasons
+     *
+     * @return void
+    */
+
+    public function test_console_nhl_schedule_queues_range_of_seasons(): void
+    {
+        Queue::fake();
+
+        $season = '20162017-20172018';
+        $this->artisan("nhl:schedule {$season}")
+             ->expectsOutputToContain(str_replace('{year}', $season, $this->messages['season']))
+             ->assertExitCode(0);
+
+        Queue::assertPushed(ScheduleJob::class);
+    }
+
+    /**
+     * Test artisan nhl:schedule can fetch schedule for all seasons
+     *
+     * @return void
+    */
+
+    public function test_console_nhl_schedule_queues_all_seasons(): void
+    {
+        Queue::fake();
+
+        $this->artisan('nhl:schedule')
+             ->expectsOutputToContain($this->messages['all'])
+             ->assertExitCode(0);
+
+        Queue::assertPushed(ScheduleJob::class);
+    }
+
+    /**
+     * Test invalid artisan nhl:schedule will throw error
      *
      * @return void
     */

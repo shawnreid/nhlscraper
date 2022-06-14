@@ -86,7 +86,7 @@ class SeasonStatsCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:season {teams} can queue job for teams
+     * Test artisan nhl:season can queue job for all categories
      *
      * @return void
     */

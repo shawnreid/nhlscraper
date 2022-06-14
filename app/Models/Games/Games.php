@@ -58,9 +58,11 @@ class Games extends Model
     {
         $game = self::query()
             ->overWriteData($overwrite)
-            ->findOrFail($game);
+            ->find($game);
 
-        GameJob::dispatch($game);
+        if ($game) {
+            GameJob::dispatch($game);
+        }
     }
 
     /**
