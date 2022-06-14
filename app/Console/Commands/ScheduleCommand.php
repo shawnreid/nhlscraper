@@ -7,9 +7,9 @@ use Illuminate\Console\Command;
 
 class ScheduleCommand extends Command
 {
-    protected $signature   = 'nhl:schedule {season?} {--overwrite}';
+    protected $signature   = 'nhl:schedule {option?} {--overwrite}';
     protected $description = 'Fetch schedule for given season or all seasons.';
-    private mixed $season;
+    private mixed $option;
     private bool  $overwrite;
 
     public function __construct()
@@ -25,13 +25,21 @@ class ScheduleCommand extends Command
 
     public function handle(): int
     {
-        $this->season    = $this->argument('season');
+        $this->option    = $this->argument('option');
         $this->overwrite = $this->option('overwrite') ? true : false;
+        $length          = strlen(strval($this->option));
 
-        $status = match($this->season) {
-            null    => $this->all(),
-            default => $this->season()
+        $status = match(true) {
+            $length === 8  => $this->season(),
+            $length === 17 => $this->seasons(),
+            $length === 0  => $this->all(),
+            default        => null
         };
+
+        if (is_null($status)) {
+            $this->error('Invalid season or range. Usage: artisan nhl:alltime {20162017|20162017-20172018?}');
+            return 1;
+        }
 
         return $status;
     }
@@ -57,16 +65,25 @@ class ScheduleCommand extends Command
 
     protected function season(): int
     {
-        $season = Seasons::find($this->season);
+        Seasons::importSchedule($this->option, $this->overwrite);
 
-        if (!$season) {
-            $this->error('Invalid season. Usage: artisan nhl:schedule {20162017|20172018|etc?}');
-            return 1;
-        }
+        $this->info($this->message($this->option));
+        return 0;
+    }
 
-        Seasons::importSchedule($this->season, $this->overwrite);
+    /**
+     * Fetch schedules for range of seasons
+     *
+     * @return int
+    */
 
-        $this->info($this->message($this->season));
+    protected function seasons(): int
+    {
+        $option = str_replace(chr(32), '', explode('-', $this->option));
+
+        Seasons::importSchedules($option[0], $option[1], $this->overwrite);
+
+        $this->info($this->message($this->option));
         return 0;
     }
 

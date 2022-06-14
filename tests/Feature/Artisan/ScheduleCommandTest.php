@@ -14,7 +14,7 @@ class ScheduleCommandTest extends TestCase
     private array $messages = [
         'season'  => 'Schedule(s) for {year} queued for synchronization',
         'all'     => 'Schedule(s) for all seasons queued for synchronization',
-        'error'   => 'Invalid season. Usage: artisan nhl:schedule {20162017|20172018|etc?}'
+        'error'   => 'Invalid season or range. Usage: artisan nhl:alltime {20162017|20162017-20172018?}'
     ];
 
     /**
@@ -62,11 +62,18 @@ class ScheduleCommandTest extends TestCase
     {
         Queue::fake();
 
-        $season = 216217;
-        $this->artisan("nhl:schedule {$season}")
-             ->expectsOutputToContain($this->messages['error'])
-             ->assertExitCode(1);
+        $seasons = [
+            '216217',
+            '1',
+            '212-224',
+            'abc'
+        ];
+        foreach ($seasons as $season) {
+            $this->artisan("nhl:schedule {$season}")
+                ->expectsOutputToContain($this->messages['error'])
+                ->assertExitCode(1);
 
-        Queue::assertNotPushed(ScheduleJob::class);
+            Queue::assertNotPushed(ScheduleJob::class);
+        }
     }
 }

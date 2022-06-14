@@ -37,7 +37,7 @@ Fetch all games for a range of seasons:<br />
 `sail artisan nhl:games 20162017-20192020`
 
 Fetch one game:<br />
-`sail artisan nhl:games {gameid}`
+`sail artisan nhl:games 2020020001`
 
 Fetch a range of games:<br />
 `sail artisan nhl:games 2020020001-2020020500`
@@ -46,10 +46,13 @@ Fetch a range of games:<br />
 
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
-`sail artisan nhl:schedule --overwrite=true|false`
+`sail artisan nhl:schedule`
 
 Fetch schedule for specified season:<br />
-`sail artisan nhl:schedule {season} --overwrite=true|false`
+`sail artisan nhl:schedule 20192020`
+
+Fetch schedule for range of seasons:<br />
+`sail artisan nhl:schedule 20192020-20202021`
 
 **Note**: By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 

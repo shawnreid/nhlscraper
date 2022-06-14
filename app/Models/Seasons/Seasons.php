@@ -34,6 +34,26 @@ class Seasons extends Model
     }
 
     /**
+     * Import schedule from a range of seasons
+     *
+     * @param  mixed $start
+     * @param  mixed $end
+     * @param  bool  $overwrite
+     * @return void
+    */
+
+    public static function importSchedules(mixed $start, mixed $end, bool $overwrite = true): void
+    {
+        self::query()
+            ->overWriteData($overwrite)
+            ->whereBetween('id', [$start, $end])
+            ->get()
+            ->each(fn(Seasons $season) =>
+                ScheduleJob::dispatch($season)
+            );
+    }
+
+    /**
      * Import schedule for all seasons
      *
      * @param  bool $overwrite
