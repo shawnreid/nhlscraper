@@ -12,8 +12,9 @@ class SeasonsSeeder extends Seeder
         $season = 1917;
         while ($season !== (now()->year + 1)) {
             DB::table('seasons')->insert([
-                'id'     => $season.($season+1),
-                'season' => $season
+                'id'       => $season.($season+1),
+                'season'   => $season,
+                'imported' => 0
             ]);
             $season++;
         }

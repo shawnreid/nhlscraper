@@ -3,7 +3,7 @@
 namespace App\Models\Games;
 
 use App\Jobs\GameJob;
-use App\Models\Teams\Teams;
+use App\Models\Teams;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

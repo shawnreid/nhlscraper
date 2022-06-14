@@ -3,6 +3,7 @@
 namespace App\Models\Seasons;
 
 use App\Jobs\ScheduleJob;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Seasons extends Model
@@ -15,24 +16,51 @@ class Seasons extends Model
      * Import schedule for season
      *
      * @param  int  $season
+     * @param  bool $overwrite
      * @return void
     */
 
-    public static function importSchedule(int $season): void
+    public static function importSchedule(int $season, bool $overwrite = true): void
     {
-        ScheduleJob::dispatch(self::findOrFail($season));
+        $season = self::query()
+            ->overwriteSeasons($overwrite)
+            ->find($season);
+
+        if ($season) {
+            ScheduleJob::dispatch($season);
+        }
     }
 
     /**
      * Import schedule for all seasons
      *
+     * @param  bool $overwrite
      * @return void
     */
 
-    public static function importAllSchedules(): void
+    public static function importAllSchedules(bool $overwrite = true): void
     {
-        self::all()->each(fn(Seasons $season) =>
-            ScheduleJob::dispatch($season)
+        self::query()
+            ->overwriteSeasons($overwrite)
+            ->get()
+            ->each(fn(Seasons $season) =>
+                ScheduleJob::dispatch($season)
+            );
+    }
+
+    /**
+     * Scope to allow overwrites or not
+     *
+     * @param Builder $query
+     * @param bool    $overwrite
+     * @return Builder
+    */
+
+    public function scopeOverWriteSeasons(Builder $query, bool $overwrite): Builder
+    {
+        return $query->when(
+            !$overwrite,
+            fn($q) => $q->where('imported', 0)
         );
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 use App\Jobs\Alltime\GoalieStatsJob;
 use App\Jobs\Alltime\SkaterStatsJob;
 use App\Jobs\Alltime\TeamStatsJob;
-use Illuminate\Support\Facades\Queue;
 
 class AllTimeStatsCommand extends Command
 {
@@ -42,7 +41,6 @@ class AllTimeStatsCommand extends Command
         }
 
         $this->info($this->message($category ?? 'all categories'));
-
         return $status;
     }
 
@@ -57,7 +55,6 @@ class AllTimeStatsCommand extends Command
         $this->skaters();
         $this->goalies();
         $this->teams();
-
         return 0;
     }
 
@@ -70,7 +67,6 @@ class AllTimeStatsCommand extends Command
     private function skaters(): int
     {
         SkaterStatsJob::dispatch();
-
         return 0;
     }
 
@@ -83,7 +79,6 @@ class AllTimeStatsCommand extends Command
     private function goalies(): int
     {
         GoalieStatsJob::dispatch();
-
         return 0;
     }
 
@@ -96,7 +91,6 @@ class AllTimeStatsCommand extends Command
     private function teams(): int
     {
         TeamStatsJob::dispatch();
-
         return 0;
     }
 
@@ -108,7 +102,7 @@ class AllTimeStatsCommand extends Command
 
     private function message(mixed $text): string
     {
-        $count = number_format(Queue::size('calculate'));
+        $count = queueSize('calculate');
         return "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }

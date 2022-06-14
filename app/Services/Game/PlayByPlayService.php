@@ -3,7 +3,7 @@
 namespace App\Services\Game;
 
 use App\Models\Games\Games;
-use App\Models\Games\Timelines;
+use App\Models\Games\PlayByPlay;
 
 class PlayByPlayService
 {
@@ -43,9 +43,9 @@ class PlayByPlayService
             ];
         }
 
-        Timelines::where('game_id', $game->id)->delete();
+        PlayByPlay::where('game_id', $game->id)->delete();
         $results->chunk(100)->each(function($data): void {
-            Timelines::insert($data->toArray());
+            PlayByPlay::insert($data->toArray());
         });
     }
 }

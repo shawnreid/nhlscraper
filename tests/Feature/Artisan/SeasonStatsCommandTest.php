@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
-class SeasonStatsTest extends TestCase
+class SeasonStatsCommandTest extends TestCase
 {
     use RefreshDatabase;
 

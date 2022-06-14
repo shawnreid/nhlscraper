@@ -25,11 +25,8 @@ abstract class TestCase extends BaseTestCase
         );
     }
 
-    public function getseason(): Seasons
+    public function getSeason(): Seasons
     {
-        return new Seasons([
-            'id'   => 20192020,
-            'season' => 2019
-        ]);
+        return Seasons::find(20192020);
     }
 }

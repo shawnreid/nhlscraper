@@ -4,7 +4,7 @@ namespace App\Models\Games;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Timelines extends Model
+class PlayByPlay extends Model
 {
     protected $table = 'game_play_by_play';
     protected $fillable = [

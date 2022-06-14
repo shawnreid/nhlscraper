@@ -40,6 +40,9 @@ class ScheduleService
             }
         }
 
+        $season->imported = 1;
+        $season->save();
+
         Games::upsert($games, 'id');
     }
 }

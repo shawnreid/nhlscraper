@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
-class AllTimeStatsTest extends TestCase
+class AllTimeStatsCommandTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -35,7 +35,7 @@ class AllTimeStatsTest extends TestCase
 
         $category = 'skaters';
         $this->artisan("nhl:alltime {$category}")
-            ->expectsOutputToContain($this->messages[$category])
+             ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(GoalieStatsJob::class);
@@ -56,7 +56,7 @@ class AllTimeStatsTest extends TestCase
 
         $category = 'goalies';
         $this->artisan("nhl:alltime {$category}")
-            ->expectsOutputToContain($this->messages[$category])
+             ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(TeamStatsJob::class);
@@ -77,7 +77,7 @@ class AllTimeStatsTest extends TestCase
 
         $category = 'teams';
         $this->artisan("nhl:alltime {$category}")
-            ->expectsOutputToContain($this->messages[$category])
+             ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(SkaterStatsJob::class);
@@ -97,7 +97,7 @@ class AllTimeStatsTest extends TestCase
         Games::factory()->create();
 
         $this->artisan("nhl:alltime")
-            ->expectsOutputToContain($this->messages['all'])
+             ->expectsOutputToContain($this->messages['all'])
              ->assertExitCode(0);
 
         Queue::assertPushed(SkaterStatsJob::class);
@@ -118,7 +118,7 @@ class AllTimeStatsTest extends TestCase
 
         $category = 'error';
         $this->artisan("nhl:alltime {$category}")
-            ->expectsOutputToContain($this->messages[$category])
+             ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(1);
 
         Queue::assertNotPushed(SkaterStatsJob::class);

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
-class GameTest extends TestCase
+class GamesCommandTest extends TestCase
 {
     use RefreshDatabase;
 

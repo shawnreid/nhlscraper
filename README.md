@@ -28,26 +28,30 @@ These commands are used to fetch data from NHL API. Before fetching game data th
 ### Game Data
 
 Fetch all games:<br />
-`sail artisan nhl:games --overwrite=true|false`
+`sail artisan nhl:games`
 
 Fetch all games for a season:<br />
-`sail artisan nhl:games 20162017 --overwrite=true|false`
+`sail artisan nhl:games 20162017`
 
 Fetch all games for a range of seasons:<br />
-`sail artisan nhl:games 20162017-20192020 --overwrite=true|false`
+`sail artisan nhl:games 20162017-20192020`
 
 Fetch one game:<br />
-`sail artisan nhl:games {gameid} --overwrite=true|false`
+`sail artisan nhl:games {gameid}`
 
 Fetch a range of games:<br />
-`sail artisan nhl:games 2020020001-2020020500 --overwrite=true|false`
+`sail artisan nhl:games 2020020001-2020020500`
+
+By default commands will not overwrite previously imported games. You may use the `--overwrite` option to override.
 
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
-`sail artisan nhl:schedule`
+`sail artisan nhl:schedule --overwrite=true|false`
 
 Fetch schedule for specified season:<br />
-`sail artisan nhl:schedule {season}`
+`sail artisan nhl:schedule {season} --overwrite=true|false`
+
+By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 
 ### Calculation Commands
 These commands use calculate season/alltime stats from fetched game data.<br />
@@ -100,5 +104,7 @@ PHP Stan - `./vendor/bin/phpstan analyse app`
 - User-Agent spoofing
 - Proxy / TOR connection
 - Additional test coverage
+    - games command
+
 - HTML game logs
 - Advanced stats calculations

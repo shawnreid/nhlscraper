@@ -22,7 +22,7 @@ class ScheduleTest extends TestCase
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 
-        (new ScheduleService)->fetch($this->getseason());
+        (new ScheduleService)->fetch($this->getSeason());
 
         $this->assertEquals(Games::count(), 1213);
     }

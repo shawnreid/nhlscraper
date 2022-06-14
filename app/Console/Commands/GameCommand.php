@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Games\Games;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Queue;
 
 class GameCommand extends Command
 {
@@ -125,7 +124,7 @@ class GameCommand extends Command
 
     private function message(mixed $text): string
     {
-        $count = number_format(Queue::size('games'));
+        $count = queueSize('games');
         return "Game data for {$text} {$this->option} queued for synchronization. Jobs in queue: {$count}";
     }
 }

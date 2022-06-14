@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Players;
+namespace App\Services\Game;
 
-use App\Models\Players\Players;
+use App\Models\Players;
 
 class PlayersService
 {

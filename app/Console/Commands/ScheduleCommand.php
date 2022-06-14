@@ -2,16 +2,15 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\ScheduleJob;
 use App\Models\Seasons\Seasons;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Queue;
 
 class ScheduleCommand extends Command
 {
-    protected $signature   = 'nhl:schedule {season?}';
+    protected $signature   = 'nhl:schedule {season?} {--overwrite}';
     protected $description = 'Fetch schedule for given season or all seasons.';
-    protected int $season;
+    private mixed $season;
+    private bool  $overwrite;
 
     public function __construct()
     {
@@ -26,11 +25,15 @@ class ScheduleCommand extends Command
 
     public function handle(): int
     {
-        $this->season = (int) $this->argument('season');
-        return match ($this->season) {
-            0       => $this->all(),
+        $this->season    = $this->argument('season');
+        $this->overwrite = $this->option('overwrite') ? true : false;
+
+        $status = match($this->season) {
+            null    => $this->all(),
             default => $this->season()
         };
+
+        return $status;
     }
 
     /**
@@ -41,10 +44,8 @@ class ScheduleCommand extends Command
 
     protected function all(): int
     {
-        Seasons::importAllSchedules();
-
+        Seasons::importAllSchedules($this->overwrite);
         $this->info($this->message('all seasons'));
-
         return 0;
     }
 
@@ -56,10 +57,16 @@ class ScheduleCommand extends Command
 
     protected function season(): int
     {
-        Seasons::importSchedule($this->season);
+        $season = Seasons::find($this->season);
+
+        if (!$season) {
+            $this->error('Invalid season. Usage: artisan nhl:schedule {20162017|20172018|etc?}');
+            return 1;
+        }
+
+        Seasons::importSchedule($this->season, $this->overwrite);
 
         $this->info($this->message($this->season));
-
         return 0;
     }
 
@@ -72,7 +79,7 @@ class ScheduleCommand extends Command
 
     protected function message(mixed $text): string
     {
-        $count = number_format(Queue::size('schedule'));
+        $count = queueSize('schedule');
         return "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
     }
 }
