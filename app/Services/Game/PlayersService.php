@@ -8,15 +8,15 @@ class PlayersService
 {
 
     /**
-     * Save player data
+     * Handle player data
      *
      * @param array $data
      * @return void
     */
 
-    public function save(array $data): void
+    public function save(array &$data): void
     {
-        foreach ($data as $player) {
+        foreach ($data['liveData']['boxscore'] as $player) {
             Players::upsert([
                 'id'                   => $player['id'],
                 'team_id'              => _s($player['currentTeam']['id']),

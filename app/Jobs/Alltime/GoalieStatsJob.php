@@ -20,6 +20,6 @@ class GoalieStatsJob implements ShouldQueue
 
     public function handle(GoalieStatsService $stats): void
     {
-        $stats->save();
+        $stats->handle();
     }
 }

@@ -24,12 +24,12 @@ class GoalieStatsService
     ];
 
     /**
-     * Save goalie season stats
+     * Handle goalie season stats
      *
      * @return void
     */
 
-    public function save(): void
+    public function handle(): void
     {
         $stats = GameGoalieStats::select([
             'season_id',

@@ -28,18 +28,18 @@ class TeamStatsService
     ];
 
     /**
-     * Save team stats
+     * Handle team stats
      *
      * @param Games $game
      * @param array $data
      * @return void
     */
 
-    public function save(Games $game, array $data): void
+    public function handle(Games $game, array &$data): void
     {
         $res = [];
 
-        foreach ($data['teams'] as $team) {
+        foreach ($data['liveData']['boxscore']['teams'] as $team) {
             $res[$team['team']['id']] = $this->columns;
             $r = &$res[$team['team']['id']];
 
@@ -72,7 +72,7 @@ class TeamStatsService
             }
         }
 
-        TeamStats::where('game_id', $game->id)->delete();
+        TeamStats::deleteGame($game->id);
         TeamStats::insert($res);
     }
 }

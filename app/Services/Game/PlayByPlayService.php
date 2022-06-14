@@ -7,19 +7,19 @@ use App\Models\Games\PlayByPlay;
 
 class PlayByPlayService
 {
-
     /**
-     * Save timeline data
+     * Hande play by play
      *
      * @param Games $game
      * @param array $data
      * @return void
     */
 
-    public function save(Games $game, array $data): void
+    public function handle(Games $game, array &$data): void
     {
-        $results = collect([]);
-        foreach ($data as $d) {
+        $results = [];
+
+        foreach ($data['liveData']['plays']['allPlays'] as $d) {
             $results[] = [
                 'season_id'     => $game->season_id,
                 'game_id'       => $game->id,
@@ -39,13 +39,11 @@ class PlayByPlayService
                 'away_score'    => _s($d['about']['goals']['away'], 0),
                 'x_coord'       => _s($d['coordinates']['x']),
                 'y_coord'       => _s($d['coordinates']['y']),
-                'team_id'       => _s($d['team']['id']),
+                'team_id'       => _s($d['team']['id'])
             ];
         }
 
-        PlayByPlay::where('game_id', $game->id)->delete();
-        $results->chunk(100)->each(function($data): void {
-            PlayByPlay::insert($data->toArray());
-        });
+        PlayByPlay::deleteGame($game->id);
+        PlayByPlay::insert($results);
     }
 }

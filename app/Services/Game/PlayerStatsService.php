@@ -7,7 +7,7 @@ use App\Models\Games\GoalieStats;
 use App\Models\Games\SkaterStats;
 use Illuminate\Support\Facades\Http;
 
-class StatsService
+class PlayerStatsService
 {
     protected Games $game;
     protected array $goalies;
@@ -16,18 +16,18 @@ class StatsService
     protected int   $teamId;
 
     /**
-     * Save stats
+     * Handle player stats
      *
      * @param Games $game
      * @param array $data
      * @return void
     */
 
-    public function save(Games $game, array $data): void
+    public function handle(Games $game, array $data): void
     {
         $this->game = $game;
         $this->skaters = $this->goalies = [];
-        foreach ($data['teams'] as $team) {
+        foreach ($data['liveData']['boxscore']['teams'] as $team) {
             $this->teamId = $team['team']['id'];
             foreach ($team['players'] as $player) {
                 $this->playerId = $player['person']['id'];
@@ -38,10 +38,10 @@ class StatsService
             }
         }
 
-        GoalieStats::where('game_id', $game->id)->delete();
+        GoalieStats::deleteGame($game->id);
         GoalieStats::insert($this->goalies);
 
-        SkaterStats::where('game_id', $game->id)->delete();
+        SkaterStats::deleteGame($game->id);
         SkaterStats::insert($this->skaters);
     }
 

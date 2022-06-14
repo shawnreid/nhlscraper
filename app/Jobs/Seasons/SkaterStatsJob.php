@@ -20,6 +20,6 @@ class SkaterStatsJob implements ShouldQueue
 
     public function handle(SkaterStatsService $stats): void
     {
-        $stats->save();
+        $stats->handle();
     }
 }

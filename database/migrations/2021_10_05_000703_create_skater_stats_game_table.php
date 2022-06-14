@@ -18,7 +18,6 @@ class CreateSkaterStatsGameTable extends Migration
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->unsignedBigInteger('player_id')->nullable();
-            $table->foreign('player_id')->references('id')->on('players');
             $table->integer('goals')->default(0);
             $table->integer('assists')->default(0);
             $table->integer('points')->default(0);

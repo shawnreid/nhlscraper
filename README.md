@@ -113,3 +113,4 @@ PHP Stan (Level 8)
 - HTML game logs (?)
 - Advanced stats calculations
 - Find alternative to Player Info
+- game_id scope

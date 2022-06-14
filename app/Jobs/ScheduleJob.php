@@ -21,6 +21,6 @@ class ScheduleJob implements ShouldQueue
 
     public function handle(ScheduleService $schedule): void
     {
-        $schedule->fetch($this->season);
+        $schedule->handle($this->season);
     }
 }

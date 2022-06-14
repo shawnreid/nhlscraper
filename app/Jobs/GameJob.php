@@ -21,6 +21,6 @@ class GameJob implements ShouldQueue
 
     public function handle(GameService $game): void
     {
-        $game->fetch($this->games);
+        $game->handle($this->games);
     }
 }

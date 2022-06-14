@@ -10,13 +10,13 @@ class ScheduleService
 {
 
     /**
-     * Fetch schedule data
+     * Handle schedule data
      *
      * @param Seasons $season
      * @return void
     */
 
-    public function fetch(Seasons $season): void
+    public function handle(Seasons $season): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/schedule?season={$season->id}")->json();
 

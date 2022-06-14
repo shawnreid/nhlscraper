@@ -2,10 +2,13 @@
 
 namespace App\Models\Games;
 
+use App\Traits\DeleteGameScope;
 use Illuminate\Database\Eloquent\Model;
 
 class PlayByPlay extends Model
 {
+    use DeleteGameScope;
+
     protected $table = 'game_play_by_play';
     protected $fillable = [
         'game_id',

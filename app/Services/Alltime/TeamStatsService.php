@@ -29,12 +29,12 @@ class TeamStatsService
     ];
 
     /**
-     * Save all time team stats
+     * Handle all time team stats
      *
      * @return void
     */
 
-    public function save(): void
+    public function handle(): void
     {
         $stats = GameTeamStats::select([
             'game_type_id',

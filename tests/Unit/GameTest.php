@@ -8,7 +8,7 @@ use App\Models\Games\SkaterStats;
 use App\Models\Games\PlayByPlay;
 use App\Models\Players;
 use App\Services\Game\GameService;
-use App\Services\Game\StatsService;
+use App\Services\Game\PlayerStatsService;
 use App\Services\Game\PlayersService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
@@ -29,12 +29,11 @@ class GameTest extends TestCase
         Http::fake(['*' => $this->fakeJson('game')]);
         $games = Games::factory()->create();
 
-        (new GameService)->fetch($games);
+        (new GameService)->handle($games);
 
         $this->assertEquals(SkaterStats::count(), 36);
         $this->assertEquals(GoalieStats::count(), 2);
         $this->assertEquals(PlayByPlay::count(), 382);
-        $this->assertEquals(Players::count(), 43);
     }
 
     /**
@@ -80,7 +79,7 @@ class GameTest extends TestCase
             '60:00' => 3600
         ];
 
-        $stats = new StatsService;
+        $stats = new PlayerStatsService;
         foreach ($data as $toi => $expected) {
             $this->assertEquals($stats->toiToSeconds($toi), $expected);
         }

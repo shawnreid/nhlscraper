@@ -34,12 +34,12 @@ class SkaterStatsService
     ];
 
     /**
-     * Save skater season stats
+     * Handle skater season stats
      *
      * @return void
     */
 
-    public function save(): void
+    public function handle(): void
     {
         $stats = GameSkaterStats::select([
             'season_id',
