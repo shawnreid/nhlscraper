@@ -5,10 +5,13 @@ namespace App\Console\Commands;
 use App\Jobs\Seasons\GoalieStatsJob;
 use App\Jobs\Seasons\SkaterStatsJob;
 use App\Jobs\Seasons\TeamStatsJob;
+use App\Traits\CommandFunctions;
 use Illuminate\Console\Command;
 
 class SeasonStatsCommand extends Command
 {
+    use CommandFunctions;
+
     protected $signature   = 'nhl:season {category?}';
     protected $description = 'Calculate season stats for specified category';
 
@@ -102,7 +105,10 @@ class SeasonStatsCommand extends Command
 
     private function message(mixed $text): string
     {
-        $count = queueSize('calculate');
-        return "Season calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+        $count = $this->queueSize('calculate');
+
+        $text  = "Season calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+
+        return $this->trimWhiteSpace($text);
     }
 }

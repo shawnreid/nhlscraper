@@ -3,10 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Models\Seasons\Seasons;
+use App\Traits\CommandFunctions;
 use Illuminate\Console\Command;
 
 class ScheduleCommand extends Command
 {
+    use CommandFunctions;
+
     protected $signature   = 'nhl:schedule {option?} {--overwrite}';
     protected $description = 'Fetch schedule for given season or all seasons.';
     private mixed $option;
@@ -53,7 +56,9 @@ class ScheduleCommand extends Command
     protected function all(): int
     {
         Seasons::importAllSchedules($this->overwrite);
+
         $this->info($this->message('all seasons'));
+
         return 0;
     }
 
@@ -68,6 +73,7 @@ class ScheduleCommand extends Command
         Seasons::importSchedule($this->option, $this->overwrite);
 
         $this->info($this->message($this->option));
+
         return 0;
     }
 
@@ -79,11 +85,12 @@ class ScheduleCommand extends Command
 
     protected function seasons(): int
     {
-        $option = str_replace(chr(32), '', explode('-', $this->option));
+        $option = $this->splitRange($this->option);
 
         Seasons::importSchedules($option[0], $option[1], $this->overwrite);
 
         $this->info($this->message($this->option));
+
         return 0;
     }
 
@@ -96,7 +103,10 @@ class ScheduleCommand extends Command
 
     protected function message(mixed $text): string
     {
-        $count = queueSize('schedule');
-        return "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
+        $count = $this->queueSize('schedule');
+
+        $text  = "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
+
+        return $this->trimWhiteSpace($text);
     }
 }

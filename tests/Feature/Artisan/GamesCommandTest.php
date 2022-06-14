@@ -17,7 +17,7 @@ class GamesCommandTest extends TestCase
         'seasons' => 'Game data for season range {year} queued for synchronization.',
         'game'    => 'Game data for game {year} queued for synchronization.',
         'games'   => 'Game data for game range {year} queued for synchronization.',
-        'all'     => 'Game data for all games  queued for synchronization.',
+        'all'     => 'Game data for all games queued for synchronization.',
         'error'   => 'Invalid game or range. Usage: artisan nhl:games {2020020001|2020020001-2020020020?}'
     ];
 

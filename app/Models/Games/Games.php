@@ -4,7 +4,7 @@ namespace App\Models\Games;
 
 use App\Jobs\GameJob;
 use App\Models\Teams;
-use App\Scopes\OverWriteDataScope;
+use App\Traits\OverWriteDataScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

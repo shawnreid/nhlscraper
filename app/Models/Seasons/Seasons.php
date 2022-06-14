@@ -3,7 +3,7 @@
 namespace App\Models\Seasons;
 
 use App\Jobs\ScheduleJob;
-use App\Scopes\OverWriteDataScope;
+use App\Traits\OverWriteDataScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Seasons extends Model

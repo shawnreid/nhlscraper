@@ -6,9 +6,12 @@ use Illuminate\Console\Command;
 use App\Jobs\Alltime\GoalieStatsJob;
 use App\Jobs\Alltime\SkaterStatsJob;
 use App\Jobs\Alltime\TeamStatsJob;
+use App\Traits\CommandFunctions;
 
 class AllTimeStatsCommand extends Command
 {
+    use CommandFunctions;
+
     protected $signature   = 'nhl:alltime {category?}';
     protected $description = 'Calculate alltime stats for specified category';
 
@@ -41,6 +44,7 @@ class AllTimeStatsCommand extends Command
         }
 
         $this->info($this->message($category ?? 'all categories'));
+
         return $status;
     }
 
@@ -55,6 +59,7 @@ class AllTimeStatsCommand extends Command
         $this->skaters();
         $this->goalies();
         $this->teams();
+
         return 0;
     }
 
@@ -102,7 +107,8 @@ class AllTimeStatsCommand extends Command
 
     private function message(mixed $text): string
     {
-        $count = queueSize('calculate');
-        return "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+        $count = $this->queueSize('calculate');
+        $text  = "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+        return $this->trimWhiteSpace($text);
     }
 }

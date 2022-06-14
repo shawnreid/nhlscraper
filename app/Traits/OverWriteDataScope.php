@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Scopes;
+namespace App\Traits;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 

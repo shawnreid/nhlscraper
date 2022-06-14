@@ -3,10 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Models\Games\Games;
+use App\Traits\CommandFunctions;
 use Illuminate\Console\Command;
 
 class GameCommand extends Command
 {
+    use CommandFunctions;
+
     protected $signature   = 'nhl:games {gameid?} {--overwrite}';
     protected $description = 'Fetch data for given game or all games.';
     private mixed $option;
@@ -69,7 +72,7 @@ class GameCommand extends Command
 
     private function games(): int
     {
-        $option = str_replace(chr(32), '', explode('-', $this->option));
+        $option = $this->splitRange($this->option);
 
         Games::importGames($option[0], $option[1], $this->overwrite);
 
@@ -101,11 +104,12 @@ class GameCommand extends Command
 
     private function seasons(): int
     {
-        $option = str_replace(chr(32), '', explode('-', $this->option));
+        $option = $this->splitRange($this->option);
 
         Games::importSeasons($option[0], $option[1], $this->overwrite);
 
         $this->info($this->message('season range'));
+
         return 0;
     }
 
@@ -132,7 +136,10 @@ class GameCommand extends Command
 
     private function message(mixed $text): string
     {
-        $count = queueSize('games');
-        return "Game data for {$text} {$this->option} queued for synchronization. Jobs in queue: {$count}";
+        $count = $this->queueSize('games');
+
+        $text  = "Game data for {$text} {$this->option} queued for synchronization. Jobs in queue: {$count}";
+
+        return $this->trimWhiteSpace($text);
     }
 }
