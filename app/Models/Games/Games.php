@@ -4,6 +4,7 @@ namespace App\Models\Games;
 
 use App\Jobs\GameJob;
 use App\Models\Teams;
+use App\Scopes\OverWriteDataScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Games extends Model
 {
-    use HasFactory;
+    use HasFactory, OverWriteDataScope;
 
     protected $table = 'games';
     protected $fillable = [
@@ -38,7 +39,7 @@ class Games extends Model
     {
         Games::query()
             ->excludeFutureGames()
-            ->overWriteGames($overwrite)
+            ->overWriteData($overwrite)
             ->get()
             ->each(fn(Games $game) =>
                 GameJob::dispatch($game)
@@ -56,7 +57,7 @@ class Games extends Model
     public static function importGame(int $game, bool $overwrite = true): void
     {
         $game = self::query()
-            ->overWriteGames($overwrite)
+            ->overWriteData($overwrite)
             ->findOrFail($game);
 
         GameJob::dispatch($game);
@@ -74,8 +75,8 @@ class Games extends Model
     public static function importGames(mixed $start, mixed $end, bool $overwrite = true): void
     {
         self::query()
-            ->overWriteGames($overwrite)
-            ->gamesBetween($start, $end)
+            ->overWriteData($overwrite)
+            ->whereBetween('id', [$start, $end])
             ->get()
             ->each(fn(Games $game) =>
                 GameJob::dispatch($game)
@@ -93,7 +94,7 @@ class Games extends Model
     public static function importSeason(int $season, bool $overwrite = true): void
     {
         self::query()
-            ->overWriteGames($overwrite)
+            ->overWriteData($overwrite)
             ->excludeFutureGames()
             ->whereSeasonId($season)
             ->get()
@@ -114,9 +115,9 @@ class Games extends Model
     public static function importSeasons(mixed $start, mixed $end, bool $overwrite = true): void
     {
         self::query()
-            ->overWriteGames($overwrite)
+            ->overWriteData($overwrite)
             ->excludeFutureGames()
-            ->seasonBetween($start, $end)
+            ->whereBetween('season_id', [$start, $end])
             ->get()
             ->each(fn(Games $game) =>
                 GameJob::dispatch($game)
@@ -155,51 +156,5 @@ class Games extends Model
     public function scopeExcludeFutureGames(Builder $query): Builder
     {
         return $query->where('date', '<=', date('Y-m-d'));
-    }
-
-    /**
-     * Scope to allow overwrites or not
-     *
-     * @param Builder $query
-     * @param bool    $overwrite
-     * @return Builder
-    */
-
-    public function scopeOverWriteGames(Builder $query, bool $overwrite): Builder
-    {
-        return $query->when(
-            !$overwrite,
-            fn($q) => $q->where('imported', 0)
-        );
-    }
-
-    /**
-     * Scope to return all games in a range of seasons
-     *
-     * @param Builder $query
-     * @param int     $start
-     * @param int     $end
-     * @return Builder
-    */
-
-    public function scopeSeasonBetween(Builder $query, int $start, int $end): Builder
-    {
-        return $query->where('season_id', '>=', $start)
-                     ->where('season_id', '<=', $end);
-    }
-
-    /**
-     * Scope to return all games in a range
-     *
-     * @param Builder $query
-     * @param int     $start
-     * @param int     $end
-     * @return Builder
-    */
-
-    public function scopeGamesBetween(Builder $query, int $start, int $end): Builder
-    {
-        return $query->where('id', '>=', $start)
-                     ->where('id', '<=', $end);
     }
 }

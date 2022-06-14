@@ -3,11 +3,13 @@
 namespace App\Models\Seasons;
 
 use App\Jobs\ScheduleJob;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use App\Scopes\OverWriteDataScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Seasons extends Model
 {
+    use OverWriteDataScope;
+
     protected $table = 'seasons';
     protected $fillable = ['id', 'season'];
     public $timestamps = false;
@@ -23,7 +25,7 @@ class Seasons extends Model
     public static function importSchedule(int $season, bool $overwrite = true): void
     {
         $season = self::query()
-            ->overwriteSeasons($overwrite)
+            ->overWriteData($overwrite)
             ->find($season);
 
         if ($season) {
@@ -41,26 +43,10 @@ class Seasons extends Model
     public static function importAllSchedules(bool $overwrite = true): void
     {
         self::query()
-            ->overwriteSeasons($overwrite)
+            ->overWriteData($overwrite)
             ->get()
             ->each(fn(Seasons $season) =>
                 ScheduleJob::dispatch($season)
             );
-    }
-
-    /**
-     * Scope to allow overwrites or not
-     *
-     * @param Builder $query
-     * @param bool    $overwrite
-     * @return Builder
-    */
-
-    public function scopeOverWriteSeasons(Builder $query, bool $overwrite): Builder
-    {
-        return $query->when(
-            !$overwrite,
-            fn($q) => $q->where('imported', 0)
-        );
     }
 }
