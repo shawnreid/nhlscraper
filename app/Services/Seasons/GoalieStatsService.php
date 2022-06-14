@@ -47,8 +47,8 @@ class GoalieStatsService
           ->get();
 
         SeasonGoalieStats::truncate();
-        $stats->chunk(100)->each(function($data): void {
-            SeasonGoalieStats::insert($data->toArray());
-        });
+        $stats->chunk(500)->each(fn($data) =>
+            SeasonGoalieStats::insert($data->toArray())
+        );
     }
 }

@@ -46,7 +46,7 @@ class GoalieStatsService
           ->get();
 
         AlltimeGoalieStats::truncate();
-        $stats->chunk(100)->each(fn($data) =>
+        $stats->chunk(500)->each(fn($data) =>
             AlltimeGoalieStats::insert($data->toArray())
         );
     }

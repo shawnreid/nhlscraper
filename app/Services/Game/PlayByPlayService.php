@@ -17,7 +17,7 @@ class PlayByPlayService
 
     public function handle(Games $game, array &$data): void
     {
-        $results = [];
+        $results = collect([]);
 
         foreach ($data['liveData']['plays']['allPlays'] as $d) {
             $results[] = [
@@ -44,6 +44,8 @@ class PlayByPlayService
         }
 
         PlayByPlay::deleteGame($game->id);
-        PlayByPlay::insert($results);
+        $results->chunk(500)->each(fn($data) =>
+            PlayByPlay::insert($data->toArray())
+        );
     }
 }

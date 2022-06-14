@@ -47,7 +47,7 @@ class TeamStatsService
           ->get();
 
         AlltimeTeamStats::truncate();
-        $stats->chunk(100)->each(fn($data) =>
+        $stats->chunk(500)->each(fn($data) =>
             AlltimeTeamStats::insert($data->toArray())
         );
     }

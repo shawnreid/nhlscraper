@@ -52,7 +52,7 @@ class SkaterStatsService
           ->get();
 
         AlltimeSkaterStats::truncate();
-        $stats->chunk(100)->each(fn($data) =>
+        $stats->chunk(500)->each(fn($data) =>
             AlltimeSkaterStats::insert($data->toArray())
         );
     }

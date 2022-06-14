@@ -48,8 +48,8 @@ class TeamStatsService
           ->get();
 
         SeasonTeamStats::truncate();
-        $stats->chunk(100)->each(function($data): void {
-            SeasonTeamStats::insert($data->toArray());
-        });
+        $stats->chunk(500)->each(fn($data) =>
+            SeasonTeamStats::insert($data->toArray())
+        );
     }
 }

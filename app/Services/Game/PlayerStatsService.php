@@ -25,8 +25,10 @@ class PlayerStatsService
 
     public function handle(Games $game, array $data): void
     {
-        $this->game = $game;
-        $this->skaters = $this->goalies = [];
+        $this->game    = $game;
+        $this->skaters = [];
+        $this->goalies = [];
+
         foreach ($data['liveData']['boxscore']['teams'] as $team) {
             $this->teamId = $team['team']['id'];
             foreach ($team['players'] as $player) {

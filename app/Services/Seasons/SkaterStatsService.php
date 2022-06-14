@@ -53,8 +53,8 @@ class SkaterStatsService
           ->get();
 
         SeasonSkaterStats::truncate();
-        $stats->chunk(100)->each(function($data): void {
-            SeasonSkaterStats::insert($data->toArray());
-        });
+        $stats->chunk(500)->each(fn($data) =>
+            SeasonSkaterStats::insert($data->toArray())
+        );
     }
 }
