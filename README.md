@@ -94,17 +94,16 @@ Game IDs are a unique identifier assigned to each game. They are 10 characters i
 
 # Testing / Static Analysis
 
-PHP Unit - `sail artisan test`
+PHP Unit
+`sail artisan test`
 
-PHP Stan - `./vendor/bin/phpstan analyse app`
+PHP Stan (Level 8)
+`./vendor/bin/phpstan analyse app`
 
 <br />
 
 # Road Map
-- User-Agent spoofing
-- Proxy / TOR connection
 - Additional test coverage
     - games command
-
 - HTML game logs
 - Advanced stats calculations
