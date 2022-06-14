@@ -42,7 +42,7 @@ Fetch one game:<br />
 Fetch a range of games:<br />
 `sail artisan nhl:games 2020020001-2020020500`
 
-By default commands will not overwrite previously imported games. You may use the `--overwrite` option to override.
+**Note**: By default commands will not overwrite previously imported games. You may use the `--overwrite` option to override.
 
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
@@ -51,7 +51,7 @@ Fetch schedule for all seasons:<br />
 Fetch schedule for specified season:<br />
 `sail artisan nhl:schedule {season} --overwrite=true|false`
 
-By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
+**Note**: By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 
 ### Calculation Commands
 These commands use calculate season/alltime stats from fetched game data.<br />
