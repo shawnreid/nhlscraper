@@ -11,10 +11,16 @@ class ScheduleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_fetch_games_all_seasons(): void
+    /**
+     * Test artisan nhl:schedule can fetch schedule for all seasons
+     *
+     * @return void
+    */
+
+    public function test_console_nhl_games_all_seasons(): void
     {
         Queue::fake();
-        $this->artisan('fetch:schedule')
+        $this->artisan('nhl:schedule')
              ->assertExitCode(0);
         Queue::assertPushed(ScheduleJob::class);
     }

@@ -20,7 +20,13 @@ class GameTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_fetch_game_data_from_nhl_api(): void
+    /**
+     * Test GameService can parse json and save to database
+     *
+     * @return void
+    */
+
+    public function test_can_nhl_game_data_from_nhl_api(): void
     {
         Http::fake(['*' => $this->fakeJson('game')]);
         $games = Games::factory()->create();

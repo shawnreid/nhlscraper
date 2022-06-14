@@ -12,7 +12,13 @@ class ScheduleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_fetch_games_from_nhl_api(): void
+    /**
+     * Test ScheduleService can parse json and save to database
+     *
+     * @return void
+    */
+
+    public function test_can_nhl_games_from_nhl_api(): void
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 

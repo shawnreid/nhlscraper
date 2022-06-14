@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Queue;
 
 class GameCommand extends Command
 {
-    protected $signature   = 'fetch:games {gameid?} {--overwrite}';
+    protected $signature   = 'nhl:games {gameid?} {--overwrite}';
     protected $description = 'Fetch data for given game or all games.';
     private mixed $option;
     private bool  $overwrite;

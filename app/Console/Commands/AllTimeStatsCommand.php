@@ -8,10 +8,10 @@ use App\Jobs\Alltime\SkaterStatsJob;
 use App\Jobs\Alltime\TeamStatsJob;
 use Illuminate\Support\Facades\Queue;
 
-class AlltimeStatsCommand extends Command
+class AllTimeStatsCommand extends Command
 {
-    protected $signature   = 'fetch:alltime {target}';
-    protected $description = 'Fetch stats grouped by alltime for target';
+    protected $signature   = 'nhl:alltime {category?}';
+    protected $description = 'Calculate alltime stats for specified category';
 
     public function __construct()
     {
@@ -26,22 +26,43 @@ class AlltimeStatsCommand extends Command
 
     public function handle(): int
     {
-        $target = $this->argument('target');
+        $category = $this->argument('category');
 
-        $status = match($target) {
+        $status = match($category) {
             'skaters' => $this->skaters(),
             'goalies' => $this->goalies(),
             'teams'   => $this->teams(),
-            default   => $this->errorMessage()
+            null      => $this->all(),
+            default   => null
         };
 
-        $this->info($this->message($target));
+        if (is_null($status)) {
+            $this->error('Invalid category. Usage: artisan nhl:alltime {skaters|goalies|teams?}');
+            return 1;
+        }
+
+        $this->info($this->message($category ?? 'all categories'));
 
         return $status;
     }
 
     /**
-     * Fetch skater all-time stats
+     * Fetch alltime stats for all categories
+     *
+     * @return int
+    */
+
+    private function all(): int
+    {
+        $this->skaters();
+        $this->goalies();
+        $this->teams();
+
+        return 0;
+    }
+
+    /**
+     * Fetch skater alltime stats
      *
      * @return int
     */
@@ -49,11 +70,12 @@ class AlltimeStatsCommand extends Command
     private function skaters(): int
     {
         SkaterStatsJob::dispatch();
+
         return 0;
     }
 
     /**
-     * Fetch goalie all-time stats
+     * Fetch goalie alltime stats
      *
      * @return int
     */
@@ -61,11 +83,12 @@ class AlltimeStatsCommand extends Command
     private function goalies(): int
     {
         GoalieStatsJob::dispatch();
+
         return 0;
     }
 
     /**
-     * Fetch team all-time stats
+     * Fetch team alltime stats
      *
      * @return int
     */
@@ -73,19 +96,8 @@ class AlltimeStatsCommand extends Command
     private function teams(): int
     {
         TeamStatsJob::dispatch();
+
         return 0;
-    }
-
-    /**
-     * Return error
-     *
-     * @return int
-    */
-
-    private function errorMessage(): int
-    {
-        $this->error('Invalid target. Usage: artisan fetch:alltime');
-        return 1;
     }
 
     /**

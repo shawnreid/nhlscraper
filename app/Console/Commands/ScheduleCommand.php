@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Queue;
 
 class ScheduleCommand extends Command
 {
-    protected $signature   = 'fetch:schedule {season?}';
+    protected $signature   = 'nhl:schedule {season?}';
     protected $description = 'Fetch schedule for given season or all seasons.';
     protected int $season;
 

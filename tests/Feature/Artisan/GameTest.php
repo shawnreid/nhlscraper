@@ -12,23 +12,35 @@ class GameTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_fetch_games_valid_game(): void
+    /**
+     * Test artisan nhl:games {gameid} can fetch a game
+     *
+     * @return void
+    */
+
+    public function test_console_nhl_games_valid_game(): void
     {
         Queue::fake();
         Games::factory()->create();
 
         $gameId = 2019020001;
-        $this->artisan("fetch:games {$gameId}")
+        $this->artisan("nhl:games {$gameId}")
              ->assertExitCode(0);
 
         Queue::assertPushed(GameJob::class);
     }
 
-    public function test_console_fetch_games_for_all_seasons(): void
+    /**
+     * Test artisan nhl:games can fetch all games
+     *
+     * @return void
+    */
+
+    public function test_console_nhl_games_for_all_seasons(): void
     {
         Queue::fake();
         Games::factory()->create();
-        $this->artisan('fetch:games')
+        $this->artisan('nhl:games')
              ->assertExitCode(0);
         Queue::assertPushed(GameJob::class);
     }

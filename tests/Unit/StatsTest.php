@@ -9,7 +9,13 @@ use Tests\TestCase;
 class StatsTest extends TestCase
 {
     use RefreshDatabase;
-    
+
+    /**
+     * Test time on ice mm:ss can be converted to seconds
+     *
+     * @return void
+    */
+
     public function test_toi_to_seconds_conversion(): void
     {
         $data = [
@@ -23,7 +29,7 @@ class StatsTest extends TestCase
 
         $stats = new StatsService;
         foreach ($data as $toi => $expected) {
-            $this->assertEquals($stats->toiToSeconds((string) $toi), $expected);
+            $this->assertEquals($stats->toiToSeconds($toi), $expected);
         }
     }
 }

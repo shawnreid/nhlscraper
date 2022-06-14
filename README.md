@@ -16,7 +16,7 @@ The data from the API is not 100% perfect. There is sometimes inconsistencies wi
 5) `sail composer install`
 6) `sail artisan migrate:fresh --seed`
 7) `sail artisan horizon`
-8) `sail artisan fetch:schedule`
+8) `sail artisan nhl:schedule`
 
 After fetching schedule you are free to pick and choose which seasons you wish to import. There is a variety of different ways listed below.
 
@@ -28,35 +28,35 @@ These commands are used to fetch data from NHL API. Before fetching game data th
 ### Game Data
 
 Fetch all games:<br />
-`sail artisan fetch:games --overwrite=true|false`
+`sail artisan nhl:games --overwrite=true|false`
 
 Fetch all games for a season:<br />
-`sail artisan fetch:games 20162017 --overwrite=true|false`
+`sail artisan nhl:games 20162017 --overwrite=true|false`
 
 Fetch all games for a range of seasons:<br />
-`sail artisan fetch:games 20162017-20192020 --overwrite=true|false`
+`sail artisan nhl:games 20162017-20192020 --overwrite=true|false`
 
 Fetch one game:<br />
-`sail artisan fetch:games {gameid} --overwrite=true|false`
+`sail artisan nhl:games {gameid} --overwrite=true|false`
 
 Fetch a range of games:<br />
-`sail artisan fetch:games 2020020001-2020020500 --overwrite=true|false`
+`sail artisan nhl:games 2020020001-2020020500 --overwrite=true|false`
 
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
-`sail artisan fetch:schedule`
+`sail artisan nhl:schedule`
 
 Fetch schedule for specified season:<br />
-`sail artisan fetch:schedule {season}`
+`sail artisan nhl:schedule {season}`
 
 ### Calculation Commands
 These commands use calculate season/alltime stats from fetched game data.<br />
 
 Calculate all-time stats skater/goalie/team:<br />
-`sail artisan fetch:alltime {skaters|goalies|teams}`
+`sail artisan nhl:alltime {skaters|goalies|teams?}`
 
 Calculate season stats skater/goalie/team:<br />
-`sail artisan fetch:season {skaters|goalies|teams}`
+`sail artisan nhl:season {skaters|goalies|teams?}`
 
 <br />
 

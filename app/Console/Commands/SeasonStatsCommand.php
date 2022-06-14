@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Queue;
 
 class SeasonStatsCommand extends Command
 {
-    protected $signature   = 'fetch:season {target}';
-    protected $description = 'Fetch stats for target grouped by season.';
+    protected $signature   = 'nhl:season {category?}';
+    protected $description = 'Calculate season stats for specified category';
 
     public function __construct()
     {
@@ -26,18 +26,39 @@ class SeasonStatsCommand extends Command
 
     public function handle(): int
     {
-        $target = $this->argument('target');
+        $category = $this->argument('category');
 
-        $status = match($target) {
+        $status = match($category) {
             'skaters' => $this->skaters(),
             'goalies' => $this->goalies(),
             'teams'   => $this->teams(),
-            default   => $this->errorMessage()
+            null      => $this->all(),
+            default   => null
         };
 
-        $this->info($this->message($target));
+        if (is_null($status)) {
+            $this->error('Invalid category. Usage: artisan nhl:season {skaters|goalies|teams?}');
+            return 1;
+        }
+
+        $this->info($this->message($category ?? 'all categories'));
 
         return $status;
+    }
+
+    /**
+     * Fetch season stats for all categories
+     *
+     * @return int
+    */
+
+    private function all(): int
+    {
+        $this->skaters();
+        $this->goalies();
+        $this->teams();
+
+        return 0;
     }
 
     /**
@@ -49,6 +70,7 @@ class SeasonStatsCommand extends Command
     protected function skaters(): int
     {
         SkaterStatsJob::dispatch();
+
         return 0;
     }
 
@@ -61,6 +83,7 @@ class SeasonStatsCommand extends Command
     protected function goalies(): int
     {
         GoalieStatsJob::dispatch();
+
         return 0;
     }
 
@@ -73,19 +96,8 @@ class SeasonStatsCommand extends Command
     protected function teams(): int
     {
         TeamStatsJob::dispatch();
+
         return 0;
-    }
-
-    /**
-     * Return error
-     *
-     * @return int
-    */
-
-    protected function errorMessage(): int
-    {
-        $this->error('Invalid target. Usage: artisan fetch:season {season}');
-        return 1;
     }
 
     /**

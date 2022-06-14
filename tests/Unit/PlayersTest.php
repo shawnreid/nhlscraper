@@ -10,6 +10,12 @@ class PlayersTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * Test height can be converted to inches
+     *
+     * @return void
+    */
+
     public function test_height_to_inches_conversion(): void
     {
         $data = [
