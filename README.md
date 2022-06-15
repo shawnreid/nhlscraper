@@ -1,5 +1,14 @@
 # Introduction
-Boilerplate laravel application created to scrape various API data from https://nhl.com. This tool is currently able to scrape Game Schedules, Player Information, Game Information (Play By Play, Team Stats, Skater / Goalie Stats). Season / all time stats are summarized based off game information scraped, missing game data will lead to incorrect totals. 
+Boilerplate laravel application to scrape various API data from https://nhl.com. 
+
+This tool is currently able to scrape:
+- Game Schedules
+- Player Information
+- Game Play By Play
+- Game Team Stats
+- Skater / Goalie Stats
+
+Season / alltime stats are summarized based off game information scraped, missing game data will lead to incorrect totals. 
 
 <br />
 
@@ -13,12 +22,10 @@ Boilerplate laravel application created to scrape various API data from https://
 6) `sail artisan migrate:fresh --seed`
 7) `sail artisan horizon`
 
-Before importing game data you must first fetch schedule for all seasons or the season you are looking to scrape. See below for more details. 
-
 <br />
 
-# Data Fetching Commands
-These commands are used to fetch data from NHL API. Before fetching game data the schedule tables must be populated.<br />
+# Data Scraping Commands
+These commands are used to scrape data from NHL API. **Note:** Before scraping game data the schedule tables must be populated for all seasons or the season you are looking to scrape.<br />
 
 ### Game Data
 
@@ -26,16 +33,16 @@ Fetch all games:<br />
 `sail artisan nhl:games`
 
 Fetch all games for a season:<br />
-`sail artisan nhl:games 20162017`
+`sail artisan nhl:games 20192020`
 
 Fetch all games for a range of seasons:<br />
-`sail artisan nhl:games 20162017-20192020`
+`sail artisan nhl:games 20192020-20202021`
 
 Fetch one game:<br />
-`sail artisan nhl:games 2020020001`
+`sail artisan nhl:games 2019020001`
 
 Fetch a range of games:<br />
-`sail artisan nhl:games 2020020001-2020020500`
+`sail artisan nhl:games 2019020001-2019020500`
 
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
@@ -75,12 +82,14 @@ Calculate season stats skater/goalie/team:<br />
 <br />
 
 # Worker Queue
-All fetching / calculation tasks are defered to a queue (games, schedule, calculate). More info on Laravel Horizon can be found [here](https://laravel.com/docs/9.x/horizon) 
+All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `calculate`). [More info on Laravel Horizon can be found here](https://laravel.com/docs/9.x/horizon) 
 
 <br />
 
 # Game IDs
-Game IDs are a unique identifier assigned to each game. They are 10 characters in length the first 4 characters describe the year. The next 2 characters describe the type of game (pre season = 01, regular season = 02, playoffs = 03), the remaining digits are used to describe the game. Exa
+Game ID is a unique identifier assigned to each game. 10 characters in length the first 4 characters describe the year. The next 2 characters describe the type of game (pre season = 01, regular season = 02, playoffs = 03), the remaining digits are used to describe the game. 
+
+Examples:
 - Game 100 of regular season: 2020020100
 - Game 15 of playoffs: 2020030015
 
