@@ -1,5 +1,5 @@
 # Introduction
-Boilerplate laravel application to scrape various API data from https://nhl.com. 
+Boilerplate Laravel application to scrape various API data from https://nhl.com.
 
 This tool is currently able to scrape:
 - Game Schedules
@@ -25,7 +25,9 @@ Season / alltime stats are summarized based off game information scraped, missin
 <br />
 
 # Data Scraping Commands
-These commands are used to scrape data from NHL API. **Note:** Before scraping game data the schedule tables must be populated for all seasons or the season you are looking to scrape.<br />
+Commands used to scrape data from NHL API. 
+
+**Note:** Before scraping game data the schedule tables must be populated for all seasons or the season you are looking to scrape.<br />
 
 ### Game Data
 
@@ -57,7 +59,7 @@ Fetch schedule for range of seasons:<br />
 **Note**: By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 
 # Calculation Commands
-These commands use calculate season/alltime stats from fetched game data.<br />
+Commands use calculate season/alltime stats from fetched game data.<br />
 
 Calculate all-time stats skater/goalie/team:<br />
 `sail artisan nhl:alltime {skaters|goalies|teams?}`
@@ -82,7 +84,9 @@ Calculate season stats skater/goalie/team:<br />
 <br />
 
 # Worker Queue
-All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `calculate`). [More info on Laravel Horizon can be found here](https://laravel.com/docs/9.x/horizon) 
+All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `calculate`). 
+
+[More info on Laravel Horizon can be found here](https://laravel.com/docs/9.x/horizon) 
 
 <br />
 
