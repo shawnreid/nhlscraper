@@ -27,7 +27,11 @@ Season / alltime stats are summarized based off game information scraped, missin
 # Data Scraping Commands
 Commands used to scrape data from NHL API. 
 
-**Note:** Before scraping game data the schedule tables must be populated for all seasons or the season you are looking to scrape.<br />
+**Note:** 
+- Before scraping game data the schedules must be scraped for all seasons or the season you are looking to scrape.
+- By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
+
+<br />
 
 ### Game Data
 
@@ -55,8 +59,6 @@ Fetch schedule for specified season:<br />
 
 Fetch schedule for range of seasons:<br />
 `sail artisan nhl:schedule 20192020-20202021`
-
-**Note**: By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 
 # Calculation Commands
 Commands use calculate season/alltime stats from fetched game data.<br />
