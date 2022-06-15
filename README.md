@@ -8,7 +8,7 @@ This tool is currently able to scrape:
 - Game Team Stats
 - Game Skater / Goalie Stats
 
-Season / alltime stats are summarized based off game information scraped, missing game data will lead to incorrect totals. 
+Season / All Time stats are summarized based off game information scraped, missing game data will lead to incorrect totals. 
 
 <br />
 
