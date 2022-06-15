@@ -1,5 +1,5 @@
 # Introduction
-Boilerplate Laravel application to scrape various API data from https://nhl.com.
+Boilerplate Laravel 9x application to scrape API data from https://nhl.com.
 
 This tool is currently able to scrape:
 - Game Schedules
