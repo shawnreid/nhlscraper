@@ -50,6 +50,8 @@ Fetch one game:<br />
 Fetch a range of games:<br />
 `sail artisan nhl:games 2019020001-2019020500`
 
+<br />
+
 ### Schedule / Game Scores
 Fetch schedule for all seasons:<br />
 `sail artisan nhl:schedule`
@@ -59,6 +61,8 @@ Fetch schedule for specified season:<br />
 
 Fetch schedule for range of seasons:<br />
 `sail artisan nhl:schedule 20192020-20202021`
+
+<br />
 
 # Calculation Commands
 Commands use calculate season/alltime stats from fetched game data.<br />
