@@ -99,7 +99,7 @@ All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `c
 # Game IDs
 Game ID is a unique identifier assigned to each game. 10 characters in length the first 4 characters describe the year. The next 2 characters describe the type of game (pre season = 01, regular season = 02, playoffs = 03), the remaining digits are used to describe the game. 
 
-Examples:
+**Examples:**
 - Game 100 of regular season: 2020020100
 - Game 15 of playoffs: 2020030015
 
