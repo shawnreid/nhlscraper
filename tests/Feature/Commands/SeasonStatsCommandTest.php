@@ -1,41 +1,41 @@
 <?php
 
-namespace Tests\Feature\Artisan;
+namespace Tests\Feature\Commands;
 
-use App\Jobs\Alltime\GoalieStatsJob;
-use App\Jobs\Alltime\SkaterStatsJob;
-use App\Jobs\Alltime\TeamStatsJob;
+use App\Jobs\Seasons\GoalieStatsJob;
+use App\Jobs\Seasons\SkaterStatsJob;
+use App\Jobs\Seasons\TeamStatsJob;
 use App\Models\Games\Games;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
-class AllTimeStatsCommandTest extends TestCase
+class SeasonStatsCommandTest extends TestCase
 {
     use RefreshDatabase;
 
     private array $messages = [
-        'skaters' => 'Alltime calculation for skaters queued for synchronization.',
-        'goalies' => 'Alltime calculation for goalies queued for synchronization.',
-        'teams'   => 'Alltime calculation for teams queued for synchronization.',
-        'all'     => 'Alltime calculation for all categories queued for synchronization.',
-        'error'   => 'Invalid category. Usage: artisan nhl:alltime {skaters|goalies|teams?}'
+        'skaters' => 'Season calculation for skaters queued for synchronization.',
+        'goalies' => 'Season calculation for goalies queued for synchronization.',
+        'teams'   => 'Season calculation for teams queued for synchronization.',
+        'all'     => 'Season calculation for all categories queued for synchronization.',
+        'error'   => 'Invalid category. Usage: artisan nhl:season {skaters|goalies|teams?}'
     ];
 
     /**
-     * Test artisan nhl:alltime {skaters} can queue job for skaters
+     * Test artisan nhl:season {skaters} can queue job for skaters
      *
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_skater_job(): void
+    public function test_console_nhl_season_queues_skater_job(): void
     {
         Queue::fake();
         Games::factory()->create();
 
         $category = 'skaters';
-        $this->artisan("nhl:alltime {$category}")
-             ->expectsOutputToContain($this->messages[$category])
+        $this->artisan("nhl:season {$category}")
+            ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(GoalieStatsJob::class);
@@ -44,19 +44,19 @@ class AllTimeStatsCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:alltime {goalies} can queue job for goalies
+     * Test artisan nhl:season {goalies} can queue job for goalies
      *
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_goalie_job(): void
+    public function test_console_nhl_season_queues_goalie_job(): void
     {
         Queue::fake();
         Games::factory()->create();
 
         $category = 'goalies';
-        $this->artisan("nhl:alltime {$category}")
-             ->expectsOutputToContain($this->messages[$category])
+        $this->artisan("nhl:season {$category}")
+            ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(TeamStatsJob::class);
@@ -65,19 +65,19 @@ class AllTimeStatsCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:alltime {teams} can queue job for teams
+     * Test artisan nhl:season {teams} can queue job for teams
      *
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_team_job(): void
+    public function test_console_nhl_season_queues_team_job(): void
     {
         Queue::fake();
         Games::factory()->create();
 
         $category = 'teams';
-        $this->artisan("nhl:alltime {$category}")
-             ->expectsOutputToContain($this->messages[$category])
+        $this->artisan("nhl:season {$category}")
+            ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(0);
 
         Queue::assertNotPushed(SkaterStatsJob::class);
@@ -86,18 +86,18 @@ class AllTimeStatsCommandTest extends TestCase
     }
 
     /**
-     * Test artisan nhl:alltime can queue job for all categories
+     * Test artisan nhl:season can queue job for all categories
      *
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_all_job(): void
+    public function test_console_nhl_season_queues_all_job(): void
     {
         Queue::fake();
         Games::factory()->create();
 
-        $this->artisan("nhl:alltime")
-             ->expectsOutputToContain($this->messages['all'])
+        $this->artisan("nhl:season")
+            ->expectsOutputToContain($this->messages['all'])
              ->assertExitCode(0);
 
         Queue::assertPushed(SkaterStatsJob::class);
@@ -106,19 +106,19 @@ class AllTimeStatsCommandTest extends TestCase
     }
 
     /**
-     * Test invalid artisan nhl:alltime will throw error
+     * Test invalid artisan nhl:season will throw error
      *
      * @return void
     */
 
-    public function test_console_nhl_alltime_returns_invalid_category(): void
+    public function test_console_nhl_season_returns_invalid_category(): void
     {
         Queue::fake();
         Games::factory()->create();
 
         $category = 'error';
-        $this->artisan("nhl:alltime {$category}")
-             ->expectsOutputToContain($this->messages[$category])
+        $this->artisan("nhl:season {$category}")
+            ->expectsOutputToContain($this->messages[$category])
              ->assertExitCode(1);
 
         Queue::assertNotPushed(SkaterStatsJob::class);

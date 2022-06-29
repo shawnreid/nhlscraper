@@ -1,12 +1,11 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Services\Game;
 
 use App\Models\Games\Games;
 use App\Models\Games\GoalieStats;
 use App\Models\Games\SkaterStats;
 use App\Models\Games\PlayByPlay;
-use App\Models\Players;
 use App\Services\Game\GameService;
 use App\Services\Game\PlayerStatsService;
 use App\Services\Game\PlayersService;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Artisan;
+namespace Tests\Feature\Commands;
 
 use App\Jobs\ScheduleJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;

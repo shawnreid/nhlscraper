@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Artisan;
+namespace Tests\Feature\Commands;
 
 use App\Jobs\GameJob;
 use App\Models\Games\Games;
