@@ -27,7 +27,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_games_queues_specific_game(): void
+    public function test_console_artisan_nhl_games_queues_specific_game(): void
     {
         Queue::fake();
 
@@ -47,7 +47,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_queues_range_of_games(): void
+    public function test_console_artisan_nhl_schedule_queues_range_of_games(): void
     {
         Queue::fake();
 
@@ -67,7 +67,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_games_queues_games_for_specific_season(): void
+    public function test_console_artisan_nhl_games_queues_games_for_specific_season(): void
     {
         Queue::fake();
 
@@ -87,7 +87,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_queues_range_of_seasons(): void
+    public function test_console_artisan_nhl_schedule_queues_range_of_seasons(): void
     {
         Queue::fake();
 
@@ -107,7 +107,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_games_queues_all_games(): void
+    public function test_console_artisan_nhl_games_queues_all_games(): void
     {
         Queue::fake();
 
@@ -126,7 +126,7 @@ class GamesCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_games_returns_invalid_category(): void
+    public function test_console_artisan_nhl_games_returns_invalid_category(): void
     {
         Queue::fake();
 

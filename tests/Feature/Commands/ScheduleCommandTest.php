@@ -23,7 +23,7 @@ class ScheduleCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_queues_specific_season(): void
+    public function test_console_artisan_nhl_schedule_queues_specific_season(): void
     {
         Queue::fake();
 
@@ -41,7 +41,7 @@ class ScheduleCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_queues_range_of_seasons(): void
+    public function test_console_artisan_nhl_schedule_queues_range_of_seasons(): void
     {
         Queue::fake();
 
@@ -59,7 +59,7 @@ class ScheduleCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_queues_all_seasons(): void
+    public function test_console_artisan_nhl_schedule_queues_all_seasons(): void
     {
         Queue::fake();
 
@@ -76,7 +76,7 @@ class ScheduleCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_schedule_returns_invalid_category(): void
+    public function test_console_artisan_nhl_schedule_returns_invalid_category(): void
     {
         Queue::fake();
 

@@ -23,7 +23,7 @@ class GameTest extends TestCase
      * @return void
     */
 
-    public function test_can_nhl_game_data_from_nhl_api(): void
+    public function test_can_fetch_nhl_game_data_from_nhl_api(): void
     {
         Http::fake(['*' => $this->fakeJson('game')]);
         $games = Games::factory()->create();

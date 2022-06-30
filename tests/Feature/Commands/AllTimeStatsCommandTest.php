@@ -28,7 +28,7 @@ class AllTimeStatsCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_skater_job(): void
+    public function test_console_artisan_nhl_alltime_queues_skater_job(): void
     {
         Queue::fake();
         Games::factory()->create();
@@ -49,7 +49,7 @@ class AllTimeStatsCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_goalie_job(): void
+    public function test_console_artisan_nhl_alltime_queues_goalie_job(): void
     {
         Queue::fake();
         Games::factory()->create();
@@ -70,7 +70,7 @@ class AllTimeStatsCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_team_job(): void
+    public function test_console_artisan_nhl_alltime_queues_team_job(): void
     {
         Queue::fake();
         Games::factory()->create();
@@ -91,7 +91,7 @@ class AllTimeStatsCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_alltime_queues_all_job(): void
+    public function test_console_artisan_nhl_alltime_queues_all_job(): void
     {
         Queue::fake();
         Games::factory()->create();
@@ -111,7 +111,7 @@ class AllTimeStatsCommandTest extends TestCase
      * @return void
     */
 
-    public function test_console_nhl_alltime_returns_invalid_category(): void
+    public function test_console_artisan_nhl_alltime_returns_invalid_category(): void
     {
         Queue::fake();
         Games::factory()->create();

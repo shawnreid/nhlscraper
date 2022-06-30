@@ -25,7 +25,7 @@ enum PlayerPosition: string
             self::RIGHT_WING    => 'Right Wing',
             self::LEFT_DEFENSE  => 'Left Defense',
             self::RIGHT_DEFENSE => 'Right Defense',
-            default             => 'Goalie'
+            self::GOALIE        => 'Goalie'
         };
     }
 }

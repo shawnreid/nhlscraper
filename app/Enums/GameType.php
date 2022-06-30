@@ -19,7 +19,7 @@ enum GameType: int
         return match($this) {
             self::PRE_SEASON     => 'Pre Season',
             self::REGULAR_SEASON => 'Regular Season',
-            default              => 'Playoffs'
+            self::PLAYOFFS       => 'Playoffs'
         };
     }
 }

@@ -2,13 +2,14 @@
 
 namespace Tests\Unit\Services\Game;
 
+use App\Jobs\ScheduleJob;
 use App\Models\Games\Games;
 use App\Services\Game\ScheduleService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
-class ScheduleTest extends TestCase
+class ScheduleJobTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,11 +19,11 @@ class ScheduleTest extends TestCase
      * @return void
     */
 
-    public function test_can_fetch_nhl_schedule_from_nhl_api(): void
+    public function test_schedule_job_fires(): void
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 
-        (new ScheduleService)->handle($this->getSeason());
+        (new ScheduleJob($this->getSeason()))->handle(new ScheduleService());
 
         $this->assertEquals(Games::count(), 1213);
     }
