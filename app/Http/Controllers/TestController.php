@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Games\Games;
-use App\Services\Game\GameService;
-use Illuminate\Http\Request;
+use App\Models\Games\GoalieStats;
 
 class TestController extends Controller
 {
     public function index() {
-        $game = Games::find(2016020001);
-        (new GameService)->handle($game);
+        $stats = GoalieStats::factory()->count(10)->create();
+        dd($stats->avg('pp_svp'));
     }
 }

@@ -13,7 +13,7 @@ class GamesFactory extends Factory
     {
         return [
             'id'           => '2019020001',
-            'season_id'      => 20192020,
+            'season_id'    => '20192020',
             'date'         => '2019-10-02',
             'game_type_id' => 2,
             'home_id'      => 10,

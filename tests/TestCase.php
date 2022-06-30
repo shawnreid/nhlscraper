@@ -2,7 +2,9 @@
 
 namespace Tests;
 
+use App\Models\Games\Games;
 use App\Models\Seasons\Seasons;
+use App\Services\Game\GameService;
 use Database\Seeders\DatabaseSeeder;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -28,5 +30,12 @@ abstract class TestCase extends BaseTestCase
     public function getSeason(): Seasons
     {
         return Seasons::find(20192020);
+    }
+
+    public function fakeGame()
+    {
+        Http::fake(['*' => $this->fakeJson('game')]);
+        $games = Games::factory()->create();
+        (new GameService)->handle($games);
     }
 }

@@ -6,11 +6,9 @@ use App\Models\Games\Games;
 use App\Models\Games\GoalieStats;
 use App\Models\Games\SkaterStats;
 use App\Models\Games\PlayByPlay;
-use App\Services\Game\GameService;
 use App\Services\Game\PlayerStatsService;
 use App\Services\Game\PlayersService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class GameTest extends TestCase
@@ -25,15 +23,16 @@ class GameTest extends TestCase
 
     public function test_can_fetch_nhl_game_data_from_nhl_api(): void
     {
-        Http::fake(['*' => $this->fakeJson('game')]);
-        $games = Games::factory()->create();
+        $this->fakeGame();
 
-        (new GameService)->handle($games);
-
+        $game = Games::first();
         $this->assertEquals(SkaterStats::count(), 36);
         $this->assertEquals(GoalieStats::count(), 2);
         $this->assertEquals(PlayByPlay::count(), 382);
+        $this->assertNotNull($game->home);
+        $this->assertNotNull($game->away);
     }
+
 
     /**
      * Test height can be converted to inches
