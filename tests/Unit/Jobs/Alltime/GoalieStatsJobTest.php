@@ -19,7 +19,7 @@ class GoalieStatsJobTest extends TestCase
      */
     public function test_alltime_goalie_stats_job_fires_and_calculates_stats(): void
     {
-        $this->fakeGame();
+        $this->fakeGame('game1');
 
         (new GoalieStatsJob())->handle(new GoalieStatsService());
 

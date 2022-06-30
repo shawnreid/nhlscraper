@@ -6,6 +6,7 @@ use App\Models\Games\Games;
 use App\Models\Games\GoalieStats;
 use App\Models\Games\SkaterStats;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class PlayerStatsService
 {
@@ -121,29 +122,32 @@ class PlayerStatsService
                 'pp_toi'        => $this->toiToSeconds(_s($stats['powerPlayTimeOnIce'], 0)),
                 'sh_toi'        => $this->toiToSeconds(_s($stats['shortHandedTimeOnIce'], 0)),
             ];
-        } else {
-            $this->statsNotFound();
-        }
+        } #else {
+        #    $this->statsNotFound();
+        #}
     }
 
     /**
      * If no stats check this endpoint
      *
      * @return void
-     */
     private function statsNotFound(): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/people/{$this->playerId}/stats?stats=gameLog&season={$this->game->season_id}")->json();
 
         if (isset($data['stats'][0]['splits'])) {
             foreach ($data['stats'][0]['splits'] as $game) {
+                echo $this->playerId.' - '.$game['game']['gamePk'].' - '.$this->game->id."\n";
                 if ($game['game']['gamePk'] === $this->game->id) {
+                    Log::info("pid: {$this->playerId}, season: {$this->game->season_id}, game: {$this->game->id}");
                     $this->skater($game['stat']);
+                    echo "\n\n\n\n MATCH! \n\n\n\n";
                     break;
                 }
             }
         }
     }
+    */
 
     /**
      * Convert time on ice to seconds

@@ -20,21 +20,38 @@ abstract class TestCase extends BaseTestCase
         $this->seed(DatabaseSeeder::class);
     }
 
-    public function fakeJson(string $target): PromiseInterface
+    /**
+     * Return fake response from file
+     *
+     * @param string $file
+     * @return void
+    */
+    public function fakeJson(string $file): PromiseInterface
     {
         return Http::response(
-            (string) \file_get_contents(\storage_path()."/fakers/{$target}.json")
+            (string) \file_get_contents(\storage_path()."/fakers/{$file}.json")
         );
     }
 
+    /**
+     *  Get season
+     *
+     * @return Seasons
+    */
     public function getSeason(): Seasons
     {
         return Seasons::find(20192020);
     }
 
-    public function fakeGame()
+    /**
+     * Return test set of game data
+     *
+     * @param string $file
+     * @return void
+    */
+    public function fakeGame(string $file): void
     {
-        Http::fake(['*' => $this->fakeJson('game')]);
+        Http::fake(['*' => $this->fakeJson($file)]);
         $games = Games::factory()->create();
         (new GameService)->handle($games);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Services\Game;
+namespace Tests\Unit\Jobs;
 
 use App\Jobs\ScheduleJob;
 use App\Models\Games\Games;

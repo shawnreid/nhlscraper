@@ -43,8 +43,7 @@ class Games extends Model
             ->excludeFutureGames()
             ->overWriteData($overwrite)
             ->get()
-            ->each(fn (Games $game) => GameJob::dispatch($game)
-            );
+            ->each(fn (Games $game) => GameJob::dispatch($game));
     }
 
     /**
@@ -79,8 +78,7 @@ class Games extends Model
             ->overWriteData($overwrite)
             ->whereBetween('id', [$start, $end])
             ->get()
-            ->each(fn (Games $game) => GameJob::dispatch($game)
-            );
+            ->each(fn (Games $game) => GameJob::dispatch($game));
     }
 
     /**
@@ -97,8 +95,7 @@ class Games extends Model
             ->excludeFutureGames()
             ->whereSeasonId($season)
             ->get()
-            ->each(fn (Games $game) => GameJob::dispatch($game)
-            );
+            ->each(fn (Games $game) => GameJob::dispatch($game));
     }
 
     /**
@@ -116,8 +113,7 @@ class Games extends Model
             ->excludeFutureGames()
             ->whereBetween('season_id', [$start, $end])
             ->get()
-            ->each(fn (Games $game) => GameJob::dispatch($game)
-            );
+            ->each(fn (Games $game) => GameJob::dispatch($game));
     }
 
     /**

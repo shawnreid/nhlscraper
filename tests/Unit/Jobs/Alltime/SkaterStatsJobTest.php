@@ -8,7 +8,7 @@ use App\Services\Alltime\SkaterStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SkaterStatsTest extends TestCase
+class SkaterStatsJobTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,7 +19,7 @@ class SkaterStatsTest extends TestCase
      */
     public function test_alltime_skater_stats_job_fires_and_calculates_stats(): void
     {
-        $this->fakeGame();
+        $this->fakeGame('game1');
 
         (new SkaterStatsJob())->handle(new SkaterStatsService());
 

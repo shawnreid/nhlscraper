@@ -8,7 +8,7 @@ This tool is currently able to scrape:
 - Game Team Stats
 - Game Skater / Goalie Stats
 
-Season / All Time stats are summarized based off game information scraped, missing game data will lead to incorrect totals. 
+Season / All Time stats are summarized based off game information scraped, missing game data will lead to incorrect totals.
 
 <br />
 
@@ -25,9 +25,9 @@ Season / All Time stats are summarized based off game information scraped, missi
 <br />
 
 # Data Scraping Commands
-Commands used to scrape data from NHL API. 
+Commands used to scrape data from NHL API.
 
-**Note:** 
+**Note:**
 - Before scraping game data the schedules must be scraped for all seasons or the season you are looking to scrape.
 - By default commands will not overwrite previously imported schedules. You may use the `--overwrite` option to override.
 
@@ -90,14 +90,14 @@ Calculate season stats skater/goalie/team:<br />
 <br />
 
 # Worker Queue
-All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `calculate`). 
+All scraping / calculation tasks are defered to a queue (`games`, `schedule`, `calculate`).
 
-[More info on Laravel Horizon can be found here](https://laravel.com/docs/9.x/horizon) 
+[More info on Laravel Horizon can be found here](https://laravel.com/docs/9.x/horizon)
 
 <br />
 
 # Game IDs
-Game ID is a unique identifier assigned to each game. 10 characters in length the first 4 characters describe the year. The next 2 characters describe the type of game (pre season = 01, regular season = 02, playoffs = 03), the remaining digits are used to describe the game. 
+Game ID is a unique identifier assigned to each game. 10 characters in length the first 4 characters describe the year. The next 2 characters describe the type of game (pre season = 01, regular season = 02, playoffs = 03), the remaining digits are used to describe the game.
 
 **Examples:**
 - Game 100 of regular season: 2020020100
@@ -121,3 +121,5 @@ PHP Stan (Level 8)
 - HTML game logs (?)
 - Advanced stats calculations
 - Find alternative to Player Info
+- change alltime/season to fetches.
+- verify removing statsNotFound is ok?

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Services\Alltime;
+namespace Tests\Unit\Jobs\Alltime;
 
 use App\Jobs\Alltime\TeamStatsJob;
 use App\Models\Alltime\TeamStats;
@@ -8,7 +8,7 @@ use App\Services\Alltime\TeamStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class TeamStatsTest extends TestCase
+class TeamStatsJobTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,7 +19,7 @@ class TeamStatsTest extends TestCase
      */
     public function test_alltime_team_stats_job_fires_and_calculates_stats(): void
     {
-        $this->fakeGame();
+        $this->fakeGame('game1');
 
         (new TeamStatsJob())->handle(new TeamStatsService());
 

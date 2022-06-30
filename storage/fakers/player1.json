@@ -1,0 +1,1447 @@
+{
+    "copyright": "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2022. All Rights Reserved.",
+    "stats": [
+      {
+        "type": {
+          "displayName": "gameLog",
+          "gameType": null
+        },
+        "splits": [
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 8,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "8",
+              "shotPct": 100.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 40,
+              "name": "Detroit Cougars",
+              "link": "/api/v1/teams/40"
+            },
+            "date": "1928-03-01",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020180,
+              "link": "/api/v1/game/1927020180/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020180/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 16,
+              "name": "Chicago Blackhawks",
+              "link": "/api/v1/teams/16"
+            },
+            "date": "1928-02-28",
+            "isHome": false,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020177,
+              "link": "/api/v1/game/1927020177/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020177/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 2,
+              "goals": 1,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 33.3,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 3
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 43,
+              "name": "Montreal Maroons",
+              "link": "/api/v1/teams/43"
+            },
+            "date": "1928-02-21",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020165,
+              "link": "/api/v1/game/1927020165/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020165/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 6,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "6",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 38,
+              "name": "Pittsburgh Pirates",
+              "link": "/api/v1/teams/38"
+            },
+            "date": "1928-02-18",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020158,
+              "link": "/api/v1/game/1927020158/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020158/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 1,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 10,
+              "name": "Toronto Maple Leafs",
+              "link": "/api/v1/teams/10"
+            },
+            "date": "1928-02-16",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020157,
+              "link": "/api/v1/game/1927020157/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020157/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 8,
+              "name": "Montréal Canadiens",
+              "link": "/api/v1/teams/8"
+            },
+            "date": "1928-02-14",
+            "isHome": false,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020153,
+              "link": "/api/v1/game/1927020153/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020153/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 9,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "9",
+              "shotPct": 50.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 10,
+              "name": "Toronto Maple Leafs",
+              "link": "/api/v1/teams/10"
+            },
+            "date": "1928-02-11",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020149,
+              "link": "/api/v1/game/1927020149/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020149/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 1,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 40,
+              "name": "Detroit Cougars",
+              "link": "/api/v1/teams/40"
+            },
+            "date": "1928-02-09",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020145,
+              "link": "/api/v1/game/1927020145/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020145/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 33.3,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 43,
+              "name": "Montreal Maroons",
+              "link": "/api/v1/teams/43"
+            },
+            "date": "1928-02-07",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020139,
+              "link": "/api/v1/game/1927020139/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020139/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 16,
+              "name": "Chicago Blackhawks",
+              "link": "/api/v1/teams/16"
+            },
+            "date": "1928-02-05",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020138,
+              "link": "/api/v1/game/1927020138/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020138/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 4,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "4",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 6,
+              "name": "Boston Bruins",
+              "link": "/api/v1/teams/6"
+            },
+            "date": "1928-01-31",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020131,
+              "link": "/api/v1/game/1927020131/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020131/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 7,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "7",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 3,
+              "name": "New York Rangers",
+              "link": "/api/v1/teams/3"
+            },
+            "date": "1928-01-29",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020128,
+              "link": "/api/v1/game/1927020128/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020128/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 36,
+              "name": "Ottawa Senators (1917)",
+              "link": "/api/v1/teams/36"
+            },
+            "date": "1928-01-24",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020118,
+              "link": "/api/v1/game/1927020118/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020118/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 25.0,
+              "gameWinningGoals": 1,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 43,
+              "name": "Montreal Maroons",
+              "link": "/api/v1/teams/43"
+            },
+            "date": "1928-01-19",
+            "isHome": true,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020112,
+              "link": "/api/v1/game/1927020112/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020112/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 8,
+              "name": "Montréal Canadiens",
+              "link": "/api/v1/teams/8"
+            },
+            "date": "1928-01-15",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020104,
+              "link": "/api/v1/game/1927020104/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020104/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 10,
+              "name": "Toronto Maple Leafs",
+              "link": "/api/v1/teams/10"
+            },
+            "date": "1928-01-10",
+            "isHome": true,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020095,
+              "link": "/api/v1/game/1927020095/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020095/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 36,
+              "name": "Ottawa Senators (1917)",
+              "link": "/api/v1/teams/36"
+            },
+            "date": "1928-01-07",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020092,
+              "link": "/api/v1/game/1927020092/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020092/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 38,
+              "name": "Pittsburgh Pirates",
+              "link": "/api/v1/teams/38"
+            },
+            "date": "1928-01-05",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020088,
+              "link": "/api/v1/game/1927020088/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020088/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 4,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "4",
+              "shotPct": 9.1,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 6,
+              "name": "Boston Bruins",
+              "link": "/api/v1/teams/6"
+            },
+            "date": "1928-01-01",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020082,
+              "link": "/api/v1/game/1927020082/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020082/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 4,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "4",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 3,
+              "name": "New York Rangers",
+              "link": "/api/v1/teams/3"
+            },
+            "date": "1927-12-29",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020076,
+              "link": "/api/v1/game/1927020076/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020076/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 10.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 40,
+              "name": "Detroit Cougars",
+              "link": "/api/v1/teams/40"
+            },
+            "date": "1927-12-27",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020074,
+              "link": "/api/v1/game/1927020074/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020074/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 43,
+              "name": "Montreal Maroons",
+              "link": "/api/v1/teams/43"
+            },
+            "date": "1927-12-24",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020069,
+              "link": "/api/v1/game/1927020069/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020069/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 43,
+              "name": "Montreal Maroons",
+              "link": "/api/v1/teams/43"
+            },
+            "date": "1927-12-22",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020065,
+              "link": "/api/v1/game/1927020065/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020065/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 11.1,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 10,
+              "name": "Toronto Maple Leafs",
+              "link": "/api/v1/teams/10"
+            },
+            "date": "1927-12-20",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020064,
+              "link": "/api/v1/game/1927020064/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020064/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 0,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "0",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 16,
+              "name": "Chicago Blackhawks",
+              "link": "/api/v1/teams/16"
+            },
+            "date": "1927-12-18",
+            "isHome": true,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020060,
+              "link": "/api/v1/game/1927020060/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020060/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 1,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 36,
+              "name": "Ottawa Senators (1917)",
+              "link": "/api/v1/teams/36"
+            },
+            "date": "1927-12-15",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020055,
+              "link": "/api/v1/game/1927020055/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020055/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 36,
+              "name": "Ottawa Senators (1917)",
+              "link": "/api/v1/teams/36"
+            },
+            "date": "1927-12-13",
+            "isHome": true,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020050,
+              "link": "/api/v1/game/1927020050/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020050/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 2,
+              "pim": 4,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "4",
+              "shotPct": 100.0,
+              "gameWinningGoals": 1,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 2
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 38,
+              "name": "Pittsburgh Pirates",
+              "link": "/api/v1/teams/38"
+            },
+            "date": "1927-12-10",
+            "isHome": false,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020046,
+              "link": "/api/v1/game/1927020046/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020046/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 40,
+              "name": "Detroit Cougars",
+              "link": "/api/v1/teams/40"
+            },
+            "date": "1927-12-08",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020041,
+              "link": "/api/v1/game/1927020041/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020041/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 1,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 16,
+              "name": "Chicago Blackhawks",
+              "link": "/api/v1/teams/16"
+            },
+            "date": "1927-12-07",
+            "isHome": false,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020040,
+              "link": "/api/v1/game/1927020040/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020040/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 8,
+              "name": "Montréal Canadiens",
+              "link": "/api/v1/teams/8"
+            },
+            "date": "1927-12-03",
+            "isHome": false,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020033,
+              "link": "/api/v1/game/1927020033/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020033/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 1,
+              "pim": 4,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "4",
+              "shotPct": 25.0,
+              "gameWinningGoals": 1,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 1
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 38,
+              "name": "Pittsburgh Pirates",
+              "link": "/api/v1/teams/38"
+            },
+            "date": "1927-11-29",
+            "isHome": true,
+            "isWin": true,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020026,
+              "link": "/api/v1/game/1927020026/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020026/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 10,
+              "name": "Toronto Maple Leafs",
+              "link": "/api/v1/teams/10"
+            },
+            "date": "1927-11-24",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020018,
+              "link": "/api/v1/game/1927020018/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020018/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 3,
+              "name": "New York Rangers",
+              "link": "/api/v1/teams/3"
+            },
+            "date": "1927-11-20",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020012,
+              "link": "/api/v1/game/1927020012/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020012/content"
+              }
+            }
+          },
+          {
+            "season": "19271928",
+            "stat": {
+              "assists": 0,
+              "goals": 0,
+              "pim": 2,
+              "games": 1,
+              "hits": 0,
+              "powerPlayGoals": 0,
+              "powerPlayPoints": 0,
+              "penaltyMinutes": "2",
+              "shotPct": 0.0,
+              "gameWinningGoals": 0,
+              "overTimeGoals": 0,
+              "shortHandedGoals": 0,
+              "shortHandedPoints": 0,
+              "blocked": 0,
+              "points": 0
+            },
+            "team": {
+              "id": 44,
+              "name": "New York Americans",
+              "link": "/api/v1/teams/44"
+            },
+            "opponent": {
+              "id": 8,
+              "name": "Montréal Canadiens",
+              "link": "/api/v1/teams/8"
+            },
+            "date": "1927-11-15",
+            "isHome": true,
+            "isWin": false,
+            "isOT": false,
+            "game": {
+              "gamePk": 1927020001,
+              "link": "/api/v1/game/1927020001/feed/live",
+              "content": {
+                "link": "/api/v1/game/1927020001/content"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

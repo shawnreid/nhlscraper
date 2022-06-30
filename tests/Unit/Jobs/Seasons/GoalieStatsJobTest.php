@@ -8,7 +8,7 @@ use App\Services\Seasons\GoalieStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class GoalieStatsTest extends TestCase
+class GoalieStatsJobTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,7 +19,7 @@ class GoalieStatsTest extends TestCase
      */
     public function test_season_goalie_stats_job_fires_and_calculates_stats(): void
     {
-        $this->fakeGame();
+        $this->fakeGame('game1');
 
         (new GoalieStatsJob())->handle(new GoalieStatsService());
 
