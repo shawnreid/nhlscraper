@@ -18,7 +18,7 @@ class GamesFactory extends Factory
             'game_type_id' => 2,
             'home_id'      => 10,
             'away_id'      => 9,
-            'status'       => 7
+            'status'       => 7,
         ];
     }
 }

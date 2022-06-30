@@ -1,9 +1,10 @@
 <?php
 
-namespace Tests\Unit\Services\Alltime;
+namespace Tests\Unit\Jobs\Seasons;
 
-use App\Models\Alltime\SkaterStats;
-use App\Services\Alltime\SkaterStatsService;
+use App\Jobs\Seasons\SkaterStatsJob;
+use App\Models\Seasons\SkaterStats;
+use App\Services\Seasons\SkaterStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,15 +13,15 @@ class SkaterStatsTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test SkaterStatsService can calculate all time data
+     * Test SkaterStatsJob fires and can calculate season data
      *
      * @return void
-    */
-
-    public function test_can_calculate_alltime_skater_stats(): void
+     */
+    public function test_season_skater_stats_job_fires_and_calculates_stats(): void
     {
         $this->fakeGame();
-        (new SkaterStatsService())->handle();
+
+        (new SkaterStatsJob())->handle(new SkaterStatsService());
 
         $stats = SkaterStats::where('goals', '>', 0)->first();
         $this->assertEquals($stats->game_type_id, 2);

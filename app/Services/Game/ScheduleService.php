@@ -8,14 +8,12 @@ use Illuminate\Support\Facades\Http;
 
 class ScheduleService
 {
-
     /**
      * Handle schedule data
      *
-     * @param Seasons $season
+     * @param  Seasons  $season
      * @return void
-    */
-
+     */
     public function handle(Seasons $season): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/schedule?season={$season->id}")->json();
@@ -23,7 +21,7 @@ class ScheduleService
         $games = [];
         foreach ($data['dates'] as $date) {
             foreach ($date['games'] as $game) {
-                $gameType =  substr($game['gamePk'], 5, 1);
+                $gameType = substr($game['gamePk'], 5, 1);
                 if (in_array($gameType, [2, 3])) {
                     $home = $game['teams']['home'];
                     $away = $game['teams']['away'];
@@ -34,7 +32,7 @@ class ScheduleService
                         'game_type_id'  => $gameType,
                         'home_id'       => $home['team']['id'],
                         'away_id'       => $away['team']['id'],
-                        'status'        => $game['status']['codedGameState']
+                        'status'        => $game['status']['codedGameState'],
                     ];
                 }
             }

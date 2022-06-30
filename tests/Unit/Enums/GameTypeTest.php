@@ -15,7 +15,7 @@ class GameTypeTest extends TestCase
         $positions = [
             1 => 'Pre Season',
             2 => 'Regular Season',
-            3 => 'Playoffs'
+            3 => 'Playoffs',
         ];
 
         foreach ($positions as $id => $name) {

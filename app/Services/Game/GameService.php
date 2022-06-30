@@ -3,10 +3,6 @@
 namespace App\Services\Game;
 
 use App\Models\Games\Games;
-use App\Services\Game\PlayerStatsService;
-use App\Services\Game\PlayByPlayService;
-use App\Services\Game\TeamStatsService;
-use App\Services\Game\PlayersService;
 use Illuminate\Support\Facades\Http;
 
 class GameService
@@ -15,16 +11,15 @@ class GameService
         PlayerStatsService::class,
         TeamStatsService::class,
         PlayByPlayService::class,
-        PlayersService::class
+        PlayersService::class,
     ];
 
     /**
      * Handle game date
      *
-     * @param Games $game
+     * @param  Games  $game
      * @return void
-    */
-
+     */
     public function handle(Games $game): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/game/{$game->id}/feed/live?site=en_nhl")->json();

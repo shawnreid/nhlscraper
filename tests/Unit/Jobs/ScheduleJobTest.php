@@ -17,9 +17,8 @@ class ScheduleJobTest extends TestCase
      * Test ScheduleService can parse json and save to database
      *
      * @return void
-    */
-
-    public function test_schedule_job_fires(): void
+     */
+    public function test_schedule_job_fires_and_imports_schedule_data(): void
     {
         Http::fake(['*' => $this->fakeJson('schedule')]);
 

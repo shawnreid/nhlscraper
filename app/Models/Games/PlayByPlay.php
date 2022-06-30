@@ -10,6 +10,7 @@ class PlayByPlay extends Model
     use DeleteGameScope;
 
     protected $table = 'game_play_by_play';
+
     protected $fillable = [
         'game_id',
         'event',
@@ -29,5 +30,6 @@ class PlayByPlay extends Model
         'y_coord',
         'team_id',
     ];
+
     public $timestamps = false;
 }

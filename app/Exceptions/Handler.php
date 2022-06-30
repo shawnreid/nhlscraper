@@ -7,11 +7,9 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      */
-
     protected $dontFlash = [
         'current_password',
         'password',
@@ -23,7 +21,6 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-
     public function register()
     {
         $this->reportable(function (Throwable $e) {

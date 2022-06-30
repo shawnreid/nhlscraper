@@ -10,6 +10,6 @@ class GoalieStats extends Model
     use DeleteGameScope;
 
     protected $table = 'goalie_stats_game';
-    public $timestamps = false;
 
+    public $timestamps = false;
 }

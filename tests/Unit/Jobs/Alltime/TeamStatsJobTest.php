@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\Alltime;
 
+use App\Jobs\Alltime\TeamStatsJob;
 use App\Models\Alltime\TeamStats;
 use App\Services\Alltime\TeamStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -12,15 +13,15 @@ class TeamStatsTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test TeamStatsService can calculate all time data
+     * Test TeamStatsJob fires and can calculate all time data
      *
      * @return void
-    */
-
-    public function test_can_calculate_alltime_team_stats(): void
+     */
+    public function test_alltime_team_stats_job_fires_and_calculates_stats(): void
     {
         $this->fakeGame();
-        (new TeamStatsService())->handle();
+
+        (new TeamStatsJob())->handle(new TeamStatsService());
 
         $stats = TeamStats::first();
         $this->assertEquals($stats->goals, 3);

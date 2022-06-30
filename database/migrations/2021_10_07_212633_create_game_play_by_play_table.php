@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateGamePlayByPlayTable extends Migration
 {
-
     public function up(): void
     {
         Schema::create('game_play_by_play', function (Blueprint $table) {

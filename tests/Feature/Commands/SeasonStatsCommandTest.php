@@ -19,15 +19,14 @@ class SeasonStatsCommandTest extends TestCase
         'goalies' => 'Season calculation for goalies queued for synchronization.',
         'teams'   => 'Season calculation for teams queued for synchronization.',
         'all'     => 'Season calculation for all categories queued for synchronization.',
-        'error'   => 'Invalid category. Usage: artisan nhl:season {skaters|goalies|teams?}'
+        'error'   => 'Invalid category. Usage: artisan nhl:season {skaters|goalies|teams?}',
     ];
 
     /**
      * Test artisan nhl:season {skaters} can queue job for skaters
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_season_queues_skater_job(): void
     {
         Queue::fake();
@@ -47,8 +46,7 @@ class SeasonStatsCommandTest extends TestCase
      * Test artisan nhl:season {goalies} can queue job for goalies
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_season_queues_goalie_job(): void
     {
         Queue::fake();
@@ -68,8 +66,7 @@ class SeasonStatsCommandTest extends TestCase
      * Test artisan nhl:season {teams} can queue job for teams
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_season_queues_team_job(): void
     {
         Queue::fake();
@@ -89,14 +86,13 @@ class SeasonStatsCommandTest extends TestCase
      * Test artisan nhl:season can queue job for all categories
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_season_queues_all_job(): void
     {
         Queue::fake();
         Games::factory()->create();
 
-        $this->artisan("nhl:season")
+        $this->artisan('nhl:season')
             ->expectsOutputToContain($this->messages['all'])
              ->assertExitCode(0);
 
@@ -109,8 +105,7 @@ class SeasonStatsCommandTest extends TestCase
      * Test invalid artisan nhl:season will throw error
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_season_returns_invalid_category(): void
     {
         Queue::fake();

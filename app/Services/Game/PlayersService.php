@@ -7,14 +7,12 @@ use App\Models\Players;
 
 class PlayersService
 {
-
     /**
      * Handle player data
      *
-     * @param array $data
+     * @param  array  $data
      * @return void
-    */
-
+     */
     public function handle(Games $game, array &$data): void
     {
         foreach ($data['gameData']['players'] as $player) {
@@ -46,15 +44,15 @@ class PlayersService
     /**
      * Convert height to inches
      *
-     * @param string $height
+     * @param  string  $height
      * @return int
-    */
-
+     */
     public function heightToInches(string $height): int
     {
         $height = (string) preg_replace('/[^0-9]/', '', $height);
-        $feet   = (int)    substr($height, 0, 1);
-        $inches = (int)    substr($height, 1);
+        $feet = (int) substr($height, 0, 1);
+        $inches = (int) substr($height, 1);
+
         return $inches + ($feet * 12);
     }
 }

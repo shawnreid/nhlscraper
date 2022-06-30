@@ -10,9 +10,12 @@ class ScheduleCommand extends Command
 {
     use CommandFunctions;
 
-    protected $signature   = 'nhl:schedule {option?} {--overwrite}';
+    protected $signature = 'nhl:schedule {option?} {--overwrite}';
+
     protected $description = 'Fetch schedule for given season or all seasons.';
+
     private mixed $option;
+
     private bool  $overwrite;
 
     public function __construct()
@@ -24,15 +27,14 @@ class ScheduleCommand extends Command
      * Command handler
      *
      * @return int
-    */
-
+     */
     public function handle(): int
     {
-        $this->option    = $this->argument('option');
+        $this->option = $this->argument('option');
         $this->overwrite = $this->option('overwrite') ? true : false;
-        $length          = strlen(strval($this->option));
+        $length = strlen(strval($this->option));
 
-        $status = match(true) {
+        $status = match (true) {
             $length === 8  => $this->season(),
             $length === 17 => $this->seasons(),
             $length === 0  => $this->all(),
@@ -41,6 +43,7 @@ class ScheduleCommand extends Command
 
         if (is_null($status)) {
             $this->error('Invalid season or range. Usage: artisan nhl:alltime {20162017|20162017-20172018?}');
+
             return 1;
         }
 
@@ -51,8 +54,7 @@ class ScheduleCommand extends Command
      * Fetch schedules for all seasons
      *
      * @return int
-    */
-
+     */
     protected function all(): int
     {
         Seasons::importAllSchedules($this->overwrite);
@@ -66,8 +68,7 @@ class ScheduleCommand extends Command
      * Fetch schedules for specific season
      *
      * @return int
-    */
-
+     */
     protected function season(): int
     {
         Seasons::importSchedule($this->option, $this->overwrite);
@@ -81,8 +82,7 @@ class ScheduleCommand extends Command
      * Fetch schedules for range of seasons
      *
      * @return int
-    */
-
+     */
     protected function seasons(): int
     {
         $option = $this->splitRange($this->option);
@@ -97,15 +97,14 @@ class ScheduleCommand extends Command
     /**
      * Console message
      *
-     * @param mixed $text
+     * @param  mixed  $text
      * @return string
-    */
-
+     */
     protected function message(mixed $text): string
     {
         $count = $this->queueSize('schedule');
 
-        $text  = "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
+        $text = "Schedule(s) for {$text} queued for synchronization. Jobs in queue: {$count}";
 
         return $this->trimWhiteSpace($text);
     }

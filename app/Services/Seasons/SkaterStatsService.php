@@ -37,8 +37,7 @@ class SkaterStatsService
      * Handle skater season stats
      *
      * @return void
-    */
-
+     */
     public function handle(): void
     {
         $stats = GameSkaterStats::select([
@@ -46,15 +45,14 @@ class SkaterStatsService
             'game_type_id',
             'player_id',
             DB::raw('COUNT(*) as games_played'),
-            ...collect($this->columns)->map(function($s) {
+            ...collect($this->columns)->map(function ($s) {
                 return DB::raw("SUM({$s}) as {$s}");
-            })
+            }),
         ])->groupBy(['season_id', 'game_type_id', 'player_id'])
           ->get();
 
         SeasonSkaterStats::truncate();
-        $stats->chunk(500)->each(fn($data) =>
-            SeasonSkaterStats::insert($data->toArray())
+        $stats->chunk(500)->each(fn ($data) => SeasonSkaterStats::insert($data->toArray())
         );
     }
 }

@@ -10,22 +10,25 @@ use Illuminate\Support\Facades\Http;
 class PlayerStatsService
 {
     protected Games $game;
+
     protected array $goalies;
+
     protected array $skaters;
+
     protected int   $playerId;
+
     protected int   $teamId;
 
     /**
      * Handle player stats
      *
-     * @param Games $game
-     * @param array $data
+     * @param  Games  $game
+     * @param  array  $data
      * @return void
-    */
-
+     */
     public function handle(Games $game, array $data): void
     {
-        $this->game    = $game;
+        $this->game = $game;
         $this->skaters = [];
         $this->goalies = [];
 
@@ -33,7 +36,7 @@ class PlayerStatsService
             $this->teamId = $team['team']['id'];
             foreach ($team['players'] as $player) {
                 $this->playerId = $player['person']['id'];
-                match($player['position']['name']) {
+                match ($player['position']['name']) {
                     'Goalie' => $this->goalie(_s($player['stats']['goalieStats'], [])),
                     default  => $this->skater(_s($player['stats']['skaterStats'], []))
                 };
@@ -50,10 +53,9 @@ class PlayerStatsService
     /**
      * Build goalie stats array
      *
-     * @param array $stats
+     * @param  array  $stats
      * @return void
-    */
-
+     */
     private function goalie(array $stats): void
     {
         $this->goalies[] = [
@@ -84,10 +86,9 @@ class PlayerStatsService
     /**
      * Build skater stats array
      *
-     * @param array $stats
+     * @param  array  $stats
      * @return void
-    */
-
+     */
     private function skater(array $stats): void
     {
         if (count($stats)) {
@@ -129,8 +130,7 @@ class PlayerStatsService
      * If no stats check this endpoint
      *
      * @return void
-    */
-
+     */
     private function statsNotFound(): void
     {
         $data = Http::get("https://statsapi.web.nhl.com/api/v1/people/{$this->playerId}/stats?stats=gameLog&season={$this->game->season_id}")->json();
@@ -148,16 +148,16 @@ class PlayerStatsService
     /**
      * Convert time on ice to seconds
      *
-     * @param string $toi
+     * @param  string  $toi
      * @return int
-    */
-
+     */
     public function toiToSeconds(string $toi): int
     {
         $time = explode(':', $toi);
         if (isset($time[0], $time[1])) {
             return ((int) $time[0] * 60) + (int) $time[1];
         }
+
         return 0;
     }
 }

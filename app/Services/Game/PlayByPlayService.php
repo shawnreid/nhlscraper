@@ -10,11 +10,10 @@ class PlayByPlayService
     /**
      * Hande play by play
      *
-     * @param Games $game
-     * @param array $data
+     * @param  Games  $game
+     * @param  array  $data
      * @return void
-    */
-
+     */
     public function handle(Games $game, array &$data): void
     {
         $results = collect([]);
@@ -39,13 +38,12 @@ class PlayByPlayService
                 'away_score'    => _s($d['about']['goals']['away'], 0),
                 'x_coord'       => _s($d['coordinates']['x']),
                 'y_coord'       => _s($d['coordinates']['y']),
-                'team_id'       => _s($d['team']['id'])
+                'team_id'       => _s($d['team']['id']),
             ];
         }
 
         PlayByPlay::deleteGame($game->id);
-        $results->chunk(500)->each(fn($data) =>
-            PlayByPlay::insert($data->toArray())
+        $results->chunk(500)->each(fn ($data) => PlayByPlay::insert($data->toArray())
         );
     }
 }

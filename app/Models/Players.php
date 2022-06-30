@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Players extends Model
 {
     protected $table = 'players';
+
     protected $fillable = [
         'id',
         'team_id',
@@ -27,7 +28,8 @@ class Players extends Model
         'captain',
         'rookie',
         'roster_status',
-        'active'
+        'active',
     ];
+
     public $timestamps = false;
 }

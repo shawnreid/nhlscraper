@@ -18,7 +18,7 @@ class PlayerPositionTest extends TestCase
             'RW' => 'Right Wing',
             'LD' => 'Left Defense',
             'RD' => 'Right Defense',
-            'G'  => 'Goalie'
+            'G'  => 'Goalie',
         ];
 
         foreach ($positions as $abr => $name) {

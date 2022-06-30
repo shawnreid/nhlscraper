@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Unit\Services\Seasons;
+namespace Tests\Unit\Jobs\Seasons;
 
+use App\Jobs\Seasons\GoalieStatsJob;
 use App\Models\Seasons\GoalieStats;
 use App\Services\Seasons\GoalieStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -12,15 +13,15 @@ class GoalieStatsTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test GoalieStatsService can calculate seasons data
+     * Test GoalieStatsJob fires and can calculate season data
      *
      * @return void
-    */
-
-    public function test_can_calculate_seasons_goalie_stats(): void
+     */
+    public function test_season_goalie_stats_job_fires_and_calculates_stats(): void
     {
         $this->fakeGame();
-        (new GoalieStatsService())->handle();
+
+        (new GoalieStatsJob())->handle(new GoalieStatsService());
 
         $stats = GoalieStats::first();
         $this->assertEquals($stats->toi, 3507);

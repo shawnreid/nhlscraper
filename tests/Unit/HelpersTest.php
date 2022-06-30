@@ -13,8 +13,7 @@ class HelpersTest extends TestCase
      * Test null safe will return default value if variable is null
      *
      * @return void
-    */
-
+     */
     public function test_null_safe_helper_returns_default_value(): void
     {
         $var = null;
@@ -27,8 +26,7 @@ class HelpersTest extends TestCase
      * Test null safe will not return default if variable is set
      *
      * @return void
-    */
-
+     */
     public function test_null_safe_helper_returns_variable_if_not_null(): void
     {
         $var = 'test';

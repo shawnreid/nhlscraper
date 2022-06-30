@@ -18,15 +18,14 @@ class GamesCommandTest extends TestCase
         'game'    => 'Game data for game {year} queued for synchronization.',
         'games'   => 'Game data for game range {year} queued for synchronization.',
         'all'     => 'Game data for all games queued for synchronization.',
-        'error'   => 'Invalid game or range. Usage: artisan nhl:games {2020020001|2020020001-2020020020?}'
+        'error'   => 'Invalid game or range. Usage: artisan nhl:games {2020020001|2020020001-2020020020?}',
     ];
 
     /**
      * Test artisan nhl:games {gameId} can fetch a single game
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_games_queues_specific_game(): void
     {
         Queue::fake();
@@ -45,8 +44,7 @@ class GamesCommandTest extends TestCase
      * Test artisan nhl:games {games-games} can range of games
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_schedule_queues_range_of_games(): void
     {
         Queue::fake();
@@ -65,8 +63,7 @@ class GamesCommandTest extends TestCase
      * Test artisan nhl:games {season} can fetch games for a specific season
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_games_queues_games_for_specific_season(): void
     {
         Queue::fake();
@@ -85,8 +82,7 @@ class GamesCommandTest extends TestCase
      * Test artisan nhl:games {season-season} can fetch games for range of seasons
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_schedule_queues_range_of_seasons(): void
     {
         Queue::fake();
@@ -105,8 +101,7 @@ class GamesCommandTest extends TestCase
      * Test artisan nhl:games can fetch all games
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_games_queues_all_games(): void
     {
         Queue::fake();
@@ -124,8 +119,7 @@ class GamesCommandTest extends TestCase
      * Test invalid artisan nhl:games will throw error
      *
      * @return void
-    */
-
+     */
     public function test_console_artisan_nhl_games_returns_invalid_category(): void
     {
         Queue::fake();
@@ -136,7 +130,7 @@ class GamesCommandTest extends TestCase
             '216217',
             '1',
             '212-224',
-            'abc'
+            'abc',
         ];
         foreach ($seasons as $season) {
             $this->artisan("nhl:games {$season}")

@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Unit\Services\Seasons;
+namespace Tests\Unit\Jobs\Seasons;
 
+use App\Jobs\Seasons\TeamStatsJob;
 use App\Models\Seasons\TeamStats;
 use App\Services\Seasons\TeamStatsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -12,15 +13,15 @@ class TeamStatsTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test TeamStatsService can calculate seasons data
+     * Test TeamStatsJob fires and can calculate season data
      *
      * @return void
-    */
-
-    public function test_can_calculate_seasons_team_stats(): void
+     */
+    public function test_season_team_stats_job_fires_and_calculates_stats(): void
     {
         $this->fakeGame();
-        (new TeamStatsService())->handle();
+
+        (new TeamStatsJob())->handle(new TeamStatsService());
 
         $stats = TeamStats::first();
         $this->assertEquals($stats->goals, 3);

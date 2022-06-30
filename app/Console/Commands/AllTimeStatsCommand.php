@@ -2,17 +2,18 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Jobs\Alltime\GoalieStatsJob;
 use App\Jobs\Alltime\SkaterStatsJob;
 use App\Jobs\Alltime\TeamStatsJob;
 use App\Traits\CommandFunctions;
+use Illuminate\Console\Command;
 
 class AllTimeStatsCommand extends Command
 {
     use CommandFunctions;
 
-    protected $signature   = 'nhl:alltime {category?}';
+    protected $signature = 'nhl:alltime {category?}';
+
     protected $description = 'Calculate alltime stats for specified category';
 
     public function __construct()
@@ -24,13 +25,12 @@ class AllTimeStatsCommand extends Command
      * Command handler
      *
      * @return int
-    */
-
+     */
     public function handle(): int
     {
         $category = $this->argument('category');
 
-        $status = match($category) {
+        $status = match ($category) {
             'skaters' => $this->skaters(),
             'goalies' => $this->goalies(),
             'teams'   => $this->teams(),
@@ -40,6 +40,7 @@ class AllTimeStatsCommand extends Command
 
         if (is_null($status)) {
             $this->error('Invalid category. Usage: artisan nhl:alltime {skaters|goalies|teams?}');
+
             return 1;
         }
 
@@ -52,8 +53,7 @@ class AllTimeStatsCommand extends Command
      * Fetch alltime stats for all categories
      *
      * @return int
-    */
-
+     */
     private function all(): int
     {
         $this->skaters();
@@ -67,11 +67,11 @@ class AllTimeStatsCommand extends Command
      * Fetch skater alltime stats
      *
      * @return int
-    */
-
+     */
     private function skaters(): int
     {
         SkaterStatsJob::dispatch();
+
         return 0;
     }
 
@@ -79,11 +79,11 @@ class AllTimeStatsCommand extends Command
      * Fetch goalie alltime stats
      *
      * @return int
-    */
-
+     */
     private function goalies(): int
     {
         GoalieStatsJob::dispatch();
+
         return 0;
     }
 
@@ -91,11 +91,11 @@ class AllTimeStatsCommand extends Command
      * Fetch team alltime stats
      *
      * @return int
-    */
-
+     */
     private function teams(): int
     {
         TeamStatsJob::dispatch();
+
         return 0;
     }
 
@@ -103,12 +103,12 @@ class AllTimeStatsCommand extends Command
      * Console message
      *
      * @return string
-    */
-
+     */
     private function message(mixed $text): string
     {
         $count = $this->queueSize('calculate');
-        $text  = "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+        $text = "Alltime calculation for {$text} queued for synchronization. Jobs in queue: {$count}";
+
         return $this->trimWhiteSpace($text);
     }
 }
